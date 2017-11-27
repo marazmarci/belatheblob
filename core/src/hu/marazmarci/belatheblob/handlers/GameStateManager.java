@@ -21,7 +21,9 @@ public class GameStateManager {
 		//pushState(PLAY);
 	}
 	
-	public GameMain game() { return gameMain; }
+	public GameMain game() {
+	    return gameMain;
+	}
 	
 	public void update(float dt) {
 		//if (dt>0.2) dt = 0.2f;

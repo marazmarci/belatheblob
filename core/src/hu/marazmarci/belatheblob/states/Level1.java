@@ -135,11 +135,10 @@ public class Level1 extends GameLevel {
 			if (ml.getIndex(layer)!=-1) createMapLayer(layer.getName(), BIT_WALL, BIT_BLOB | BIT_BUNNY | BIT_SPRITE); 
 		}
 		
-		for(String s : spriteNameMap.keys()) {
+		for(String s : spriteNameMap.keys())
 			createSprites(s);
-		}
 		
-		createFreeBlocks();
+		createFloatingBlocks();
 		
 		MapProperties mp = tiledMap.getLayers().get("SPAWN").getObjects().get(0).getProperties();
 		spawn.x = ((Float) mp.get("x")) + ((Float) mp.get("width"))/2;
@@ -192,7 +191,7 @@ public class Level1 extends GameLevel {
 		if (frame++ == 0) setDay();
 		
 		//gfx cuccok
-		//Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); //TODO beszívott effekt, ha kihagyod :)
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); //TODO beszívott effekt, ha kihagyod :)
 		//if (player.slinkiness==0) Gdx.gl.glClearColor(116/255f, 200/255f, 1f, 1f);
 		player.calcAvgPos();
 		cam.setPosition(player.getAvgPosX()*PPM /*TODO + GameMain.V_WIDTH / 4*/, player.getAvgPosY()*PPM + GameMain.HEIGHT / 4 - 50);
@@ -477,7 +476,7 @@ public class Level1 extends GameLevel {
 		}
 	}
 	
-	private void createFreeBlocks() {
+	private void createFloatingBlocks() {
 		MapLayer layer = tiledMap.getLayers().get("freeblocks");
 		/*TiledMapTileSet tileSet = tiledMap.getTileSets().getTileSet("tiles");
 		TiledMapTileSets tileSets = tiledMap.getTileSets();
@@ -509,9 +508,9 @@ public class Level1 extends GameLevel {
 			String type = (String) prop.get("type");
 			//System.out.println("ASDASDASDASD tile type = "+type);
 			//tileSet.iterator().next().getTextureRegion()
-			//FreeBlock freeBlock = new FreeBlock(tileSet.getTile(type).getTextureRegion());
-			FreeBlock freeBlock = new FreeBlock(type);
-			sprites.add(freeBlock.spawn(world, x0, y0));
+			//FloatingBlock floatingBlock = new FloatingBlock(tileSet.getTile(type).getTextureRegion());
+			FloatingBlock floatingBlock = new FloatingBlock(type);
+			sprites.add(floatingBlock.spawn(world, x0, y0));
 		}
 	}
 	

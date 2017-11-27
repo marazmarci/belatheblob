@@ -10,11 +10,11 @@ import hu.marazmarci.belatheblob.main.GameMain;
 
 import static hu.marazmarci.belatheblob.handlers.B2DVars.*;
 
-public class FreeBlock extends B2DSprite {
+public class FloatingBlock extends B2DSprite {
 	
 	private static TextureRegion[] texs;
 	
-	public FreeBlock(String type) {
+	public FloatingBlock(String type) {
 		tileSize = 32;
 		textureName = type;
 		try {
@@ -47,13 +47,13 @@ public class FreeBlock extends B2DSprite {
 
 	@Override
 	protected void setTexture(TextureRegion[] texs) {
-		FreeBlock.texs = texs;
+		FloatingBlock.texs = texs;
 		
 	}
 
 	@Override
 	protected TextureRegion[] getTexture() {
-		return FreeBlock.texs;
+		return FloatingBlock.texs;
 	}
 	
 }
