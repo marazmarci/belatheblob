@@ -1,0 +1,86 @@
+                    Wi * Xi
+súlyozott átlag = ------------
+                   W1+W2+...Wn
+                   
+Gdx.gl20.glEnable(GL20.GL_BLEND);
+Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+Gdx.gl.glDisable(GL20.GL_BLEND);
+
+
+
+RÉGI private void createCollectibles(String type) {
+		
+		MapLayer layer = tiledMap.getLayers().get(type);
+		
+		BodyDef bdef = new BodyDef();
+		FixtureDef fdef = new FixtureDef();
+		bdef.type = BodyType.StaticBody;
+		CircleShape cs = new CircleShape();
+		cs.setRadius(8/PPM);
+		fdef.shape = cs;
+		fdef.isSensor = true;
+		fdef.filter.categoryBits = BIT_COLLECTIBLE;
+		fdef.filter.maskBits = BIT_BLOB;
+		Constructor<?> cons = spriteNameMap.get(type).getDeclaredConstructors()[0];
+		//xDEBUG
+		//System.out.println("createCollectibles(..): constructor = "+cons+";  Play.java:353");
+		
+		if (layer == null) return;
+		for (MapObject obj : layer.getObjects()) {
+			
+			float x = (Float) obj.getProperties().get("x") / PPM;
+			float y = ((Float)obj.getProperties().get("y") + (Float)obj.getProperties().get("height") / 2) / PPM;
+			
+			bdef.position.set(x,y);
+			Body body = world.createBody(bdef);
+			
+			Collectible c = null;
+			try {
+				c = (Collectible) cons.newInstance(body);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			sprites.add(c);
+			
+			body.createFixture(fdef).setUserData(c);
+		}
+	}
+
+
+
+MÉGRÉGEBBI private void createCollectibles(String type) {
+		
+		MapLayer layer = tiledMap.getLayers().get(type);
+		
+		BodyDef bdef = new BodyDef();
+		FixtureDef fdef = new FixtureDef();
+		bdef.type = BodyType.StaticBody;
+		CircleShape cs = new CircleShape();
+		cs.setRadius(8/PPM);
+		fdef.shape = cs;
+		fdef.isSensor = true;
+		fdef.filter.categoryBits = BIT_COLLECTIBLE;
+		fdef.filter.maskBits = BIT_BLOB;
+		
+		if (layer == null) return;
+		for (MapObject obj : layer.getObjects()) {
+			
+			float x = (Float) obj.getProperties().get("x") / PPM;
+			float y = ((Float)obj.getProperties().get("y") + (Float)obj.getProperties().get("height") / 2) / PPM;
+			
+			bdef.position.set(x,y);
+			
+			Body body = world.createBody(bdef);
+			Collectible c = null;
+			try {
+				//DEBUG
+				System.out.println("createCollectibles(..): constructor = "+spriteNameMap.get(type).getDeclaredConstructors()[0].getName()+";  Play.java:327");
+				c = (Collectible) spriteNameMap.get(type).getDeclaredConstructors()[0].newInstance(body);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			sprites.add(c);
+			body.createFixture(fdef).setUserData(c);
+		}
+	}

@@ -1,0 +1,2442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="120" height="40" tilewidth="32" tileheight="32" nextobjectid="904">
+ <tileset firstgid="1" name="tiles" tilewidth="32" tileheight="32" tilecount="64">
+  <image source="tiles.png" width="256" height="256"/>
+  <tile id="3" probability="0.1"/>
+  <tile id="11" probability="0.2"/>
+  <tile id="16" probability="0.3"/>
+  <tile id="24" probability="0.3"/>
+  <tile id="28">
+   <animation>
+    <frame tileid="32" duration="150"/>
+    <frame tileid="33" duration="150"/>
+    <frame tileid="34" duration="150"/>
+    <frame tileid="35" duration="150"/>
+    <frame tileid="36" duration="150"/>
+    <frame tileid="37" duration="150"/>
+    <frame tileid="40" duration="150"/>
+    <frame tileid="41" duration="150"/>
+    <frame tileid="42" duration="150"/>
+    <frame tileid="43" duration="150"/>
+    <frame tileid="44" duration="150"/>
+    <frame tileid="45" duration="150"/>
+   </animation>
+  </tile>
+ </tileset>
+ <layer name="ground" width="120" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztm9EOwiAMRecn+AkaNfHBJ///3wzRh2VhSOEW2u6ehMSpAdKzdgznssTjMnsCRBX6jQ39zueq+H36jQ39xoZ+Y0O/87gAW2mMGm6rRvoZlVeScW4LPSMY6bZlLHr+gq6lGnPr4aieR3pqAT2/td/Inq17TWjOcZvPD6VxRqMVM+T6eXT9TzwyzTLoeG37sOBEGw+eEVjMNxRvYF93YF9IvNVSUgfdyEj5+fo1q7maoNfY0CvRJJ1fR1mbHpF1/Yjs2fN+QA+5eeb2F7S9743pba/jH6PPnxnnYQRP2qA8e6kzXkDnYW8/9JsHVSORdbalrlvwG7lWS6+tT8B4pWPShjSOJc89junXFuh7LQt+vayfa691iPtmres989cWvZ7p1we1nnO1ZPv5bCzVagvxWCPNZ4t+rYGMifQ/nHtI8rl0TL6g4jL6GW8Lfj2tn71hwa8nNOOD+I1yW7fpV45WjJD3QXvv028dpTgh8q5lPjX7LRJOhXbOvD4LvidB8iyA9Frf4ucD1Q83YQ==
+  </data>
+ </layer>
+ <layer name="wall" width="120" height="40" opacity="0.65">
+  <data encoding="base64" compression="zlib">
+   eJzt10EKwjAQRmG3egPdBcSVuOn97ybuSql0kuk00z/vA3GTxuCzaSyXOCVwbq937wUcJLJB5r7P3gs4yKh9uX9zz+3F/Rs7d+3n7r1O+sbOTd9j0Fdb5mdkJM5XUEBfbfTVRl9t9NVGX1201VYuNK4x9V5AJfraTYv3M6CvHX21TbPXWdBXG3210Vcbffv7GMfVdCqzd4W+j+D578Zxr4a56bvtFjz/1TiOvjHouz5WpW/0/pytr7WZSt/R7t+ovll/D/T9fw19t2U7P9f0VcD/o/2uyWi0/dlKpe8I5+cWWZ6n3jWM8PxtQV8b+vpk78v+7ONdwwjn5xZZ+npxvlqn0pf9eV22tsv1ZFvflpa+kX7f3xcXxhec
+  </data>
+ </layer>
+ <layer name="ceiling" width="120" height="40" opacity="0.45">
+  <data encoding="base64" compression="zlib">
+   eJzt2aENADAIRUFWYf8l65sK6oDcJRXFPvkjAAAAAABmyMf/vjFPxrultrPpt5OuO+kKAAAAAAAA0Et1x/3Ze23DvVR65OejF60AAABqDoC2BEI=
+  </data>
+ </layer>
+ <layer name="nocollision" width="120" height="40" opacity="0.3">
+  <data encoding="base64" compression="zlib">
+   eJztm+tu4jAQhUdi/21fAmiQoKFSt1Wldld9/8faHuEjplMngC+EuPNJI4N7iZvjuXhCRRzndlmZ0WkL17d9nqZegFOF9Yn3zvxZK0vhRZnmbzCnTVxfx3Ecx3GcOvRTL8BxHKcCy6kXcGU+Pu116kU4jhPFn1G1jev7s0G/+nnqRTjF+Sffnz858+f90/5MvYiZ8zvYLfEm/pmRUkDbRbAxnTcV7bHw32R5kMPnE3itrRz6oqswt698/Sm5k6MPW4Pmv8L3ldTy0cxJ5Jp8redT6YNBZ/SEoO99WMcuvG4V3kP68J0aYUP6Wo1yTCSup36doy/06+Sg5UMwvO+lXX3Z2+R9jPkx/Qjk+Oul+i4GXqfCmLyTrxpjHtq29AxrqQxQS+u3vKel4/NQ7qWW3Gd2zPFfrSWuSa3vw9e2Gb/71rD66jgY0znXf8+Nz1pbHT/0XksFWkJD1FOsq7ZyrLNaek4T81/WNDYu6rNTbX3H8i/3XSr02S4YfBa+uw73oaX62eqr/dTeU2oOSsbjU/VzTOscfaHjPlwXI+vnlZprhSF97blEx2hQoo46FZ9je0yvJRWuDX6LeMyairl36PyNuM7z1Fq+5nD9M/haJ8c9o993Ya7LWP8lxPJvLO8xJp6rb472It81tXkjJ/9SU+ikz0dduA9j9TN9fxnWSv3mUpPp+sXGaX3urJV76Qe8FvdWzIdTYb6lpozP1HoZxhaxZ8xYnQWuUV+N9dFy9NV1M2MX4zPPSZir8f9zU/dOrL/ofKzj4jX0tTlYry23P8nYrPOp7lmyl7UZ+B1zxZ55bWzmfS3Vjxyrn/U1S/ef+XyB56FtGLswz5jNc1Qr2L5R7AwKavuv1TS211KBpjz3Ym/1ZmSdhbVAY+i+y7jeLRGrV209Da6Zf+0ZKdd/GTf4f8y9msNIPXmmYT6urTGfc3N8Gpiz7/mz56DjoX3OUOL5wqX66txv91oqjMvwX/asMAc99dmHeZj9y43U/cxfTM83YzH9L8H28W3vSvegaxHz24Wx3P4Gew/UkDF7L0eNU/gPQ850Hw==
+  </data>
+ </layer>
+ <layer name="nocollision_anna" width="120" height="40" visible="0" opacity="0.3">
+  <data encoding="base64" compression="zlib">
+   eJztm/Fu2kAMxi2x/9aXABokKFTqWk3qNu39H2t8wp9w3bsUcjlCbv5JVsK1Jdd8Z5/tgMi8WWfOg/mzzljQBqFv+4S27RPaBjnejFl+qwVtEvoGQRAEQRDUYT/1BIIgCCqwnHoCN+bv0X5OPYkgCJKspp5AUJXQ9/8G/erXqScRjM4f+fz8KZg/v472Y+pJzJzvavfE+9Fepp5EI0DbhVqfzpuK9jzy/+R5ktPnT3itrZz6oisdO1S+/pQ8yNmHvUHzb/p7Y2r57MYkcU2e2/Gh7NWgM3pC0PdR57HT81bhPaQPP5gjLKev16jERNJ62vMSfaFfJyctn9Twei/t6sveJu9jyo/pR6DEX6/Vd5E5Hwpj8k4+aoxxaNvSM6ylMUAtvd/yno4dn3N7L7XkOvPHEv+1WuKa1PpRf7YteO97w+tr42BK51L/vTQ+W21t/LBrbSjQEhoin2JetZVzntXSc5qU/zKn8XHR1k619e3bf7nuhkKf7dTgs/Ddtd6HlvJnr6/1U39PqTkYMx5/lT+ntC7RFzoe9Lo4Mn9embFWyOnr6xIbo8EYedRX8Tm1xuxchsK5wW8Rj5lTce/N1d+I66yn1vJxD7d/g591cl4z9nWnY13B/K8htf+m9j3GxEv1LdFe5LOmft8o2X+pKXSy9VGn96Evf6bvL3Wu1G8uOZnNX3yctnVnrb2XfsBrcW2lfHgo3G+pKeMztV7qsUV8jZnKs8At8qu+PlqJvjZvZuxifGadhLEa36Gbunfi/cXuxzYu3kJfvwfbuZX2Jxmb7X5qe5bsZW0y7zFXfM3rYzPv61j9yL782V5z7P4zny+wHtrqsdNxxmzWUa3g+0apGhTU9l+vaWqtDQWasu7F2tq7I/MszAUaQ/ddwfXuiVS+6vNpcMv919dIpf7LuMHvqe/NGI7UkzUN9+PaGvM5N48vmTH/WuTymt3GQ/+cYYznC9fqa/d+v9aGwrgM/2XPCmPQ09Y+3IfZv9xI3c/8pfR8d5bS/xp8H9/3rmwPuhYpv104K+1vsPdADRmzD3LWeAj/AG4VdWc=
+  </data>
+ </layer>
+ <layer name="interactive1" width="120" height="40">
+  <properties>
+   <property name="data" value="wall"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0QEJAAAIBDEr2b+cJXwE2RIcXBUAAABpfR1AlL+/+QsAAAAAAAAAAAAAAAAAsG8AjCoAlA==
+  </data>
+ </layer>
+ <layer name="interactive3_anna" width="120" height="40" visible="0">
+  <properties>
+   <property name="data" value="wall"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0bENwCAMAEHvQqgg+6+XAheRMgCKuWtsIQpLHwEAAADsMHJer9lz79/v/Iy+telbm761tViNZ6y2M9/vbRcBAAAAAAAAAAAAAADAmR5pJwPs
+  </data>
+ </layer>
+ <layer name="interactive3" width="120" height="40">
+  <properties>
+   <property name="data" value="ground"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0cEJgDAQRNHpRT2p/bcXQhRSgBhY3oNlrgs/AQAAAFY4n92nO9a9w8fmvu/qW4e+telb25bR+Mpo27f3vaMzAAAAAAAAAAAAAAAA/KkBE2gDxg==
+  </data>
+ </layer>
+ <layer name="interactive4" width="120" height="40">
+  <properties>
+   <property name="data" value="ground"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAIAzCscOLfIO8sQNqkVQAAAAAAd3Tkn4kAAAAAAAAAAAAAAADAXwtdwgDf
+  </data>
+ </layer>
+ <layer name="interactive_mamintul" width="120" height="40">
+  <properties>
+   <property name="data" value="ground"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0aENADAMBLFfKbD7L1aVBZaERLZ0E1wCAAAAAAAAAAAAAMCvarHP+3riLwAAAAAAAEy77d8BLw==
+  </data>
+ </layer>
+ <layer name="interactive2_nocollision" width="120" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt1DkSgzAUREGuQsj9L0hC4MAswhLFH3dXTUCqhzRNAAAAAAAAwD9ZtpFJ32z6ZtM3m77Z9M2mbzZ9s+mbbek83uWoi871HfVxn+tr7TLqf2CMu+ffuzFjtJ7/3nfr5o/p+w5XuutbV8v99j7XM3ccz+jZ7Fs/nev7pTM16JtPXwA4twIjkCvE
+  </data>
+ </layer>
+ <layer name="interactive2" width="120" height="40">
+  <properties>
+   <property name="data" value="ground"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0cEJACAQA0Fbuf6btARfIqwzkH9g1wIAAAAAAAB+NK8PcJW+bfq26dumb5u+bfq26ds2hwEAAAAAAAAAb2yZpgIR
+  </data>
+ </layer>
+ <layer name="interactive6" width="120" height="40">
+  <properties>
+   <property name="data" value="wall"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0UEJAAAIBMELYf+sfvyYQJAZ2ASbAAAAAAAAAAAAAAAAAAAAAHCtJn7yFwC2Bs4+AFE=
+  </data>
+ </layer>
+ <layer name="interactive7" width="120" height="40">
+  <properties>
+   <property name="data" value="ground"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0QEJADAQA7HaqX+DU1EeRqLg4BIAAAAAAAAAAAAAYK3XAcw0/v6q8RcAAAAAAABWHvdVAPc=
+  </data>
+ </layer>
+ <layer name="interactive5" width="120" height="40">
+  <properties>
+   <property name="data" value="ground"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0aENADAMBLGsUtj9FywNioo/tnQTXBUAAAAAAAAAAAAAAMAutwUAAMxOizz+ZvM3m7/Z/M3mbzZ/4d8DcvwDMQ==
+  </data>
+ </layer>
+ <layer name="interactive8" width="120" height="40">
+  <properties>
+   <property name="data" value="wall"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0QEJAAAIBDGr2L+kKUR8tgQHVwUAAAAAAAA/9HUAq/zN5m82f7P5m81fAAAAAAAAAAAArgzopwDH
+  </data>
+ </layer>
+ <layer name="interactive9" width="120" height="40">
+  <properties>
+   <property name="data" value="ground"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0bENADAIA0Gmyf4j0iLaFIjkTvrCtSMAAAAAAAAAAAAA2OiU+r6NeX54m38BAAAAAACA3yVbHAOR
+  </data>
+ </layer>
+ <layer name="interactive10" width="120" height="40">
+  <properties>
+   <property name="data" value="ground"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0UENAAAIxLAzhH97fBBBoE2mYAkAAAAAAAAAAAAAAAAAAAAAAN/UxE3esl0DV6YAiA==
+  </data>
+ </layer>
+ <layer name="interactive10_nocollision" width="120" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt0bEJgAAQBEGrsf8STYwEwXA9ZuDzY/84AAAAAAAAAAAAgL8572PT+Ti2PP/7dusbVhXaFjasKrQtbFhVaFvYsKrQtrBhVaFtYcOqQtvChlWFtoUNqwptCxtWFdoWNqwqtC1sWFVoW9iwqtC2sGFVoW1hw6pC28KGVYW2hQ2rvrYtXNEFOzs2xw==
+  </data>
+ </layer>
+ <layer name="interactive_nyulontul" width="120" height="40" opacity="0.4">
+  <properties>
+   <property name="data" value="wall"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2jEKACEMBEBfY+n/n2clHBZaiBysMxDSWAhLUqUUAAAAAACAN9Wp2qevarwhm5zfMOaabPXvD3CdjPPZ1dnkm82OzmZ+AQAAAACAHfc52eQLAJzqKoUFFQ==
+  </data>
+ </layer>
+ <layer name="interactive_nyulontul_nocollision" width="120" height="40" opacity="0.4">
+  <data encoding="base64" compression="zlib">
+   eJzt2kEOg0AIhWFPM0vvf7yumkwm8GDSoGL/LzGxOq4QBkyP453O6RjL+ViuRWvWtWdwD/WGcayx21mzE2fUy8Yniqd1Tnzvp+K7xsr6reJuvRvU52tZMVE12YpXJt+t51DPq59RzVY57+Xr+r6gXrbGqvxWOew9T/5eQ/VCUayiXiqq9aineqaof86sVz0W6kV9k9p/s3XY29NRS8XD25fVvLOzlvjWUn2vF5foXvadoH+upXLOq6WZ9dl9+HsNz5PZr1XeMx/1kJ2bVD7j+VTeRvs2etj51jGvRR/ZXm2+hl7UPMR81J+aqajP/Vn9s5ql0Esmd5mP/gP5CwAAAAAAAACw8B/mdyO+AADgVx94DFip
+  </data>
+ </layer>
+ <layer name="interactive11" width="120" height="40">
+  <properties>
+   <property name="data" value="ground"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0aENACAUQ8G/CgbJ/uOBQKFwkOYuqW/yqvK01wcAAAAAAABgGXsA/KkfI4OemXTNpGsmXQEAAAAAAAAAuDUB4WUCRg==
+  </data>
+ </layer>
+ <layer name="interactive12" width="120" height="40">
+  <properties>
+   <property name="data" value="wall"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztw6ENAAAIA7Adw/83YieQyDZpAgAAf6YCAAAAAAAAAAAAAAAAAAAAXBaOZQBt
+  </data>
+ </layer>
+ <layer name="interactive13" width="120" height="40">
+  <properties>
+   <property name="data" value="ceiling"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0bENAEAIA7HsQsn++/2PQINobOn6SEkAAGBf/+p6BGsq/gUAAAAAAAAAAAAAAAAAAGDuARdzAJU=
+  </data>
+ </layer>
+ <layer name="interactive14" width="120" height="40" opacity="0.75">
+  <data encoding="base64" compression="zlib">
+   eJztmlFqAzEMRHOYkr/m/sdroQ0U4xlNmrJape+BCbveJR/jkSV5L5f/y9uB4/o5bt/j+mPsrtexvnsLnr8POAal66rJTkP3vFon6Hssym/rPaVz9fzO1+h7HDv9lNbKt8l76//AF3+5175v7iU6qrhbzTmfQy+pPxO9d/PQyyO5cLIHr3PQS+XDR/TdrQ/oxdVIleZV7Ux87kf5UeVhak49D73sfKq86Lyt1gD0ojxY1U9J/wN9+3H5kbuvrlfNoZdnaqGkPoZe0n5VEpt319CL2z+r2Ovya/x7Dly9U+VULm9m/z0HTqMkz0Lfc6P6UL/53a0D6KXKmRPNXV0FvajY6vLmNKcmv+onqX2rnMt5Gfqpcmh8OJuq7sGHs3G17n3AXJJ+JMyl6j+j72yqfjP6zibpS8Jckh4lzMXFZ/Ln+STnfTCXqj5C39lU32Cg72yS73BgLuqcj/OF18CdEdLfmI86GyQ+vwbubJD+1XzcudGz8fkDbIt8zg==
+  </data>
+ </layer>
+ <objectgroup color="#ffffff" name="SPAWN">
+  <properties>
+   <property name="hidden" value=""/>
+  </properties>
+  <object id="656" x="64" y="128" width="80" height="80">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#e5de05" name="CHEESES">
+  <object id="138" name="interactive1" type="unlock" x="480" y="64" width="32" height="32">
+   <properties>
+    <property name="action" value="interactive1"/>
+   </properties>
+  </object>
+  <object id="155" name="interactive2" type="unlock" x="1088" y="800" width="32" height="32">
+   <properties>
+    <property name="action" value="interactive2"/>
+    <property name="hidden" value=""/>
+   </properties>
+  </object>
+  <object id="172" name="interactive3" type="unlock" x="1344.25" y="64.5" width="32" height="32">
+   <properties>
+    <property name="action" value="interactive3"/>
+    <property name="delay" value="550"/>
+   </properties>
+  </object>
+  <object id="177" name="interactive4" type="unlock" x="736.25" y="447.5" width="32" height="32">
+   <properties>
+    <property name="action" value="interactive4"/>
+    <property name="delay" value="79"/>
+    <property name="hidden" value=""/>
+   </properties>
+  </object>
+  <object id="230" name="interactive6" type="unlock" x="988.5" y="1215.67" width="32" height="32">
+   <properties>
+    <property name="action" value="interactive6"/>
+   </properties>
+  </object>
+  <object id="275" name="interactive7" type="unlock" x="256" y="1088" width="32" height="32">
+   <properties>
+    <property name="action" value="interactive7"/>
+    <property name="hidden" value=""/>
+   </properties>
+  </object>
+  <object id="276" name="interactive5" type="unlock" x="1216" y="799.667" width="32" height="32">
+   <properties>
+    <property name="action" value="interactive5"/>
+    <property name="hidden" value=""/>
+   </properties>
+  </object>
+  <object id="277" name="interactive8" type="unlock" x="1184" y="1184" width="32" height="32">
+   <properties>
+    <property name="action" value="interactive8"/>
+    <property name="hidden" value=""/>
+   </properties>
+  </object>
+  <object id="281" name="interactive9" type="unlock" x="1696" y="704" width="32" height="32">
+   <properties>
+    <property name="action" value="interactive9"/>
+    <property name="delay" value="60"/>
+    <property name="hidden" value=""/>
+    <property name="night" value=""/>
+   </properties>
+  </object>
+  <object id="288" name="interactive10" type="unlock" x="2080" y="1216" width="32" height="32">
+   <properties>
+    <property name="action" value="interactive10"/>
+    <property name="delay" value="60"/>
+    <property name="hidden" value=""/>
+   </properties>
+  </object>
+  <object id="290" name="interactive11" type="unlock" x="2400" y="672" width="32" height="32">
+   <properties>
+    <property name="action" value="interactive11"/>
+    <property name="delay" value="720"/>
+    <property name="hidden" value=""/>
+   </properties>
+  </object>
+  <object id="359" name="interactive12" type="unlock" x="2274" y="352" width="32" height="32">
+   <properties>
+    <property name="action" value="interactive12"/>
+    <property name="delay" value="600"/>
+    <property name="hidden" value=""/>
+   </properties>
+  </object>
+  <object id="361" name="interactive13" type="unlock" x="2304" y="356" width="32" height="32">
+   <properties>
+    <property name="action" value="interactive13"/>
+    <property name="delay" value="75"/>
+    <property name="hidden" value=""/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#26c10a" name="freeblocks">
+  <object id="56" type="greenblock" x="864" y="1104" width="32" height="32">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#6171a4" name="doors" visible="0">
+  <object id="81" x="1010" y="939" width="61" height="85"/>
+ </objectgroup>
+ <objectgroup color="#af10af" name="bunnies">
+  <object id="126" x="1168" y="192">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="161" x="1263.5" y="192.5">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="162" x="1071.5" y="193">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="166" x="560" y="304">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="167" x="1681.33" y="272.667">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="168" x="1648" y="304.667">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="169" x="1616" y="337.333">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="170" x="1584" y="367.333">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="171" x="1551.33" y="400">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="174" x="432" y="368">
+   <properties>
+    <property name="autojump" value="150"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="178" x="464" y="368">
+   <properties>
+    <property name="autojump" value="150"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="179" x="496" y="368">
+   <properties>
+    <property name="autojump" value="150"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="289" name="BOSS" type="boss" x="2320" y="1232">
+   <properties>
+    <property name="autojump" value="135"/>
+    <property name="forceX" value="-2"/>
+    <property name="forceXrandomness" value="4"/>
+    <property name="forceY" value="2.75"/>
+    <property name="forceYrandomness" value="1.25"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="362" x="2288" y="208">
+   <properties>
+    <property name="autojump" value="150"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="369" x="2288" y="208">
+   <properties>
+    <property name="autojump" value="150"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="370" x="2288" y="208">
+   <properties>
+    <property name="autojump" value="150"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="371" x="2288" y="208">
+   <properties>
+    <property name="autojump" value="150"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="812" x="1120" y="144">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="813" x="1216" y="144">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="814" x="688" y="304">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="817" x="1456" y="400">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="818" x="1392" y="368">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="819" x="1296" y="368">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="820" x="1232" y="368">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="822" x="1104" y="752">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="823" x="1232" y="720">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="824" x="1200" y="752">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="825" x="1168" y="784">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="831" x="3248" y="240">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="832" x="3024" y="1200">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="833" x="3056" y="1200">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="834" x="2992" y="464">
+   <properties>
+    <property name="autojump" value="170"/>
+    <property name="forceX" value="0"/>
+    <property name="forceXrandomness" value="0"/>
+    <property name="forceY" value="1.75"/>
+    <property name="forceYrandomness" value="0.5"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="835" x="1104" y="1232">
+   <properties>
+    <property name="autojump" value="150"/>
+    <property name="forceX" value="0"/>
+    <property name="forceXrandomness" value="0"/>
+    <property name="forceY" value="4"/>
+    <property name="forceYrandomness" value="0"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="836" x="1088" y="1232">
+   <properties>
+    <property name="autojump" value="150"/>
+    <property name="forceX" value="0"/>
+    <property name="forceXrandomness" value="0"/>
+    <property name="forceY" value="4"/>
+    <property name="forceYrandomness" value="0"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="837" x="688" y="1008">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="838" x="176" y="952">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="839" x="560" y="944">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="840" x="1040" y="976">
+   <properties>
+    <property name="autojump" value="150"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="843" x="1616" y="688">
+   <properties>
+    <property name="autojump" value="20"/>
+    <property name="forceX" value="0"/>
+    <property name="forceXrandomness" value="0"/>
+    <property name="forceY" value="1.72"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="844" x="2416" y="368">
+   <properties>
+    <property name="autojump" value="20"/>
+    <property name="forceX" value="0"/>
+    <property name="forceXrandomness" value="0"/>
+    <property name="forceY" value="1.72"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="845" x="2096" y="144">
+   <properties>
+    <property name="autojump" value="20"/>
+    <property name="forceX" value="0"/>
+    <property name="forceXrandomness" value="0"/>
+    <property name="forceY" value="1.72"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="847" x="48" y="1232">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="849" x="112" y="1232">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="850" x="176" y="1232">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="851" x="240" y="1232">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="852" x="304" y="1232">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="853" x="368" y="1232">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="854" x="432" y="1232">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="862" x="272" y="1232">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="863" x="208" y="1232">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="864" x="1488" y="400">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="865" x="1520" y="400">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="866" x="1120" y="192">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="867" x="1216" y="192">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="868" x="1168" y="144">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="869" x="624" y="304">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.2"/>
+    <property name="forceXrandomness" value="0.4"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="870" x="880" y="816">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="871" x="1040" y="816">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="872" x="464" y="720">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="873" x="1616" y="1232">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="874" x="3216" y="240">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="875" x="144" y="1232">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="876" x="80" y="1232">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="877" x="336" y="1232">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="878" x="400" y="1232">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="879" x="64" y="1184">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="880" x="128" y="1184">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="881" x="192" y="1184">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="882" x="256" y="1184">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="883" x="320" y="1184">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="884" x="384" y="1184">
+   <properties>
+    <property name="autojump" value="1"/>
+    <property name="forceX" value="-0.25"/>
+    <property name="forceXrandomness" value="0.5"/>
+    <property name="forceY" value="0.05"/>
+    <property name="forceYrandomness" value="0"/>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#000000" name="spikes">
+  <object id="149" x="912" y="1008">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="165" x="624" y="272">
+   <ellipse/>
+  </object>
+  <object id="227" x="784" y="944">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="297" x="2704" y="1232">
+   <ellipse/>
+  </object>
+  <object id="298" x="2736" y="1232">
+   <ellipse/>
+  </object>
+  <object id="299" x="2768" y="1232">
+   <ellipse/>
+  </object>
+  <object id="300" x="2800" y="1232">
+   <ellipse/>
+  </object>
+  <object id="301" x="2896" y="1232">
+   <ellipse/>
+  </object>
+  <object id="302" x="2832" y="1232">
+   <ellipse/>
+  </object>
+  <object id="303" x="2928" y="1232">
+   <ellipse/>
+  </object>
+  <object id="304" x="2864" y="1232">
+   <ellipse/>
+  </object>
+  <object id="306" x="2992" y="1232">
+   <ellipse/>
+  </object>
+  <object id="310" x="3056" y="1232">
+   <ellipse/>
+  </object>
+  <object id="311" x="3024" y="1232">
+   <ellipse/>
+  </object>
+  <object id="312" x="2960" y="1232">
+   <ellipse/>
+  </object>
+  <object id="350" x="1296" y="400">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="710" x="2785" y="983">
+   <ellipse/>
+  </object>
+  <object id="711" x="2801" y="967">
+   <ellipse/>
+  </object>
+  <object id="712" x="2825" y="967">
+   <ellipse/>
+  </object>
+  <object id="713" x="2841" y="983">
+   <ellipse/>
+  </object>
+  <object id="714" x="2841" y="1007">
+   <ellipse/>
+  </object>
+  <object id="715" x="2833" y="1031">
+   <ellipse/>
+  </object>
+  <object id="716" x="2809" y="1031">
+   <ellipse/>
+  </object>
+  <object id="717" x="2785" y="1031">
+   <ellipse/>
+  </object>
+  <object id="718" x="2777" y="1007">
+   <ellipse/>
+  </object>
+  <object id="719" x="2977" y="1007">
+   <ellipse/>
+  </object>
+  <object id="720" x="2929" y="967">
+   <ellipse/>
+  </object>
+  <object id="721" x="2921" y="1031">
+   <ellipse/>
+  </object>
+  <object id="722" x="2969" y="1031">
+   <ellipse/>
+  </object>
+  <object id="723" x="2969" y="983">
+   <ellipse/>
+  </object>
+  <object id="724" x="2913" y="1007">
+   <ellipse/>
+  </object>
+  <object id="725" x="2945" y="1031">
+   <ellipse/>
+  </object>
+  <object id="726" x="2953" y="967">
+   <ellipse/>
+  </object>
+  <object id="727" x="2913" y="983">
+   <ellipse/>
+  </object>
+  <object id="728" x="2752" y="1106">
+   <ellipse/>
+  </object>
+  <object id="749" x="2760" y="1130">
+   <ellipse/>
+  </object>
+  <object id="750" x="2776" y="1154">
+   <ellipse/>
+  </object>
+  <object id="751" x="2800" y="1170">
+   <ellipse/>
+  </object>
+  <object id="752" x="2824" y="1178">
+   <ellipse/>
+  </object>
+  <object id="753" x="2848" y="1186">
+   <ellipse/>
+  </object>
+  <object id="754" x="2872" y="1186">
+   <ellipse/>
+  </object>
+  <object id="755" x="2896" y="1186">
+   <ellipse/>
+  </object>
+  <object id="756" x="2920" y="1186">
+   <ellipse/>
+  </object>
+  <object id="760" x="3008" y="1106">
+   <ellipse/>
+  </object>
+  <object id="762" x="3000" y="1130">
+   <ellipse/>
+  </object>
+  <object id="763" x="2984" y="1154">
+   <ellipse/>
+  </object>
+  <object id="764" x="2968" y="1170">
+   <ellipse/>
+  </object>
+  <object id="766" x="2944" y="1178">
+   <ellipse/>
+  </object>
+  <object id="774" x="2984" y="1106">
+   <ellipse/>
+  </object>
+  <object id="778" x="2968" y="1122">
+   <ellipse/>
+  </object>
+  <object id="780" x="2944" y="1130">
+   <ellipse/>
+  </object>
+  <object id="782" x="2877" y="1065">
+   <ellipse/>
+  </object>
+  <object id="784" x="2894" y="1140">
+   <ellipse/>
+  </object>
+  <object id="785" x="2866" y="1140">
+   <ellipse/>
+  </object>
+  <object id="788" x="2840" y="1138">
+   <ellipse/>
+  </object>
+  <object id="795" x="2776" y="1106">
+   <ellipse/>
+  </object>
+  <object id="800" x="2792" y="1122">
+   <ellipse/>
+  </object>
+  <object id="801" x="2816" y="1130">
+   <ellipse/>
+  </object>
+  <object id="802" x="2760" y="1082">
+   <ellipse/>
+  </object>
+  <object id="803" x="3000" y="1082">
+   <ellipse/>
+  </object>
+  <object id="804" x="2920" y="1138">
+   <ellipse/>
+  </object>
+  <object id="806" x="2893" y="1081">
+   <ellipse/>
+  </object>
+  <object id="807" x="2909" y="1089">
+   <ellipse/>
+  </object>
+  <object id="808" x="2893" y="1097">
+   <ellipse/>
+  </object>
+  <object id="809" x="2877" y="1097">
+   <ellipse/>
+  </object>
+  <object id="810" x="2945" y="999">
+   <ellipse/>
+  </object>
+  <object id="811" x="2809" y="999">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#000000" name="spikes_anna" visible="0">
+  <object id="666" x="912" y="1008">
+   <ellipse/>
+  </object>
+  <object id="667" x="624" y="272">
+   <ellipse/>
+  </object>
+  <object id="668" x="784" y="944">
+   <ellipse/>
+  </object>
+  <object id="669" x="2704" y="1232">
+   <ellipse/>
+  </object>
+  <object id="670" x="2736" y="1232">
+   <ellipse/>
+  </object>
+  <object id="671" x="2768" y="1232">
+   <ellipse/>
+  </object>
+  <object id="672" x="2800" y="1232">
+   <ellipse/>
+  </object>
+  <object id="673" x="2896" y="1232">
+   <ellipse/>
+  </object>
+  <object id="674" x="2832" y="1232">
+   <ellipse/>
+  </object>
+  <object id="675" x="2928" y="1232">
+   <ellipse/>
+  </object>
+  <object id="676" x="2864" y="1232">
+   <ellipse/>
+  </object>
+  <object id="677" x="2992" y="1232">
+   <ellipse/>
+  </object>
+  <object id="678" x="3056" y="1232">
+   <ellipse/>
+  </object>
+  <object id="679" x="3024" y="1232">
+   <ellipse/>
+  </object>
+  <object id="680" x="2960" y="1232">
+   <ellipse/>
+  </object>
+  <object id="681" x="2768" y="984">
+   <ellipse/>
+  </object>
+  <object id="682" x="2800" y="944">
+   <ellipse/>
+  </object>
+  <object id="683" x="2824" y="944">
+   <ellipse/>
+  </object>
+  <object id="684" x="2848" y="960">
+   <ellipse/>
+  </object>
+  <object id="685" x="2864" y="984">
+   <ellipse/>
+  </object>
+  <object id="686" x="2936" y="944">
+   <ellipse/>
+  </object>
+  <object id="687" x="2960" y="944">
+   <ellipse/>
+  </object>
+  <object id="688" x="2992" y="984">
+   <ellipse/>
+  </object>
+  <object id="689" x="2768" y="1008">
+   <ellipse/>
+  </object>
+  <object id="690" x="2992" y="1008">
+   <ellipse/>
+  </object>
+  <object id="691" x="2976" y="1032">
+   <ellipse/>
+  </object>
+  <object id="692" x="2960" y="1056">
+   <ellipse/>
+  </object>
+  <object id="693" x="2944" y="1080">
+   <ellipse/>
+  </object>
+  <object id="694" x="2816" y="1080">
+   <ellipse/>
+  </object>
+  <object id="695" x="2800" y="1056">
+   <ellipse/>
+  </object>
+  <object id="696" x="2784" y="1032">
+   <ellipse/>
+  </object>
+  <object id="697" x="2832" y="1104">
+   <ellipse/>
+  </object>
+  <object id="698" x="2928" y="1104">
+   <ellipse/>
+  </object>
+  <object id="699" x="2848" y="1128">
+   <ellipse/>
+  </object>
+  <object id="700" x="2776" y="960">
+   <ellipse/>
+  </object>
+  <object id="701" x="2912" y="960">
+   <ellipse/>
+  </object>
+  <object id="702" x="2984" y="960">
+   <ellipse/>
+  </object>
+  <object id="703" x="2896" y="984">
+   <ellipse/>
+  </object>
+  <object id="704" x="2880" y="1008">
+   <ellipse/>
+  </object>
+  <object id="705" x="2912" y="1128">
+   <ellipse/>
+  </object>
+  <object id="706" x="2864" y="1152">
+   <ellipse/>
+  </object>
+  <object id="707" x="2896" y="1152">
+   <ellipse/>
+  </object>
+  <object id="708" x="2880" y="1176">
+   <ellipse/>
+  </object>
+  <object id="709" x="1296" y="400">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#c18b34" name="grandma">
+  <object id="152" x="952" y="752" width="48" height="80"/>
+  <object id="624" type="2" x="3752" y="1168" width="48" height="80"/>
+ </objectgroup>
+ <objectgroup color="#c18b34" name="cats">
+  <object id="623" x="3568" y="912">
+   <properties>
+    <property name="autojump" value="150"/>
+    <property name="forceX" value="-1"/>
+    <property name="forceXrandomness" value="2"/>
+   </properties>
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="spike">
+  <object id="294" x="1152" y="1216" width="32" height="32">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+  </object>
+  <object id="295" x="1184" y="1216" width="32" height="32">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+  </object>
+  <object id="296" x="1216" y="1216" width="32" height="32">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#d38231" name="beans">
+  <object id="98" x="848" y="1072">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="101" x="656" y="976">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="104" x="464" y="880">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="106" x="336" y="848">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="107" x="48" y="880">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="164" x="1360.33" y="15.4848">
+   <ellipse/>
+  </object>
+  <object id="173" x="1104" y="400">
+   <ellipse/>
+  </object>
+  <object id="232" x="784" y="1168">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="233" x="416" y="928" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="235" x="424" y="928" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="236" x="432" y="928" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="237" x="440" y="928" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="238" x="432" y="936" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="239" x="416" y="936" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="240" x="424" y="936" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="241" x="440" y="936" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="242" x="432" y="944" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="243" x="416" y="944" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="244" x="424" y="944" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="245" x="440" y="944" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="246" x="432" y="952" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="247" x="416" y="952" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="248" x="424" y="952" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="249" x="440" y="952" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="250" x="464" y="952" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="251" x="464" y="928" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="252" x="456" y="952" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="253" x="448" y="928" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="254" x="464" y="936" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="255" x="472" y="952" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="256" x="456" y="944" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="257" x="448" y="944" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="258" x="464" y="944" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="259" x="448" y="952" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="260" x="448" y="936" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="261" x="456" y="928" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="262" x="472" y="928" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="263" x="472" y="944" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="264" x="456" y="936" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="265" x="472" y="936" width="8" height="8">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="269" x="1040" y="1168">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="270" x="976" y="1168">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="271" x="880" y="1168">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="272" x="944" y="1168">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="278" x="1200" y="1168">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="287" x="1520" y="688">
+   <ellipse/>
+  </object>
+  <object id="349" x="1616" y="784">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="357" x="624" y="848">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="408" x="2608" y="168">
+   <ellipse/>
+  </object>
+  <object id="409" x="2608" y="184">
+   <ellipse/>
+  </object>
+  <object id="410" x="2608" y="200">
+   <ellipse/>
+  </object>
+  <object id="411" x="2608" y="216">
+   <ellipse/>
+  </object>
+  <object id="412" x="2608" y="232">
+   <ellipse/>
+  </object>
+  <object id="413" x="2608" y="248">
+   <ellipse/>
+  </object>
+  <object id="414" x="2624" y="168">
+   <ellipse/>
+  </object>
+  <object id="415" x="2624" y="208">
+   <ellipse/>
+  </object>
+  <object id="416" x="2624" y="240">
+   <ellipse/>
+  </object>
+  <object id="417" x="2640" y="232">
+   <ellipse/>
+  </object>
+  <object id="418" x="2640" y="216">
+   <ellipse/>
+  </object>
+  <object id="419" x="2640" y="200">
+   <ellipse/>
+  </object>
+  <object id="420" x="2640" y="184">
+   <ellipse/>
+  </object>
+  <object id="421" x="2672" y="168">
+   <ellipse/>
+  </object>
+  <object id="431" x="2680" y="240">
+   <ellipse/>
+  </object>
+  <object id="432" x="2664" y="224">
+   <ellipse/>
+  </object>
+  <object id="434" x="2664" y="208">
+   <ellipse/>
+  </object>
+  <object id="435" x="2664" y="192">
+   <ellipse/>
+  </object>
+  <object id="436" x="2664" y="176">
+   <ellipse/>
+  </object>
+  <object id="437" x="2728" y="168">
+   <ellipse/>
+  </object>
+  <object id="438" x="2728" y="184">
+   <ellipse/>
+  </object>
+  <object id="439" x="2728" y="192">
+   <ellipse/>
+  </object>
+  <object id="440" x="2728" y="208">
+   <ellipse/>
+  </object>
+  <object id="441" x="2728" y="216">
+   <ellipse/>
+  </object>
+  <object id="442" x="2728" y="232">
+   <ellipse/>
+  </object>
+  <object id="443" x="2728" y="248">
+   <ellipse/>
+  </object>
+  <object id="444" x="2736" y="248">
+   <ellipse/>
+  </object>
+  <object id="445" x="2744" y="248">
+   <ellipse/>
+  </object>
+  <object id="446" x="2752" y="248">
+   <ellipse/>
+  </object>
+  <object id="448" x="2688" y="168">
+   <ellipse/>
+  </object>
+  <object id="449" x="2704" y="192">
+   <ellipse/>
+  </object>
+  <object id="450" x="2704" y="208">
+   <ellipse/>
+  </object>
+  <object id="451" x="2704" y="224">
+   <ellipse/>
+  </object>
+  <object id="453" x="2696" y="240">
+   <ellipse/>
+  </object>
+  <object id="454" x="2696" y="176">
+   <ellipse/>
+  </object>
+  <object id="458" x="2776" y="168">
+   <ellipse/>
+  </object>
+  <object id="459" x="2776" y="184">
+   <ellipse/>
+  </object>
+  <object id="460" x="2776" y="200">
+   <ellipse/>
+  </object>
+  <object id="461" x="2776" y="216">
+   <ellipse/>
+  </object>
+  <object id="462" x="2776" y="232">
+   <ellipse/>
+  </object>
+  <object id="463" x="2776" y="248">
+   <ellipse/>
+  </object>
+  <object id="464" x="2792" y="168">
+   <ellipse/>
+  </object>
+  <object id="465" x="2808" y="176">
+   <ellipse/>
+  </object>
+  <object id="466" x="2816" y="184">
+   <ellipse/>
+  </object>
+  <object id="467" x="2792" y="248">
+   <ellipse/>
+  </object>
+  <object id="468" x="2800" y="240">
+   <ellipse/>
+  </object>
+  <object id="469" x="2808" y="224">
+   <ellipse/>
+  </object>
+  <object id="470" x="2816" y="208">
+   <ellipse/>
+  </object>
+  <object id="471" x="2816" y="200">
+   <ellipse/>
+  </object>
+  <object id="472" x="2872" y="184">
+   <ellipse/>
+  </object>
+  <object id="473" x="2864" y="176">
+   <ellipse/>
+  </object>
+  <object id="474" x="2880" y="232">
+   <ellipse/>
+  </object>
+  <object id="475" x="2880" y="200">
+   <ellipse/>
+  </object>
+  <object id="476" x="2848" y="176">
+   <ellipse/>
+  </object>
+  <object id="477" x="2840" y="232">
+   <ellipse/>
+  </object>
+  <object id="478" x="2872" y="248">
+   <ellipse/>
+  </object>
+  <object id="479" x="2880" y="216">
+   <ellipse/>
+  </object>
+  <object id="480" x="2840" y="184">
+   <ellipse/>
+  </object>
+  <object id="481" x="2840" y="216">
+   <ellipse/>
+  </object>
+  <object id="482" x="2856" y="248">
+   <ellipse/>
+  </object>
+  <object id="483" x="2840" y="200">
+   <ellipse/>
+  </object>
+  <object id="496" x="2944" y="176">
+   <ellipse/>
+  </object>
+  <object id="497" x="2928" y="168">
+   <ellipse/>
+  </object>
+  <object id="498" x="2912" y="176">
+   <ellipse/>
+  </object>
+  <object id="499" x="2904" y="184">
+   <ellipse/>
+  </object>
+  <object id="500" x="2904" y="200">
+   <ellipse/>
+  </object>
+  <object id="501" x="2904" y="216">
+   <ellipse/>
+  </object>
+  <object id="502" x="2904" y="232">
+   <ellipse/>
+  </object>
+  <object id="503" x="2904" y="248">
+   <ellipse/>
+  </object>
+  <object id="504" x="2920" y="256">
+   <ellipse/>
+  </object>
+  <object id="505" x="2936" y="256">
+   <ellipse/>
+  </object>
+  <object id="506" x="2944" y="256">
+   <ellipse/>
+  </object>
+  <object id="507" x="2944" y="240">
+   <ellipse/>
+  </object>
+  <object id="508" x="2944" y="224">
+   <ellipse/>
+  </object>
+  <object id="509" x="2936" y="224">
+   <ellipse/>
+  </object>
+  <object id="510" x="2616" y="272">
+   <ellipse/>
+  </object>
+  <object id="511" x="2616" y="288">
+   <ellipse/>
+  </object>
+  <object id="512" x="2616" y="304">
+   <ellipse/>
+  </object>
+  <object id="513" x="2616" y="320">
+   <ellipse/>
+  </object>
+  <object id="514" x="2616" y="336">
+   <ellipse/>
+  </object>
+  <object id="515" x="2632" y="304">
+   <ellipse/>
+  </object>
+  <object id="516" x="2648" y="288">
+   <ellipse/>
+  </object>
+  <object id="517" x="2656" y="272">
+   <ellipse/>
+  </object>
+  <object id="518" x="2640" y="296">
+   <ellipse/>
+  </object>
+  <object id="519" x="2640" y="320">
+   <ellipse/>
+  </object>
+  <object id="520" x="2648" y="336">
+   <ellipse/>
+  </object>
+  <object id="521" x="2672" y="336">
+   <ellipse/>
+  </object>
+  <object id="522" x="2672" y="320">
+   <ellipse/>
+  </object>
+  <object id="523" x="2680" y="304">
+   <ellipse/>
+  </object>
+  <object id="524" x="2688" y="288">
+   <ellipse/>
+  </object>
+  <object id="525" x="2696" y="272">
+   <ellipse/>
+  </object>
+  <object id="526" x="2704" y="288">
+   <ellipse/>
+  </object>
+  <object id="527" x="2712" y="304">
+   <ellipse/>
+  </object>
+  <object id="528" x="2720" y="320">
+   <ellipse/>
+  </object>
+  <object id="529" x="2720" y="336">
+   <ellipse/>
+  </object>
+  <object id="530" x="2688" y="320">
+   <ellipse/>
+  </object>
+  <object id="531" x="2704" y="320">
+   <ellipse/>
+  </object>
+  <object id="532" x="2744" y="272">
+   <ellipse/>
+  </object>
+  <object id="533" x="2744" y="288">
+   <ellipse/>
+  </object>
+  <object id="534" x="2744" y="304">
+   <ellipse/>
+  </object>
+  <object id="535" x="2744" y="320">
+   <ellipse/>
+  </object>
+  <object id="536" x="2744" y="336">
+   <ellipse/>
+  </object>
+  <object id="540" x="2760" y="272">
+   <ellipse/>
+  </object>
+  <object id="541" x="2768" y="280">
+   <ellipse/>
+  </object>
+  <object id="542" x="2776" y="288">
+   <ellipse/>
+  </object>
+  <object id="543" x="2760" y="312">
+   <ellipse/>
+  </object>
+  <object id="544" x="2776" y="304">
+   <ellipse/>
+  </object>
+  <object id="545" x="2760" y="320">
+   <ellipse/>
+  </object>
+  <object id="546" x="2776" y="328">
+   <ellipse/>
+  </object>
+  <object id="547" x="2784" y="336">
+   <ellipse/>
+  </object>
+  <object id="548" x="2808" y="272">
+   <ellipse/>
+  </object>
+  <object id="549" x="2808" y="288">
+   <ellipse/>
+  </object>
+  <object id="550" x="2808" y="304">
+   <ellipse/>
+  </object>
+  <object id="551" x="2808" y="320">
+   <ellipse/>
+  </object>
+  <object id="552" x="2808" y="336">
+   <ellipse/>
+  </object>
+  <object id="553" x="2837" y="272">
+   <ellipse/>
+  </object>
+  <object id="554" x="2845" y="272">
+   <ellipse/>
+  </object>
+  <object id="555" x="2853" y="272">
+   <ellipse/>
+  </object>
+  <object id="556" x="2861" y="272">
+   <ellipse/>
+  </object>
+  <object id="557" x="2877" y="272">
+   <ellipse/>
+  </object>
+  <object id="558" x="2853" y="280">
+   <ellipse/>
+  </object>
+  <object id="559" x="2853" y="296">
+   <ellipse/>
+  </object>
+  <object id="560" x="2853" y="304">
+   <ellipse/>
+  </object>
+  <object id="561" x="2853" y="312">
+   <ellipse/>
+  </object>
+  <object id="562" x="2853" y="328">
+   <ellipse/>
+  </object>
+  <object id="563" x="2853" y="336">
+   <ellipse/>
+  </object>
+  <object id="657" x="1040" y="1008">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="661" x="496" y="112">
+   <ellipse/>
+  </object>
+  <object id="662" x="240" y="1072">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <layer name="brainfuck" width="120" height="40" visible="0" opacity="0.1">
+  <data encoding="base64" compression="zlib">
+   eJzt0AEJAEAMgMAV+f41B19CkQlXwJlm73zV6K8W1eivFtXorxbV6K8W1eivFtXorxbV6K8W1eivFtXorxbV6K8W1eivFtXorxbV6K8W1eivFtXorxbV6K8W1eivFtXorxbV6K8W1eivFtXorxbV6K8W1eivFtXorxbV6K8W1eivFtXorxbV6K8W1eivFtXorxbV6K8W1eivFtXorxbV6K8W1eivFtXorxbV6K8W1eivFtXorxYL2FsrIA==
+  </data>
+ </layer>
+ <layer name="interactive15" width="120" height="40" visible="0">
+  <properties>
+   <property name="data" value="ground"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2UEKwjAQQNFexPtf06UgTZ2UaMaZ96DLBodPG0OPo6dHg6uzDvN3mHEk++wrnsPsM35Th9k7zDjyPvvuvTLSYnYtffOI9p1ZK9uMv5Rt9qvfM7sX65vvLPGp78wa+r5k6bzyLKtvHqsa+H+Vk7613Xn3Rt/b+u53d2+N3KvvfpFGo2fW94X8VpyLyGvUUNsazjpqW8fZdw7q0LM2fWvTFwAAAAAAAAAA/tcTRzgV+w==
+  </data>
+ </layer>
+ <objectgroup color="#0055ff" name="melons">
+  <object id="108" x="336" y="944">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="109" x="272" y="944">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="111" x="304" y="912">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="266" x="1008" y="1168">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+  </object>
+  <object id="267" x="912" y="1168">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+  </object>
+  <object id="285" x="1456" y="688">
+   <ellipse/>
+  </object>
+  <object id="343" x="2192" y="1104"/>
+  <object id="344" x="2224" y="1104"/>
+  <object id="346" x="1616" y="752">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+  </object>
+  <object id="353" x="1000" y="1232"/>
+  <object id="354" x="624" y="784">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+  </object>
+  <object id="374" x="2672" y="112"/>
+  <object id="590" x="3248" y="48"/>
+  <object id="617" x="3520" y="512"/>
+  <object id="625" x="992" y="512"/>
+  <object id="629" x="3632" y="656"/>
+  <object id="630" x="3664" y="656"/>
+  <object id="631" x="3728" y="656"/>
+  <object id="632" x="3760" y="656"/>
+  <object id="633" x="3792" y="656"/>
+  <object id="634" x="3792" y="688"/>
+  <object id="635" x="3792" y="720"/>
+  <object id="636" x="3792" y="752"/>
+  <object id="637" x="3792" y="784"/>
+  <object id="638" x="3792" y="880"/>
+  <object id="639" x="3792" y="848"/>
+  <object id="659" x="1344" y="32" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup color="#f72500" name="redcrystals">
+  <object id="88" x="1104" y="1040">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="89" x="1104" y="1072">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="90" x="1104" y="1104">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="91" x="1104" y="1136">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="92" x="1104" y="1168">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="93" x="1104" y="1200">
+   <ellipse/>
+  </object>
+  <object id="94" x="1072" y="1200">
+   <ellipse/>
+  </object>
+  <object id="95" x="1072" y="1232">
+   <ellipse/>
+  </object>
+  <object id="96" x="1104" y="1232">
+   <ellipse/>
+  </object>
+  <object id="97" x="1040" y="1232">
+   <ellipse/>
+  </object>
+  <object id="114" x="224" y="400">
+   <ellipse/>
+  </object>
+  <object id="115" x="288" y="368">
+   <ellipse/>
+  </object>
+  <object id="116" x="352" y="336">
+   <ellipse/>
+  </object>
+  <object id="117" x="496" y="304">
+   <ellipse/>
+  </object>
+  <object id="118" x="496" y="272">
+   <ellipse/>
+  </object>
+  <object id="119" x="496" y="240">
+   <ellipse/>
+  </object>
+  <object id="120" x="496" y="208">
+   <ellipse/>
+  </object>
+  <object id="121" x="496" y="176">
+   <ellipse/>
+  </object>
+  <object id="122" x="496" y="144">
+   <ellipse/>
+  </object>
+  <object id="200" x="304" y="944">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="203" x="336" y="912">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="204" x="272" y="912">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="205" x="528" y="912">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="206" x="400" y="848">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="207" x="592" y="944">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="209" x="656" y="880">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="210" x="720" y="816">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="211" x="656" y="784">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="214" x="912" y="976">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="215" x="944" y="1008">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="216" x="912" y="1040">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="217" x="880" y="1008">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="225" x="720" y="1008">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="226" x="784" y="1040">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="273" x="48" y="944">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="284" x="1712" y="688">
+   <ellipse/>
+  </object>
+  <object id="351" x="240" y="560">
+   <ellipse/>
+  </object>
+  <object id="352" x="144" y="496">
+   <properties>
+    <property name="hidden" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="375" x="3696" y="208">
+   <ellipse/>
+  </object>
+  <object id="376" x="3504" y="240">
+   <ellipse/>
+  </object>
+  <object id="377" x="3600" y="304">
+   <ellipse/>
+  </object>
+  <object id="378" x="3600" y="208">
+   <ellipse/>
+  </object>
+  <object id="380" x="3504" y="176">
+   <ellipse/>
+  </object>
+  <object id="381" x="3440" y="272">
+   <ellipse/>
+  </object>
+  <object id="382" x="3408" y="272">
+   <ellipse/>
+  </object>
+  <object id="383" x="3440" y="240">
+   <ellipse/>
+  </object>
+  <object id="384" x="3408" y="240">
+   <ellipse/>
+  </object>
+  <object id="385" x="3440" y="400">
+   <ellipse/>
+  </object>
+  <object id="386" x="3408" y="400">
+   <ellipse/>
+  </object>
+  <object id="387" x="3376" y="400">
+   <ellipse/>
+  </object>
+  <object id="388" x="3344" y="400">
+   <ellipse/>
+  </object>
+  <object id="389" x="3312" y="400">
+   <ellipse/>
+  </object>
+  <object id="390" x="3280" y="400">
+   <ellipse/>
+  </object>
+  <object id="391" x="3248" y="368">
+   <ellipse/>
+  </object>
+  <object id="392" x="3216" y="368">
+   <ellipse/>
+  </object>
+  <object id="393" x="3184" y="368">
+   <ellipse/>
+  </object>
+  <object id="394" x="3152" y="368">
+   <ellipse/>
+  </object>
+  <object id="395" x="3440" y="368">
+   <ellipse/>
+  </object>
+  <object id="396" x="3440" y="336">
+   <ellipse/>
+  </object>
+  <object id="397" x="3440" y="304">
+   <ellipse/>
+  </object>
+  <object id="398" x="3600" y="272">
+   <ellipse/>
+  </object>
+  <object id="399" x="3600" y="240">
+   <ellipse/>
+  </object>
+  <object id="400" x="3632" y="208">
+   <ellipse/>
+  </object>
+  <object id="401" x="3664" y="208">
+   <ellipse/>
+  </object>
+  <object id="402" x="3568" y="208">
+   <ellipse/>
+  </object>
+  <object id="403" x="3568" y="176">
+   <ellipse/>
+  </object>
+  <object id="404" x="3536" y="176">
+   <ellipse/>
+  </object>
+  <object id="405" x="3504" y="208">
+   <ellipse/>
+  </object>
+  <object id="407" x="3472" y="240">
+   <ellipse/>
+  </object>
+  <object id="567" x="2913" y="279">
+   <ellipse/>
+  </object>
+  <object id="568" x="2913" y="295">
+   <ellipse/>
+  </object>
+  <object id="569" x="2913" y="311">
+   <ellipse/>
+  </object>
+  <object id="570" x="2913" y="327">
+   <ellipse/>
+  </object>
+  <object id="571" x="2905" y="351">
+   <ellipse/>
+  </object>
+  <object id="572" x="2921" y="351">
+   <ellipse/>
+  </object>
+  <object id="573" x="2921" y="367">
+   <ellipse/>
+  </object>
+  <object id="574" x="2905" y="367">
+   <ellipse/>
+  </object>
+  <object id="581" x="2192" y="112">
+   <ellipse/>
+  </object>
+  <object id="582" x="2256" y="48">
+   <ellipse/>
+  </object>
+  <object id="583" x="2320" y="112">
+   <ellipse/>
+  </object>
+  <object id="584" x="2384" y="48">
+   <ellipse/>
+  </object>
+  <object id="585" x="2416" y="112">
+   <ellipse/>
+  </object>
+  <object id="586" x="2480" y="48">
+   <ellipse/>
+  </object>
+  <object id="587" x="2544" y="112">
+   <ellipse/>
+  </object>
+  <object id="588" x="2608" y="48">
+   <ellipse/>
+  </object>
+  <object id="596" x="3600" y="656">
+   <ellipse/>
+  </object>
+  <object id="597" x="3440" y="656">
+   <ellipse/>
+  </object>
+  <object id="598" x="3472" y="656">
+   <ellipse/>
+  </object>
+  <object id="599" x="3504" y="656">
+   <ellipse/>
+  </object>
+  <object id="600" x="3536" y="656">
+   <ellipse/>
+  </object>
+  <object id="601" x="3568" y="656">
+   <ellipse/>
+  </object>
+  <object id="602" x="3520" y="480">
+   <ellipse/>
+  </object>
+  <object id="604" x="3552" y="480">
+   <ellipse/>
+  </object>
+  <object id="606" x="3488" y="480">
+   <ellipse/>
+  </object>
+  <object id="609" x="3552" y="512">
+   <ellipse/>
+  </object>
+  <object id="610" x="3488" y="512">
+   <ellipse/>
+  </object>
+  <object id="613" x="3488" y="544">
+   <ellipse/>
+  </object>
+  <object id="614" x="3520" y="544">
+   <ellipse/>
+  </object>
+  <object id="615" x="3552" y="544">
+   <ellipse/>
+  </object>
+  <object id="619" x="3376" y="496">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="mushrooms">
+  <object id="580" name="interactive14" type="unlock" x="2736" y="112">
+   <properties>
+    <property name="action" value="interactive14"/>
+    <property name="brainfuck" value=""/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#2d9ea4" name="pill1">
+  <object id="591" name="interactive15" type="unlock" x="3696" y="656">
+   <properties>
+    <property name="action" value="interactive15"/>
+    <property name="brainfuck" value=""/>
+    <property name="zokni" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="pill2">
+  <properties>
+   <property name="deslinkificator" value=""/>
+  </properties>
+  <object id="640" name="deslinkificator" type="unlock" x="3792" y="816">
+   <properties>
+    <property name="action" value=""/>
+    <property name="delay" value="40"/>
+    <property name="deslinkificator" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+ </objectgroup>
+</map>

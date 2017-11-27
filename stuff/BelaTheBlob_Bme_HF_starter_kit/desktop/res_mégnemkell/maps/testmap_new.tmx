@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="20" tilewidth="32" tileheight="32" nextobjectid="114">
+ <tileset firstgid="1" name="SM" tilewidth="32" tileheight="32" tilecount="64">
+  <image source="sm.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="65" name="stone+wood_brick" tilewidth="32" tileheight="32" tilecount="16">
+  <image source="stone+wood_brick.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="81" name="tiles" tilewidth="32" tileheight="32" tilecount="64">
+  <image source="tiles.png" width="256" height="256"/>
+ </tileset>
+ <layer name="ground" width="80" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztl8sKwjAQRQO+HwutdCFdqV8ouPHvTTCD0yEZMm3aSJIDF0ItbXq8sVGpSqVSAk9BKsMp1WPsHpXqEYj13KWue+kzvueYVALOOq3OxXHcIP3eOY+5OTSOljrHCa6d45rDYHc+f5LfJp+rHD1Sd1P0j5KLR5e7OfwBoR5pr//Bvc/dnP4AaR9T++PcpfAHSPqYCnC31rnrrMh4qL9XlNmFkcof7l1nj13JOGX/Qknhj/Zuo9PYYws73trPYiLd94Tsicb6My7gP8JO5xBwPu3dTX1d4TxGzsvFmGfl9pFSjING/TrT8af3gHWJ/XGc7H1adL8YvZHCXc91feyIhr4vfR5MH/c20EvsD9YqF9e7+QMQLD67
+  </data>
+ </layer>
+ <layer name="wall" width="80" height="20" opacity="0.6">
+  <data encoding="base64" compression="zlib">
+   eJzt1jEKgDAQRNHcwFr0krl/YzUgSwIuK/gj87qFFJ+p0htX/zrgAXIjuU3IjeQ2ITeS24TcSG4TciO5TciN5DYhNcYWUttMprEn32fR9zvCvTfvlzHaj8T71Xi/d62wH6Fx1kBou/N+Nd6vxvvVbOGm7LeKM9ze71/o/7+RCwbpFy4=
+  </data>
+ </layer>
+ <layer name="ceiling" width="80" height="20" opacity="0.15">
+  <data encoding="base64" compression="zlib">
+   eJztyqENAAAIBDFW/v0NMyAQhDY5d1UAAABckKX3iwwDAOC2BnsuBi8=
+  </data>
+ </layer>
+ <objectgroup color="#f72500" name="redcrystals">
+  <object id="88" x="1104" y="400">
+   <ellipse/>
+  </object>
+  <object id="89" x="1104" y="432">
+   <ellipse/>
+  </object>
+  <object id="90" x="1104" y="464">
+   <ellipse/>
+  </object>
+  <object id="91" x="1104" y="496">
+   <ellipse/>
+  </object>
+  <object id="92" x="1104" y="528">
+   <ellipse/>
+  </object>
+  <object id="93" x="1104" y="560">
+   <ellipse/>
+  </object>
+  <object id="94" x="1072" y="560">
+   <ellipse/>
+  </object>
+  <object id="95" x="1072" y="592">
+   <ellipse/>
+  </object>
+  <object id="96" x="1104" y="592">
+   <ellipse/>
+  </object>
+  <object id="97" x="1040" y="592">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#0055ff" name="bluecrystals">
+  <object id="21" x="144" y="496"/>
+  <object id="22" x="208" y="528"/>
+  <object id="23" x="336" y="528"/>
+  <object id="24" x="400" y="528"/>
+  <object id="25" x="464" y="496"/>
+  <object id="28" x="932" y="492.667"/>
+  <object id="29" x="994" y="511.333"/>
+  <object id="30" x="1036" y="492"/>
+  <object id="31" x="967.333" y="479.333"/>
+  <object id="33" x="176" y="560"/>
+  <object id="34" x="112" y="560"/>
+  <object id="35" x="48" y="528"/>
+  <object id="108" x="336" y="304">
+   <ellipse/>
+  </object>
+  <object id="109" x="272" y="304">
+   <ellipse/>
+  </object>
+  <object id="110" x="304" y="304">
+   <ellipse/>
+  </object>
+  <object id="111" x="304" y="272">
+   <ellipse/>
+  </object>
+  <object id="112" x="336" y="272">
+   <ellipse/>
+  </object>
+  <object id="113" x="272" y="272">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#e5de05" name="cheeses">
+  <object id="37" x="175.234" y="466.116" width="34.6667" height="30"/>
+  <object id="38" x="352" y="544" width="32" height="32"/>
+  <object id="39" x="288" y="544" width="32" height="32"/>
+  <object id="40" x="704" y="512" width="32" height="32"/>
+  <object id="80" x="976" y="576" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup color="#d38231" name="beans">
+  <object id="41" x="424" y="448" width="16" height="30">
+   <ellipse/>
+  </object>
+  <object id="42" x="392" y="584" width="12.6667" height="22">
+   <ellipse/>
+  </object>
+  <object id="43" x="232" y="584" width="15.3333" height="22.6667">
+   <ellipse/>
+  </object>
+  <object id="44" x="72" y="576" width="18" height="28.6667">
+   <ellipse/>
+  </object>
+  <object id="45" x="72" y="448" width="14" height="28">
+   <ellipse/>
+  </object>
+  <object id="48" x="521.333" y="518.667" width="12.6667" height="20.6667">
+   <ellipse/>
+  </object>
+  <object id="49" x="616" y="520" width="13.3333" height="20">
+   <ellipse/>
+  </object>
+  <object id="50" x="776" y="520" width="14.6667" height="24">
+   <ellipse/>
+  </object>
+  <object id="98" x="848" y="432">
+   <ellipse/>
+  </object>
+  <object id="99" x="784" y="400">
+   <ellipse/>
+  </object>
+  <object id="100" x="720" y="368">
+   <ellipse/>
+  </object>
+  <object id="101" x="656" y="336">
+   <ellipse/>
+  </object>
+  <object id="102" x="592" y="304">
+   <ellipse/>
+  </object>
+  <object id="103" x="528" y="272">
+   <ellipse/>
+  </object>
+  <object id="104" x="464" y="240">
+   <ellipse/>
+  </object>
+  <object id="105" x="400" y="208">
+   <ellipse/>
+  </object>
+  <object id="106" x="336" y="208">
+   <ellipse/>
+  </object>
+  <object id="107" x="48" y="240">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#26c10a" name="freeblocks">
+  <object id="56" type="greenblock" x="864" y="464" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup color="#6171a4" name="doors">
+  <object id="81" x="1010" y="299" width="61" height="85"/>
+ </objectgroup>
+ <objectgroup color="#ffffff" name="SPAWN">
+  <object id="85" x="544" y="440" width="80" height="80">
+   <ellipse/>
+  </object>
+ </objectgroup>
+</map>
