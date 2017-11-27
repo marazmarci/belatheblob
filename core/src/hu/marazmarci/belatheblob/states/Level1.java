@@ -33,7 +33,7 @@ import java.util.Random;
 import static hu.marazmarci.belatheblob.handlers.B2DVars.*;
 import static hu.marazmarci.belatheblob.main.GameMain.*;
 
-public class Level1 extends GameState {
+public class Level1 extends GameLevel {
 	
 	public static World world;
 	private static Box2DDebugRenderer b2dr;
