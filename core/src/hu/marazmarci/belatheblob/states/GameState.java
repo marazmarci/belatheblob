@@ -2,30 +2,33 @@ package hu.marazmarci.belatheblob.states;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Disposable;
 import hu.marazmarci.belatheblob.handlers.BoundedCamera;
 import hu.marazmarci.belatheblob.handlers.GameStateManager;
 import hu.marazmarci.belatheblob.main.GameMain;
 
-public abstract class GameState {
+public abstract class GameState implements Disposable {
 
-	protected GameStateManager gsm;
-	protected GameMain game;
+	GameStateManager gsm;
+	GameMain game;
 	
-	protected SpriteBatch sb;
-	protected BoundedCamera cam;
-	protected OrthographicCamera hudCam;
+	SpriteBatch sb;
+	BoundedCamera cam;
+	OrthographicCamera hudCam;
 	
-	protected GameState(GameStateManager gsm) {
+	GameState(GameStateManager gsm) {
 		this.gsm = gsm;
-		game = gsm.game();
-		sb = game.getSpriteBatch();
-		cam = game.getCamera();
-		hudCam = game.getHUDCamera();
+        this.game = gsm.game();
+        this.sb = game.getSpriteBatch();
+        this.cam = game.getCamera();
+        this.hudCam = game.getHUDCamera();
 	}
 	
 	public abstract void handleInput(float dt);
 	public abstract void update(float dt);
 	public abstract void render();
+
+	@Override
 	public abstract void dispose();
 	
 }

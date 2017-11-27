@@ -36,7 +36,7 @@ public class GameMain implements ApplicationListener {
 	public static ContentManager res;
 	private GameStateManager gsm;
 	
-	private SpriteBatch sb;
+	private SpriteBatch spriteBatch;
 	private BoundedCamera boundedCam;
 	private OrthographicCamera hudCam;
 	
@@ -59,7 +59,7 @@ public class GameMain implements ApplicationListener {
 	
 	public void create () {
 		
-		sb = new SpriteBatch();
+		spriteBatch = new SpriteBatch();
 		boundedCam = new BoundedCamera();
 		boundedCam.setToOrtho(false, WIDTH, HEIGHT);
 		hudCam = new OrthographicCamera();
@@ -73,9 +73,12 @@ public class GameMain implements ApplicationListener {
 			e.printStackTrace();
 		}
 		
-		Gdx.input.setInputProcessor(new MyInputProcessor());
+		Gdx.input.setInputProcessor(new MyInputProcessor()); // TODO
 		
 		gsm = new GameStateManager(this);
+
+		gsm.pushState(new Level1(gsm));
+
 	}
 	
 	public void render () {
@@ -125,7 +128,7 @@ public class GameMain implements ApplicationListener {
 		
 	}
 	
-	public SpriteBatch getSpriteBatch() { return sb; }
+	public SpriteBatch getSpriteBatch() { return spriteBatch; }
 	public BoundedCamera getCamera() { return boundedCam; }
 	public OrthographicCamera getHUDCamera() { return hudCam; }
 

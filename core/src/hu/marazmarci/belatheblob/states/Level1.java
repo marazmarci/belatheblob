@@ -192,7 +192,7 @@ public class Level1 extends GameLevel {
 		if (frame++ == 0) setDay();
 		
 		//gfx cuccok
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); //TODO beszívott effekt, ha kihagyod :)
+		//Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); //TODO beszívott effekt, ha kihagyod :)
 		//if (player.slinkiness==0) Gdx.gl.glClearColor(116/255f, 200/255f, 1f, 1f);
 		player.calcAvgPos();
 		cam.setPosition(player.getAvgPosX()*PPM /*TODO + GameMain.V_WIDTH / 4*/, player.getAvgPosY()*PPM + GameMain.HEIGHT / 4 - 50);
@@ -204,13 +204,15 @@ public class Level1 extends GameLevel {
 		
 		if (!zokniBackground) {
 			if (!GameMain.lowPerformanceMode) {
-				hudCam.zoom = 0.5f; hudCam.update();
+				hudCam.zoom = 0.5f;
+				hudCam.update();
 				sb.setProjectionMatrix(hudCam.combined);
 				//backgrounds[0].render(sb);
 				//sb.begin(); sb.setColor(116/255f, 200/255f, 1f, 1f);
 				ContentManager.clouds.render(sb);
 				ContentManager.mountains.render_(sb);
-				hudCam.zoom = 1; hudCam.update();
+				hudCam.zoom = 1;
+				hudCam.update();
 			}
 			
 			sb.setProjectionMatrix(cam.combined);
@@ -227,7 +229,9 @@ public class Level1 extends GameLevel {
 		}
 		
 		sb.begin();
-		for (B2DSprite s : hiddenSprites) if (player.dstLinear(s.getPosition()) < (GameMain.WIDTH+ GameMain.HEIGHT)*0.8) s.render(sb);
+		for (B2DSprite s : hiddenSprites)
+		    if (player.dstLinear(s.getPosition()) < (GameMain.WIDTH + GameMain.HEIGHT)*0.8)
+		        s.render(sb);
 		sb.end();
 		
 		//draw Tiled map
@@ -236,7 +240,9 @@ public class Level1 extends GameLevel {
 		
 		//draw objects
 		sb.begin();
-		for (B2DSprite s : sprites) if (player.dstLinear(s.getPosition()) < (GameMain.WIDTH+ GameMain.HEIGHT)*0.8) s.render(sb); //if (frame%60 == 0 && s instanceof Bunny) System.out.println("Bunni Dystance: "+player.dstLinear(s.getPosition()));
+		for (B2DSprite s : sprites)
+		    if (player.dstLinear(s.getPosition()) < (GameMain.WIDTH + GameMain.HEIGHT)*0.8)
+		        s.render(sb); //if (frame%60 == 0 && s instanceof Bunny) System.out.println("Bunni Dystance: "+player.dstLinear(s.getPosition()));
 		sb.end();
 		
 		if (playerVisible) player.render(polyBatch, sr);
@@ -257,9 +263,12 @@ public class Level1 extends GameLevel {
 	public void handleInput(float dt) {
 		
 		if (debug) {
-			if (MyInput.isPressed(MyInput.BTN_SHIFT_LEFT)) GameMain.lowPerformanceMode = !GameMain.lowPerformanceMode;
-			else if (MyInput.isPressed(MyInput.BTN_CTRL_RIGHT)) playerVisible = !playerVisible;
-			else if (MyInput.isPressed(MyInput.BTN_CTRL_LEFT)) enableTurboSpeed = !enableTurboSpeed;
+			if (MyInput.isPressed(MyInput.BTN_SHIFT_LEFT))
+			    GameMain.lowPerformanceMode = !GameMain.lowPerformanceMode;
+			else if (MyInput.isPressed(MyInput.BTN_CTRL_RIGHT))
+			    playerVisible = !playerVisible;
+			else if (MyInput.isPressed(MyInput.BTN_CTRL_LEFT))
+			    enableTurboSpeed = !enableTurboSpeed;
 		}
 		
 		/*float dtMultiply = 1;//GameMain.desiredDeltaTime/dt;
@@ -271,9 +280,11 @@ public class Level1 extends GameLevel {
 		System.out.println("dtMultiply = "+dtMultiply);
 		System.out.println("==============");*/
 		
-		if (enableTurboSpeed) turboSpeed = MyInput.isDown(MyInput.BTN_CTRL_LEFT);
+		if (enableTurboSpeed)
+		    turboSpeed = MyInput.isDown(MyInput.BTN_CTRL_LEFT);
 		
-		if (MyInput.isPressed(MyInput.BTN_TAB) && MyInput.isDown(MyInput.BTN_SHIFT_RIGHT)) debug = !debug;
+		if (MyInput.isPressed(MyInput.BTN_TAB) && MyInput.isDown(MyInput.BTN_SHIFT_RIGHT))
+		    debug = !debug;
 		
 		if (!gameOver) {
 			int blobOnGround = MyContactListener.blobOnGround.size;
@@ -316,7 +327,7 @@ public class Level1 extends GameLevel {
 		} else {
 			if (frame-gameOverFrame > 75 && MyInput.jump) {
 				gameOver = false;
-				gsm.setState(GameStateManager.PLAY);
+				gsm.setState(new Level1(gsm)); // TODO GameOverState
 			}
 		}
 		
@@ -325,13 +336,11 @@ public class Level1 extends GameLevel {
 	void blobJump(float f) {
 		f *= 1-player.slinkiness/5f; //minél kisebb számmal osztod, annál gyengébb lesz Béla leeresztve
 		int blobsize = MyContactListener.blobOnGround.size;
-		for (Body b : MyContactListener.blobOnGround) {
+		for (Body b : MyContactListener.blobOnGround)
 			b.applyForceToCenter(0, f-blobsize/20f, true);
-		}
 
-		for (Body b : player.surfaceBalls) {
+		for (Body b : player.surfaceBalls)
 			b.applyForceToCenter(0, f, true);
-		}
 		
 		player.coreBall.applyForceToCenter(0, f*2.5f, true);
 		
