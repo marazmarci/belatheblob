@@ -5,7 +5,7 @@ import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.utils.Array;
-import hu.marazmarci.belatheblob.main.Game;
+import hu.marazmarci.belatheblob.main.GameMain;
 import hu.marazmarci.belatheblob.states.Level1;
 
 import static hu.marazmarci.belatheblob.handlers.B2DVars.*;
@@ -29,7 +29,7 @@ public class BossBunny extends Enemy {
 	
 	public void remove() {
 		removed = true;
-		Game.res.playSound("magic2");
+		GameMain.res.playSound("magic2");
 		MapLayers ml = Level1.tiledMap.getLayers();
 		ml.remove(ml.get("interactive_nyulontul"));
 		ml.remove(ml.get("interactive_nyulontul_nocollision"));

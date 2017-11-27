@@ -7,11 +7,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import hu.marazmarci.belatheblob.handlers.*;
 import hu.marazmarci.belatheblob.states.Level1;
 
-public class Game implements ApplicationListener {
+public class GameMain implements ApplicationListener {
 	
-	public static enum GameMode { DEFAULT, ANNA, LIVIA, MAG }
+	public enum GameVariant { DEFAULT, ANNA, LIVIA, MAG }
 	
-	public static GameMode gameMode = GameMode.DEFAULT;
+	public static GameVariant gameVariant = GameVariant.DEFAULT;
 	
 	public static boolean android = true;
 	
@@ -37,21 +37,21 @@ public class Game implements ApplicationListener {
 	private GameStateManager gsm;
 	
 	private SpriteBatch sb;
-	private BoundedCamera cam;
+	private BoundedCamera boundedCam;
 	private OrthographicCamera hudCam;
 	
 	public static float time = 0;
 	
-	public static boolean lowPerformanceMode = false, gameOver = false, gameOverType = true;
+	public static boolean lowPerformanceMode = false; // TODO remove
+	public static boolean gameOver = false;
+	public static boolean gameOverType = true; // TODO enum
 	public static long gameOverFrame;
 	
-	public Game(boolean android_) {
+	public GameMain(boolean android_) {
 		super();
 		android = android_; 
 		WIDTH = android ? 640 : 640;
 		HEIGHT = android ? 320 : 320;
-		
-		//TODO WayteQ 30 fps
 		
 		desiredFPS = 60;
 		desiredDeltaTime = 1/(float)desiredFPS;
@@ -60,12 +60,12 @@ public class Game implements ApplicationListener {
 	public void create () {
 		
 		sb = new SpriteBatch();
-		cam = new BoundedCamera();
-		cam.setToOrtho(false, WIDTH, HEIGHT);
+		boundedCam = new BoundedCamera();
+		boundedCam.setToOrtho(false, WIDTH, HEIGHT);
 		hudCam = new OrthographicCamera();
 		hudCam.setToOrtho(false, WIDTH, HEIGHT);
 		
-		Gdx.graphics.setVSync(false);
+		//Gdx.graphics.setVSync(false);
 		
 		try {
 			res = new ContentManager();
@@ -81,21 +81,6 @@ public class Game implements ApplicationListener {
 	public void render () {
 		FPS = Gdx.graphics.getFramesPerSecond();
 		if (FPS == 61) FPS = 60;
-		
-		/*IntSetIterator it = smoothFPS_array.iterator();
-		int sum = 0, c=0;
-		while (it.hasNext) {
-			int i = it.next();
-			sum+=i;
-		}
-		
-		
-	static int[] avgFPSarray = new int[10];
-	static byte avgFPSarrayPos = 0;
-	static boolean avgFPSarrayReady = false;
-		
-		
-		smoothFPS_array.add(FPS);*/
 		
 		if (Level1.frame> 60 && Level1.frame%30==0) {
 			avgFPSarray[avgFPSarrayPos++] = FPS;
@@ -141,7 +126,7 @@ public class Game implements ApplicationListener {
 	}
 	
 	public SpriteBatch getSpriteBatch() { return sb; }
-	public BoundedCamera getCamera() { return cam; }
+	public BoundedCamera getCamera() { return boundedCam; }
 	public OrthographicCamera getHUDCamera() { return hudCam; }
 
 
@@ -152,7 +137,7 @@ public class Game implements ApplicationListener {
 		
 		Level1.width = w;  Level1.height = h;
 		
-		cam.setToOrtho(false, WIDTH, HEIGHT);
+		boundedCam.setToOrtho(false, WIDTH, HEIGHT);
 		//TODO univerzális referencia kéne ide
 		Level1.b2dCam.setToOrtho(false, WIDTH/hu.marazmarci.belatheblob.handlers.B2DVars.PPM, HEIGHT/hu.marazmarci.belatheblob.handlers.B2DVars.PPM);
 		//hudCam.setToOrtho(false, V_WIDTH, V_HEIGHT);
@@ -162,6 +147,6 @@ public class Game implements ApplicationListener {
 	public void resume() {}
 	
 	public static void initTitle() {
-		TITLE = "Béla the Blob"+(gameMode==GameMode.ANNA?" - Anna Edition": (gameMode==GameMode.LIVIA? " - Lívia Edition" : (gameMode==GameMode.MAG? " - Mag Edition" : "")) );
+		TITLE = "Béla the Blob"+(gameVariant == GameVariant.ANNA?" - Anna Edition": (gameVariant == GameVariant.LIVIA? " - Lívia Edition" : (gameVariant == GameVariant.MAG? " - Mag Edition" : "")) );
 	}
 }

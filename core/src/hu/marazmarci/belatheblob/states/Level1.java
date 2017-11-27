@@ -24,14 +24,14 @@ import hu.marazmarci.belatheblob.entities.enemies.Bunny;
 import hu.marazmarci.belatheblob.entities.enemies.Enemy;
 import hu.marazmarci.belatheblob.entities.enemies.Spikes;
 import hu.marazmarci.belatheblob.handlers.*;
-import hu.marazmarci.belatheblob.main.Game;
-import hu.marazmarci.belatheblob.main.Game.*;
+import hu.marazmarci.belatheblob.main.GameMain;
+import hu.marazmarci.belatheblob.main.GameMain.*;
 
 import java.util.Iterator;
 import java.util.Random;
 
 import static hu.marazmarci.belatheblob.handlers.B2DVars.*;
-import static hu.marazmarci.belatheblob.main.Game.*;
+import static hu.marazmarci.belatheblob.main.GameMain.*;
 
 public class Level1 extends GameState {
 	
@@ -63,7 +63,7 @@ public class Level1 extends GameState {
 		
 		super(gsm);
 		
-		Game.time = 0;
+		GameMain.time = 0;
 		collected = 0;
 		width = Gdx.graphics.getWidth(); height = Gdx.graphics.getHeight();
 		
@@ -148,7 +148,7 @@ public class Level1 extends GameState {
 		
 		//init gfx
 		b2dCam = new BoundedCamera();
-		b2dCam.setToOrtho(false, Game.WIDTH / PPM, Game.HEIGHT / PPM);
+		b2dCam.setToOrtho(false, GameMain.WIDTH / PPM, GameMain.HEIGHT / PPM);
 	  ( polyBatch = new PolygonSpriteBatch()).setProjectionMatrix(cam.combined);
 	  ( sr = new ShapeRenderer()).setProjectionMatrix(cam.combined);
 	  //( sr2 = new ShapeRenderer()).setProjectionMatrix(cam.combined);
@@ -195,7 +195,7 @@ public class Level1 extends GameState {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); //TODO beszívott effekt, ha kihagyod :)
 		//if (player.slinkiness==0) Gdx.gl.glClearColor(116/255f, 200/255f, 1f, 1f);
 		player.calcAvgPos();
-		cam.setPosition(player.getAvgPosX()*PPM /*TODO + Game.V_WIDTH / 4*/, player.getAvgPosY()*PPM + Game.HEIGHT / 4 - 50);
+		cam.setPosition(player.getAvgPosX()*PPM /*TODO + GameMain.V_WIDTH / 4*/, player.getAvgPosY()*PPM + GameMain.HEIGHT / 4 - 50);
 		cam.update();
 		polyBatch.setProjectionMatrix(cam.combined);
 		sr.setProjectionMatrix(cam.combined);
@@ -203,7 +203,7 @@ public class Level1 extends GameState {
 		//zokniBackground = true;
 		
 		if (!zokniBackground) {
-			if (!Game.lowPerformanceMode) {
+			if (!GameMain.lowPerformanceMode) {
 				hudCam.zoom = 0.5f; hudCam.update();
 				sb.setProjectionMatrix(hudCam.combined);
 				//backgrounds[0].render(sb);
@@ -218,8 +218,8 @@ public class Level1 extends GameState {
 		} else {
 			sb.setProjectionMatrix(hudCam.combined);
 			sb.begin();
-			//System.out.println("Game.V_HEIGHT/2-500 = "+(Game.V_HEIGHT/2-500));
-			//sb.draw(zokni, Game.V_WIDTH/2-500, Game.V_HEIGHT/2-500, 500, 500, 1000, 1000, 0.75f + 0.2f + (float)Math.sin(frame/30f)/5f, 0.75f + 0.2f + (float)Math.sin(frame/30f)/5f, frame);
+			//System.out.println("GameMain.V_HEIGHT/2-500 = "+(GameMain.V_HEIGHT/2-500));
+			//sb.draw(zokni, GameMain.V_WIDTH/2-500, GameMain.V_HEIGHT/2-500, 500, 500, 1000, 1000, 0.75f + 0.2f + (float)Math.sin(frame/30f)/5f, 0.75f + 0.2f + (float)Math.sin(frame/30f)/5f, frame);
 			sb.draw(ContentManager.zokni, -180, -340, 500, 500, 1000, 1000, 0.75f + 0.2f + (float)Math.sin(frame/30f)/5f, 0.75f + 0.2f + (float)Math.sin(frame/30f)/5f, frame);
 			//sb.draw(zokni, 1000, 1000, new Affine2().rotate(frame));
 			sb.end();
@@ -227,7 +227,7 @@ public class Level1 extends GameState {
 		}
 		
 		sb.begin();
-		for (B2DSprite s : hiddenSprites) if (player.dstLinear(s.getPosition()) < (Game.WIDTH+Game.HEIGHT)*0.8) s.render(sb);
+		for (B2DSprite s : hiddenSprites) if (player.dstLinear(s.getPosition()) < (GameMain.WIDTH+ GameMain.HEIGHT)*0.8) s.render(sb);
 		sb.end();
 		
 		//draw Tiled map
@@ -236,14 +236,14 @@ public class Level1 extends GameState {
 		
 		//draw objects
 		sb.begin();
-		for (B2DSprite s : sprites) if (player.dstLinear(s.getPosition()) < (Game.WIDTH+Game.HEIGHT)*0.8) s.render(sb); //if (frame%60 == 0 && s instanceof Bunny) System.out.println("Bunni Dystance: "+player.dstLinear(s.getPosition()));
+		for (B2DSprite s : sprites) if (player.dstLinear(s.getPosition()) < (GameMain.WIDTH+ GameMain.HEIGHT)*0.8) s.render(sb); //if (frame%60 == 0 && s instanceof Bunny) System.out.println("Bunni Dystance: "+player.dstLinear(s.getPosition()));
 		sb.end();
 		
 		if (playerVisible) player.render(polyBatch, sr);
 		
 		//draw box2d world
 		if(debug) {
-			b2dCam.setPosition(player.getAvgPosX() /*TODO + Game.V_WIDTH / 4 / PPM*/, player.getAvgPosY() + (Game.HEIGHT / 4 - 50)/PPM);
+			b2dCam.setPosition(player.getAvgPosX() /*TODO + GameMain.V_WIDTH / 4 / PPM*/, player.getAvgPosY() + (GameMain.HEIGHT / 4 - 50)/PPM);
 			b2dCam.update();
 			b2dr.render(world, b2dCam.combined);
 		}
@@ -257,17 +257,17 @@ public class Level1 extends GameState {
 	public void handleInput(float dt) {
 		
 		if (debug) {
-			if (MyInput.isPressed(MyInput.BTN_SHIFT_LEFT)) Game.lowPerformanceMode = !Game.lowPerformanceMode;
+			if (MyInput.isPressed(MyInput.BTN_SHIFT_LEFT)) GameMain.lowPerformanceMode = !GameMain.lowPerformanceMode;
 			else if (MyInput.isPressed(MyInput.BTN_CTRL_RIGHT)) playerVisible = !playerVisible;
 			else if (MyInput.isPressed(MyInput.BTN_CTRL_LEFT)) enableTurboSpeed = !enableTurboSpeed;
 		}
 		
-		/*float dtMultiply = 1;//Game.desiredDeltaTime/dt;
+		/*float dtMultiply = 1;//GameMain.desiredDeltaTime/dt;
 		if (dtMultiply<1) dtMultiply = 1;
 		else if (dtMultiply>1) dtMultiply = (float) ((int)dtMultiply + Math.pow(dtMultiply-(int)dtMultiply,1/10f));
 		System.out.println("==============");
 		System.out.println("dt = "+dt);
-		System.out.println("desiredDeltaTime = "+Game.desiredDeltaTime);
+		System.out.println("desiredDeltaTime = "+GameMain.desiredDeltaTime);
 		System.out.println("dtMultiply = "+dtMultiply);
 		System.out.println("==============");*/
 		
@@ -386,7 +386,7 @@ public class Level1 extends GameState {
 
 	/*
 	public void resize() {
-		b2dCam.setToOrtho(false, Game.V_WIDTH/PPM, Game.V_HEIGHT/PPM);
+		b2dCam.setToOrtho(false, GameMain.V_WIDTH/PPM, GameMain.V_HEIGHT/PPM);
 	}
 	*/
 
@@ -399,7 +399,7 @@ public class Level1 extends GameState {
 		System.out.println("createMapLayer LOADING LAYER "+layerName+";  Level1.java:420");
 		
 		if (ml.get(layerName+"_anna")!=null) {
-			if (Game.gameMode == GameMode.ANNA) {
+			if (GameMain.gameVariant == GameVariant.ANNA) {
 				ml.remove(ml.get(layerName));
 				ml.get(layerName+"_anna").setVisible(true);
 				ml.get(layerName+"_anna").setName(layerName);
@@ -511,7 +511,7 @@ public class Level1 extends GameState {
 		MapLayers ml = tiledMap.getLayers();
 		
 		if (ml.get(type+"_anna")!=null) {
-			if (Game.gameMode == GameMode.ANNA) {
+			if (GameMain.gameVariant == GameVariant.ANNA) {
 				ml.remove(ml.get(type));
 				ml.get(type+"_anna").setName(type);
 			} else {
@@ -632,7 +632,7 @@ public class Level1 extends GameState {
 		if (c.action!=null) {
 			System.out.println("REMOVE LAYER");
 			res.getSound("magic1").play();
-			tasks.add(new Task<Collectible>(c, frame + c.delay*Game.FPS/60L) {
+			tasks.add(new Task<Collectible>(c, frame + c.delay* GameMain.FPS/60L) {
 				
 				@Override
 				public void run() {

@@ -19,7 +19,7 @@ import com.badlogic.gdx.physics.box2d.joints.DistanceJointDef;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ShortArray;
 import hu.marazmarci.belatheblob.entities.enemies.Enemy;
-import hu.marazmarci.belatheblob.main.Game;
+import hu.marazmarci.belatheblob.main.GameMain;
 import hu.marazmarci.belatheblob.states.Level1;
 
 import static hu.marazmarci.belatheblob.handlers.B2DVars.*;
@@ -222,7 +222,7 @@ public class BlobPlayer {
 		/* SOURCE: http://stackoverflow.com/questions/18641199/catmullromsplines-and-other-smooth-paths */
 		CatmullRomSpline<Vector2> path = new CatmullRomSpline<Vector2>(controlPoints, true);
 		
-		final int RESOLUTION = numberOfOuterSpheres * (Game.lowPerformanceMode?3:4);
+		final int RESOLUTION = numberOfOuterSpheres * (GameMain.lowPerformanceMode?3:4);
 		float[] vertices = new float[RESOLUTION * 2];
 		Vector2 pos = new Vector2();
 		for (int i=0; i<RESOLUTION; i++) {
@@ -381,7 +381,7 @@ public class BlobPlayer {
 	public float getAvgPosY() { return camAvgPosY; }
 	
 	/*public float getAveragedPosX() {
-		if (Game.lowPerformanceMode) return coreBall.getPosition().x;
+		if (GameMain.lowPerformanceMode) return coreBall.getPosition().x;
 		float x = coreBall.getPosition().x;
 		camPosX.add(x);
 		if (camPosX.size>10) camPosX.removeIndex(0);
@@ -391,7 +391,7 @@ public class BlobPlayer {
 	}
 
 	public float getAveragedPosY() {
-		if (Game.lowPerformanceMode) return coreBall.getPosition().y;
+		if (GameMain.lowPerformanceMode) return coreBall.getPosition().y;
 		float y = coreBall.getPosition().y;
 		camPosY.add(y);
 		if (camPosY.size>10) camPosY.removeIndex(0);
@@ -465,8 +465,8 @@ public class BlobPlayer {
 	public void damage(int damage) {
 		HP-=damage;
 		if (HP<=0) {
-			Game.gameOver = true;
-			Game.gameOverFrame = Level1.frame;
+			GameMain.gameOver = true;
+			GameMain.gameOverFrame = Level1.frame;
 			HP = 0;
 		}
 		System.out.println("BLOB HP: "+HP+"/"+maxHP);

@@ -4,12 +4,12 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import hu.marazmarci.belatheblob.handlers.BoundedCamera;
 import hu.marazmarci.belatheblob.handlers.GameStateManager;
-import hu.marazmarci.belatheblob.main.Game;
+import hu.marazmarci.belatheblob.main.GameMain;
 
 public abstract class GameState {
 
 	protected GameStateManager gsm;
-	protected Game game;
+	protected GameMain game;
 	
 	protected SpriteBatch sb;
 	protected BoundedCamera cam;

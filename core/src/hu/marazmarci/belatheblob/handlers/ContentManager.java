@@ -7,8 +7,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ArrayMap;
-import hu.marazmarci.belatheblob.main.Game;
-import hu.marazmarci.belatheblob.main.Game.GameMode;
+import hu.marazmarci.belatheblob.main.GameMain;
+import hu.marazmarci.belatheblob.main.GameMain.GameVariant;
 import hu.marazmarci.belatheblob.states.Level1;
 
 public class ContentManager {
@@ -54,9 +54,9 @@ public class ContentManager {
 		loadTexture("heart");
 		loadTexture("heart_empty");
 		
-		if (Game.gameMode == GameMode.ANNA) {
+		if (GameMain.gameVariant == GameMain.GameVariant.ANNA) {
 			loadTexture("ztepowerbank");
-		} else if (Game.gameMode == GameMode.MAG || Game.gameMode == GameMode.LIVIA || Game.gameMode == GameMode.DEFAULT) {
+		} else if (GameMain.gameVariant == GameVariant.MAG || GameMain.gameVariant == GameMain.GameVariant.LIVIA || GameMain.gameVariant == GameMain.GameVariant.DEFAULT) {
 			loadTexture("beer");
 			loadTexture("kozel");
 		} else {
@@ -284,7 +284,7 @@ public class ContentManager {
 	}
 	
 	/*public String path(String s) {
-		return Game.desktopOrAndroid ? s : ("assets/"+s);
+		return GameMain.desktopOrAndroid ? s : ("assets/"+s);
 	}*/
 
 }

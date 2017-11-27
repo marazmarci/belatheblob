@@ -10,11 +10,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import hu.marazmarci.belatheblob.main.Game;
-import hu.marazmarci.belatheblob.main.Game.GameMode;
+import hu.marazmarci.belatheblob.main.GameMain;
+import hu.marazmarci.belatheblob.main.GameMain.GameVariant;
 import hu.marazmarci.belatheblob.states.Level1;
 
-import static hu.marazmarci.belatheblob.main.Game.time;
+import static hu.marazmarci.belatheblob.main.GameMain.time;
 import static hu.marazmarci.belatheblob.states.Level1.frame;
 import static hu.marazmarci.belatheblob.states.Level1.player;
 
@@ -38,31 +38,31 @@ public class HUD {
 	
 	public HUD() {
 		
-		android = 0; //Game.android ? 40 : 0;
+		android = 0; //GameMain.android ? 40 : 0;
 		
-		//pop = Game.res.getSound("slimejump1");
+		//pop = GameMain.res.getSound("slimejump1");
 		
-		Texture tex = Game.res.getTexture("hud");
-		heart = new TextureRegion(Game.res.getTexture("heart"));
-		heart_empty = new TextureRegion(Game.res.getTexture("heart_empty"));
+		Texture tex = GameMain.res.getTexture("hud");
+		heart = new TextureRegion(GameMain.res.getTexture("heart"));
+		heart_empty = new TextureRegion(GameMain.res.getTexture("heart_empty"));
 		
-		overlay = new Texture(Game.WIDTH, Game.HEIGHT, Format.RGBA4444);
+		overlay = new Texture(GameMain.WIDTH, GameMain.HEIGHT, Format.RGBA4444);
 		TextureData smallObjTex = null;
-		if (Game.gameMode == GameMode.ANNA) {
+		if (GameMain.gameVariant == GameVariant.ANNA) {
 			smallObjTex = heart.getTexture().getTextureData();
-			bigObject  =  Game.res.getTexture("ztepowerbank");
-		} else if (Game.gameMode == GameMode.LIVIA) {
-			smallObjTex = Game.res.getTexture("mushroom").getTextureData();
-			bigObject  =  Game.res.getTexture("grandma");
-		} else if (Game.gameMode == GameMode.MAG) {
-			smallObjTex = Game.res.getTexture("beer").getTextureData();
-			bigObject  =  Game.res.getTexture("kozel");
-		} else { //GameMode.DEFAULT
-			smallObjTex = Game.res.getTexture("beer").getTextureData();
-			bigObject  =  Game.res.getTexture("kozel");
+			bigObject  =  GameMain.res.getTexture("ztepowerbank");
+		} else if (GameMain.gameVariant == GameVariant.LIVIA) {
+			smallObjTex = GameMain.res.getTexture("mushroom").getTextureData();
+			bigObject  =  GameMain.res.getTexture("grandma");
+		} else if (GameMain.gameVariant == GameVariant.MAG) {
+			smallObjTex = GameMain.res.getTexture("beer").getTextureData();
+			bigObject  =  GameMain.res.getTexture("kozel");
+		} else { //GameVariant.DEFAULT
+			smallObjTex = GameMain.res.getTexture("beer").getTextureData();
+			bigObject  =  GameMain.res.getTexture("kozel");
 		}
 		
-		bigObjX = Game.WIDTH/2f-bigObject.getWidth()/2f; bigObjY = Game.HEIGHT/2f-bigObject.getHeight()/2f;
+		bigObjX = GameMain.WIDTH/2f-bigObject.getWidth()/2f; bigObjY = GameMain.HEIGHT/2f-bigObject.getHeight()/2f;
 		
 		if (!smallObjTex.isPrepared()) smallObjTex.prepare();
 		smallObject = smallObjTex.consumePixmap();
@@ -129,7 +129,7 @@ public class HUD {
 		}
 		
 		//if (Level1.debug) {
-		drawString(sb, Game.FPS+"", 615, 305+android);
+		drawString(sb, GameMain.FPS+"", 615, 305+android);
 		
 		sb.end();
 		
@@ -137,29 +137,29 @@ public class HUD {
 		
 		//Level1.gameOver = true; //TODO remove
 		//Level1.gameOverType = false;
-		if (Game.gameOver) {
+		if (GameMain.gameOver) {
 			Gdx.gl20.glEnable(GL20.GL_BLEND);
 			Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 			
 			sr.begin(ShapeType.Filled);
 			
-			if (Game.gameOverType) { //HALÁL
+			if (GameMain.gameOverType) { //HALÁL
 				sr.setColor(1f, 0, 0, 0.5f);
-				sr.rect(0, 0, Game.WIDTH, Game.HEIGHT);
+				sr.rect(0, 0, GameMain.WIDTH, GameMain.HEIGHT);
 			} else { //WIN
 				//TODO ANNA->TÖLTÕ, MAG->SÖR, LÍVIACUCC, PUBLIC CUCC, TheVR cucc???
 				if (frame>nextTileDraw) {
 					nextTileDraw = frame+Level1.random.nextInt(20)+10;
 					//pop.play();
 					//Pixmap.setBlending(Pixmap.Blending.SourceOver);
-					overlay.draw(smallObject, Level1.random.nextInt(Game.WIDTH/smallObjectWidth+1)*smallObjectWidth, (Level1.random.nextInt(Game.HEIGHT/smallObjectHeight+2)-2)*smallObjectHeight); //TODO random
+					overlay.draw(smallObject, Level1.random.nextInt(GameMain.WIDTH/smallObjectWidth+1)*smallObjectWidth, (Level1.random.nextInt(GameMain.HEIGHT/smallObjectHeight+2)-2)*smallObjectHeight); //TODO random
 				}
 				sr.setColor(0, 1f, 0, 0.5f);
-				sr.rect(0, 0, Game.WIDTH, Game.HEIGHT);
+				sr.rect(0, 0, GameMain.WIDTH, GameMain.HEIGHT);
 			}
 			sr.end();
 			
-			if (!Game.gameOverType) {
+			if (!GameMain.gameOverType) {
 				sb.begin();
 				sb.draw(overlay, 0, 0);
 				sb.draw(bigObject, bigObjX, bigObjY);

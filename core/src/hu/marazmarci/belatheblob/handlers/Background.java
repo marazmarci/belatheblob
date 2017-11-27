@@ -3,7 +3,7 @@ package hu.marazmarci.belatheblob.handlers;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import hu.marazmarci.belatheblob.main.Game;
+import hu.marazmarci.belatheblob.main.GameMain;
 
 public class Background {
 	
@@ -23,8 +23,8 @@ public class Background {
 		this.image = image;
 		this.gameCam = gameCam;
 		this.scale = scale;
-		numDrawX = Game.WIDTH / image.getRegionWidth() + 1;
-		numDrawY = Game.HEIGHT / image.getRegionHeight() + 1;
+		numDrawX = GameMain.WIDTH / image.getRegionWidth() + 1;
+		numDrawY = GameMain.HEIGHT / image.getRegionHeight() + 1;
 	}
 	
 	public void setVector(float dx, float dy) {

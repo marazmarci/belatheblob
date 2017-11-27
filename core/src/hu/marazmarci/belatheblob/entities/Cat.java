@@ -8,7 +8,7 @@ import com.badlogic.gdx.physics.box2d.joints.DistanceJoint;
 import com.badlogic.gdx.physics.box2d.joints.DistanceJointDef;
 import hu.marazmarci.belatheblob.handlers.FadeTask;
 import hu.marazmarci.belatheblob.handlers.Task;
-import hu.marazmarci.belatheblob.main.Game;
+import hu.marazmarci.belatheblob.main.GameMain;
 import hu.marazmarci.belatheblob.states.Level1;
 
 import static hu.marazmarci.belatheblob.handlers.B2DVars.*;
@@ -64,7 +64,7 @@ public class Cat extends B2DSprite {
 			
 			if (!Level1.debug && Level1.player.getScore() < 85) {
 				//TODO nem gyűjtöttél össze elég piros kristályt felirat
-				Game.res.getSound("slimehit").play();
+				GameMain.res.getSound("slimehit").play();
 				Level1.player.damage(20);
 			} else {
 				

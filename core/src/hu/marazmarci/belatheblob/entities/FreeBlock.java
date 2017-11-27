@@ -6,7 +6,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
-import hu.marazmarci.belatheblob.main.Game;
+import hu.marazmarci.belatheblob.main.GameMain;
 
 import static hu.marazmarci.belatheblob.handlers.B2DVars.*;
 
@@ -18,7 +18,7 @@ public class FreeBlock extends B2DSprite {
 		tileSize = 32;
 		textureName = type;
 		try {
-			Game.res.loadTexture(type);
+			GameMain.res.loadTexture(type);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

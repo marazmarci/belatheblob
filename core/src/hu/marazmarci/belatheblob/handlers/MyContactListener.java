@@ -5,10 +5,10 @@ import com.badlogic.gdx.utils.Array;
 import hu.marazmarci.belatheblob.entities.collectibles.Collectible;
 import hu.marazmarci.belatheblob.entities.enemies.BossBunny;
 import hu.marazmarci.belatheblob.entities.enemies.Enemy;
-import hu.marazmarci.belatheblob.main.Game;
+import hu.marazmarci.belatheblob.main.GameMain;
 import hu.marazmarci.belatheblob.states.Level1;
 
-import static hu.marazmarci.belatheblob.main.Game.res;
+import static hu.marazmarci.belatheblob.main.GameMain.res;
 
 public class MyContactListener implements ContactListener {
 	
@@ -122,12 +122,12 @@ public class MyContactListener implements ContactListener {
 	//TODO Bunny 
 	public static void handleEnemyCollision(Enemy enemy) {
 		if (Level1.player.HP == 0) return;
-		//Game.res.getSound("slimehit").play();
+		//GameMain.res.getSound("slimehit").play();
 		Level1.contactingEnemies.add(enemy);
 		enemy.cooldown = enemy instanceof BossBunny ? 90 : 60;
 		//System.out.println("bunny is "+(bunny.isOnGround()?"":"NOT ")+"on ground");
 		if (/*bunny.isOnGround() &&*/ Level1.player.isOverEnemy(enemy) && enemy.removable) {
-			Game.res.getSound("hit").play();
+			GameMain.res.getSound("hit").play();
 			enemy.HP--;
 			if (enemy.HP == 0) {
 				if (enemy instanceof BossBunny) {
@@ -138,7 +138,7 @@ public class MyContactListener implements ContactListener {
 			}
 		} else {
 			Level1.player.damage(enemy.getDamage());
-			Game.res.getSound("slimehit").play();
+			GameMain.res.getSound("slimehit").play();
 		}
 	}
 	

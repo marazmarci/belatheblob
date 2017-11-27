@@ -1,12 +1,10 @@
 package hu.marazmarci.belatheblob.android;
 
 import android.annotation.SuppressLint;
-import android.graphics.Point;
 import android.os.Bundle;
-import android.view.Display;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import hu.marazmarci.belatheblob.main.Game;
+import hu.marazmarci.belatheblob.main.GameMain;
 
 public class AndroidLauncher extends AndroidApplication {
 	@SuppressWarnings("deprecation")
@@ -19,11 +17,11 @@ public class AndroidLauncher extends AndroidApplication {
 		cfg.hideStatusBar = true;
 		cfg.useImmersiveMode = true;
 		
-		//TODO check device model ->  Game.gameMode = Game.GameMode.ANNA;
+		//TODO check device model ->  GameMain.gameVariant = GameMain.GameVariant.ANNA;
 		
-		Game.gameMode = Game.GameMode.DEFAULT;
+		GameMain.gameVariant = GameMain.GameVariant.DEFAULT;
 		
-		Point size = new Point(0,0);
+		/*Point size = new Point(0,0);
 		
 		Display d = getWindowManager().getDefaultDisplay();
 		
@@ -34,8 +32,8 @@ public class AndroidLauncher extends AndroidApplication {
 			//System.out.println("getWidth,getHeight(): "+size);
 		} else {
 			size = new Point(d.getWidth(),d.getHeight());
-		}
+		}*/
 		
-		initialize(new Game(true), cfg);
+		initialize(new GameMain(true), cfg);
 	}
 }

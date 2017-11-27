@@ -9,7 +9,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import hu.marazmarci.belatheblob.handlers.ContentManager;
 import hu.marazmarci.belatheblob.handlers.Task;
-import hu.marazmarci.belatheblob.main.Game;
+import hu.marazmarci.belatheblob.main.GameMain;
 import hu.marazmarci.belatheblob.states.Level1;
 
 public class Grandma extends B2DSprite {
@@ -63,13 +63,13 @@ public class Grandma extends B2DSprite {
 					Level1.removeSprite(Level1.theCat);
 				}
 				
-				Game.res.playSoundUnique(ID?snd1:snd2, new Task<Grandma>(this, Level1.frame + (ID?650:190)*Game.FPS/60L ) {
+				GameMain.res.playSoundUnique(ID?snd1:snd2, new Task<Grandma>(this, Level1.frame + (ID?650:190)* GameMain.FPS/60L ) {
 				
 				@Override
 				public void run() {
 					data.talking = false;
 					ContentManager.playingSounds.removeValue(ID?snd1:snd2, true);
-					Game.res.playSound("magic2");
+					GameMain.res.playSound("magic2");
 					if (data.ID) {
 						MapLayers ml = Level1.tiledMap.getLayers();
 						ml.remove(ml.get("interactive_mamintul"));
@@ -77,9 +77,9 @@ public class Grandma extends B2DSprite {
 						for (Body b : bodies) Level1.bodiesToRemove.add(b);
 					} else {
 						//TODO A JÁTÉK VÉGE!!!!!!!!!!!!!
-						Game.gameOver = true;
-						Game.gameOverType = false;
-						Game.res.playBrainfuckMusic();
+						GameMain.gameOver = true;
+						GameMain.gameOverType = false;
+						GameMain.res.playBrainfuckMusic();
 					}
 				}});
 			}

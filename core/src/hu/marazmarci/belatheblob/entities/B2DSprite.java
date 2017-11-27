@@ -8,7 +8,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import hu.marazmarci.belatheblob.entities.collectibles.Collectible;
 import hu.marazmarci.belatheblob.handlers.Animation;
-import hu.marazmarci.belatheblob.main.Game;
+import hu.marazmarci.belatheblob.main.GameMain;
 import hu.marazmarci.belatheblob.states.Level1;
 
 import static hu.marazmarci.belatheblob.handlers.B2DVars.*;
@@ -135,7 +135,7 @@ public abstract class B2DSprite {
 	public void initTexture() {
 		//System.out.println("B2DSprite.initTexture(); class = "+getClass());
 		//System.out.println("B2DSprite.initTexture(); textureName = "+textureName);
-		Texture tex = Game.res.getTexture(textureName);
+		Texture tex = GameMain.res.getTexture(textureName);
 		TextureRegion[] sprites = TextureRegion.split(tex, tileSize, tileSizeY==0?tileSize:tileSizeY)[0];
 		setAnimation(sprites, animationTime);
 	}
