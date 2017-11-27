@@ -4,19 +4,20 @@ import com.badlogic.gdx.Game;
 import hu.marazmarci.belatheblob.main.GameMain;
 import hu.marazmarci.belatheblob.states.GameState;
 import hu.marazmarci.belatheblob.states.Level1;
+import hu.marazmarci.belatheblob.utils.DoublePeekableStack;
 
 import java.util.Stack;
 
 public class GameStateManager {
 	
 	private GameMain gameMain;
-	private Stack<GameState> gameStates;
+	private DoublePeekableStack<GameState> gameStates;
 	
 	//public static final int PLAY = 912837; // TODO enum
 	
 	public GameStateManager(GameMain game) {
 		this.gameMain = game;
-		gameStates = new Stack<GameState>();
+		gameStates = new DoublePeekableStack<GameState>();
 		//pushState(PLAY);
 	}
 	
@@ -29,7 +30,10 @@ public class GameStateManager {
 	}
 	
 	public void render() {
-		gameStates.peek().render();
+	    GameState top = gameStates.peek();
+	    if (top.isTransparent())
+	        gameStates.peekSecond().render();
+		top.render();
 		//level.render();
 	}
 	

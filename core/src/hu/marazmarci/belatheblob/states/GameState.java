@@ -30,5 +30,9 @@ public abstract class GameState implements Disposable {
 
 	@Override
 	public abstract void dispose();
+
+	public boolean isTransparent() {
+	    return false;
+    }
 	
 }
