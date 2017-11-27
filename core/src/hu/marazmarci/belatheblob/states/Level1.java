@@ -604,7 +604,9 @@ public class Level1 extends GameLevel {
 					e.autoJumpForceY = Float.parseFloat((String) mp.get("forceY"));
 					e.autoJumpForceYrandomness = Float.parseFloat((String) mp.get("forceYrandomness"));
 					e.autoJumpMode = !((String) mp.get("mode")).equals("random"); //autoJumpMode := false: random; true: a blob felé
-				} catch (Exception ee) {ee.printStackTrace();}
+				} catch (Exception ex) {
+                    //ex.printStackTrace(); hát ez most nem kell
+                }
 				finally {
 					System.out.println("ADDED ENEMY! type: "+e.getClass());
 					if (e instanceof BossBunny) {
