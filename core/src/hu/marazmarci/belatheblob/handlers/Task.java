@@ -1,6 +1,6 @@
 package hu.marazmarci.belatheblob.handlers;
 
-import static hu.marazmarci.belatheblob.states.Level1.frame;
+import static hu.marazmarci.belatheblob.states.levels.Level1.frame;
 
 public abstract class Task<T extends Object> implements Runnable {
 	

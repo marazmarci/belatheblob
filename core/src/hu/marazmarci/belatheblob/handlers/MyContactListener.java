@@ -6,7 +6,7 @@ import hu.marazmarci.belatheblob.entities.collectibles.Collectible;
 import hu.marazmarci.belatheblob.entities.enemies.BossBunny;
 import hu.marazmarci.belatheblob.entities.enemies.Enemy;
 import hu.marazmarci.belatheblob.main.GameMain;
-import hu.marazmarci.belatheblob.states.Level1;
+import hu.marazmarci.belatheblob.states.levels.Level1;
 
 import static hu.marazmarci.belatheblob.main.GameMain.res;
 

@@ -10,7 +10,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 
 import static hu.marazmarci.belatheblob.handlers.B2DVars.*;
-import static hu.marazmarci.belatheblob.states.Level1.random;
+import static hu.marazmarci.belatheblob.states.levels.Level1.random;
 
 public class Bunny extends Enemy {
 	

@@ -9,15 +9,16 @@ import com.badlogic.gdx.physics.box2d.joints.DistanceJointDef;
 import hu.marazmarci.belatheblob.handlers.FadeTask;
 import hu.marazmarci.belatheblob.handlers.Task;
 import hu.marazmarci.belatheblob.main.GameMain;
-import hu.marazmarci.belatheblob.states.Level1;
+import hu.marazmarci.belatheblob.states.levels.Level1;
 
 import static hu.marazmarci.belatheblob.handlers.B2DVars.*;
-import static hu.marazmarci.belatheblob.states.Level1.frame;
+import static hu.marazmarci.belatheblob.states.levels.Level1.frame;
 
 public class Cat extends B2DSprite {
 	
 	private static TextureRegion[] texs;
-	
+	private World world;
+
 	//TODO texture flip in direction
 	
 	boolean beszippantva = false;
@@ -35,7 +36,11 @@ public class Cat extends B2DSprite {
 		//autoJumpForceY = 3.5f/4f;
 	}
 
-	public Cat spawn(World world, float x0, float y0) {
+    public void setWorld(World world) {
+        this.world = world;
+    }
+
+    public Cat spawn(float x0, float y0) {
 		BodyDef bdef = new BodyDef();
 		FixtureDef fdef = new FixtureDef();
 		CircleShape shape = new CircleShape();
@@ -79,7 +84,7 @@ public class Cat extends B2DSprite {
 				jdef.collideConnected = false;
 				jdef.dampingRatio = 1f;
 				jdef.frequencyHz = 25f;
-				joint = (DistanceJoint) Level1.world.createJoint(jdef);
+				joint = (DistanceJoint) world.createJoint(jdef);
 
 				insideBlob = true;
 
@@ -96,7 +101,7 @@ public class Cat extends B2DSprite {
 				body = Level1.world.createBody(bdef);
 				body.createFixture(fdef);*/
 
-				Level1.theCat = this;
+				Level1.setCat(this);
 				Level1.tasks.add(new FadeTask<Cat>(this, frame+70) {
 
 					float length;

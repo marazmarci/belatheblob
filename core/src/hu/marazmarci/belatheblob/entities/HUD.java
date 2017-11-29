@@ -12,11 +12,11 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import hu.marazmarci.belatheblob.main.GameMain;
 import hu.marazmarci.belatheblob.main.GameMain.GameVariant;
-import hu.marazmarci.belatheblob.states.Level1;
+import hu.marazmarci.belatheblob.states.levels.Level1;
 
 import static hu.marazmarci.belatheblob.main.GameMain.time;
-import static hu.marazmarci.belatheblob.states.Level1.frame;
-import static hu.marazmarci.belatheblob.states.Level1.player;
+import static hu.marazmarci.belatheblob.states.levels.Level1.frame;
+import static hu.marazmarci.belatheblob.states.levels.Level1.player;
 
 public class HUD {
 	
@@ -138,7 +138,7 @@ public class HUD {
 		//Level1.gameOver = true; //TODO remove
 		//Level1.gameOverType = false;
 		if (GameMain.gameOver) {
-			Gdx.gl20.glEnable(GL20.GL_BLEND);
+			Gdx.gl.glEnable(GL20.GL_BLEND);
 			Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 			
 			sr.begin(ShapeType.Filled);

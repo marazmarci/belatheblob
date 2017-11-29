@@ -1,9 +1,9 @@
 package hu.marazmarci.belatheblob.entities.enemies;
 
 import hu.marazmarci.belatheblob.entities.B2DSprite;
-import hu.marazmarci.belatheblob.states.Level1;
+import hu.marazmarci.belatheblob.states.levels.Level1;
 
-import static hu.marazmarci.belatheblob.states.Level1.frame;
+import static hu.marazmarci.belatheblob.states.levels.Level1.frame;
 
 public abstract class Enemy extends B2DSprite {
 	

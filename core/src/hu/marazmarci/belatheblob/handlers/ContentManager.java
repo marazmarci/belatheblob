@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ArrayMap;
 import hu.marazmarci.belatheblob.main.GameMain;
 import hu.marazmarci.belatheblob.main.GameMain.GameVariant;
-import hu.marazmarci.belatheblob.states.Level1;
+import hu.marazmarci.belatheblob.states.levels.Level1;
 
 public class ContentManager {
 	

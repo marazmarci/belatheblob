@@ -20,7 +20,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ShortArray;
 import hu.marazmarci.belatheblob.entities.enemies.Enemy;
 import hu.marazmarci.belatheblob.main.GameMain;
-import hu.marazmarci.belatheblob.states.Level1;
+import hu.marazmarci.belatheblob.states.levels.Level1;
 
 import static hu.marazmarci.belatheblob.handlers.B2DVars.*;
 

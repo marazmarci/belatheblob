@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.Array;
 import hu.marazmarci.belatheblob.handlers.ContentManager;
 import hu.marazmarci.belatheblob.handlers.Task;
 import hu.marazmarci.belatheblob.main.GameMain;
-import hu.marazmarci.belatheblob.states.Level1;
+import hu.marazmarci.belatheblob.states.levels.Level1;
 
 public class Grandma extends B2DSprite {
 	

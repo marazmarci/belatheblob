@@ -1,7 +1,7 @@
 package hu.marazmarci.belatheblob.handlers;
 
 import hu.marazmarci.belatheblob.entities.B2DSprite;
-import hu.marazmarci.belatheblob.states.Level1;
+import hu.marazmarci.belatheblob.states.levels.Level1;
 
 public class SpriteRemovalEntry {
 	

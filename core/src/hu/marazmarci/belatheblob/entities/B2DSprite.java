@@ -9,7 +9,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import hu.marazmarci.belatheblob.entities.collectibles.Collectible;
 import hu.marazmarci.belatheblob.handlers.Animation;
 import hu.marazmarci.belatheblob.main.GameMain;
-import hu.marazmarci.belatheblob.states.Level1;
+import hu.marazmarci.belatheblob.states.levels.Level1;
 
 import static hu.marazmarci.belatheblob.handlers.B2DVars.*;
 
