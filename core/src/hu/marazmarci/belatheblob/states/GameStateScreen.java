@@ -5,11 +5,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Disposable;
 import hu.marazmarci.belatheblob.Prog3HF;
+import hu.marazmarci.belatheblob.Prog3HF_JavaDoc_TODO;
 import hu.marazmarci.belatheblob.handlers.GameStateManager;
 import hu.marazmarci.belatheblob.handlers.input.GameInputHandler;
 import hu.marazmarci.belatheblob.main.GameMain;
 
 @Prog3HF
+@Prog3HF_JavaDoc_TODO
 public abstract class GameStateScreen implements Disposable {
 
     protected final GameStateManager gsm;

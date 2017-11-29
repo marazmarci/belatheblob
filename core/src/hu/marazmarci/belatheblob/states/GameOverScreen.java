@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import hu.marazmarci.belatheblob.Prog3HF;
+import hu.marazmarci.belatheblob.Prog3HF_JavaDoc_TODO;
 import hu.marazmarci.belatheblob.handlers.GameStateManager;
 import hu.marazmarci.belatheblob.handlers.input.GameInputAdapter;
 import hu.marazmarci.belatheblob.handlers.input.GameInputHandler;
@@ -11,6 +12,7 @@ import hu.marazmarci.belatheblob.main.GameMain;
 
 
 @Prog3HF
+@Prog3HF_JavaDoc_TODO
 public class GameOverScreen extends MenuScreen {
 
 
