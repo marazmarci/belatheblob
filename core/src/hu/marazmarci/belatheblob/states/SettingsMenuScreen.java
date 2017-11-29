@@ -5,10 +5,8 @@ import hu.marazmarci.belatheblob.Prog3HF;
 import hu.marazmarci.belatheblob.Prog3HF_JavaDoc_TODO;
 import hu.marazmarci.belatheblob.Prog3HF_TODO;
 import hu.marazmarci.belatheblob.gui.Button;
-import hu.marazmarci.belatheblob.gui.ButtonAction;
 import hu.marazmarci.belatheblob.handlers.Difficulty;
 import hu.marazmarci.belatheblob.handlers.GameStateManager;
-import hu.marazmarci.belatheblob.main.GameMain;
 
 @Prog3HF
 @Prog3HF_TODO
@@ -20,17 +18,21 @@ public class SettingsMenuScreen extends MenuScreen {
     public SettingsMenuScreen(GameStateManager gameStateManager) {
         super(gameStateManager);
 
-        Button bunnyButton = new Button(gsm, 100,200,400,50,"Bunnies", Color.GREEN, new ButtonAction() {
-            public void run(Button btn) {
-                GameMain gameMain = gsm.getGameMain();
-                Difficulty diff = gameMain.getDifficulty();
+        Button bunnyButton = new Button(gsm, 100,200,400,50,"Bunnies", Color.GREEN, new Runnable() {
+            @Override
+            public void run() {
+                Difficulty diff = game.getDifficulty();
                 int index = diff.ordinal() + 1;
                 if (index == Difficulty.values().length) index = 0;
                 Difficulty newDiff = Difficulty.values()[index];
-                gameMain.setDifficulty(newDiff);
-                btn.setColor(newDiff == Difficulty.EASY ? Color.GREEN : Color.PINK);
+                game.setDifficulty(newDiff);
             }
-        });
+        }) {
+            @Override
+            public Color getColor() {
+                return game.getDifficulty() == Difficulty.EASY ? Color.GREEN : Color.PINK;
+            }
+        };
 
         addGuiElement(bunnyButton);
 
