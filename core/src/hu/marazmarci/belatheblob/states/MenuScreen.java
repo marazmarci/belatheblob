@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Vector3;
 import hu.marazmarci.belatheblob.Prog3HF;
 import hu.marazmarci.belatheblob.Prog3HF_JavaDoc_TODO;
-import hu.marazmarci.belatheblob.gui.BoundingBox;
 import hu.marazmarci.belatheblob.gui.GuiElement;
 import hu.marazmarci.belatheblob.handlers.GameStateManager;
 import hu.marazmarci.belatheblob.handlers.input.GameInputAdapter;
@@ -74,10 +73,12 @@ public abstract class MenuScreen extends GameStateScreen {
         @Override
         public boolean mouseMoved(int screenX, int screenY) {
             //debug output:
+            /*
             Vector3 tp = new Vector3(screenX, screenY, 0);
             BoundingBox box = new BoundingBox(100,100,400,50);
             //System.out.println(tp + " -> " + GameMain.translateTouchPoint(tp) + "   " + box.isPointInside(tp));
             System.out.println(tp + " -> " + hudCam.unproject(tp) + "   " + box.isPointInside(tp));
+            */
             return true;
         }
     }

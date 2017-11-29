@@ -780,7 +780,9 @@ public class Level1 extends GameLevelScreen {
     }
 
     @Override
-    public void onCreate() { }
+    public void onCreate() {
+
+    }
 
 
 
@@ -809,7 +811,7 @@ public class Level1 extends GameLevelScreen {
                 case Input.Keys.CONTROL_RIGHT: MyInput.setKey(MyInput.BTN_CTRL_RIGHT, true); break;
                 case Input.Keys.CONTROL_LEFT: MyInput.setKey(MyInput.BTN_CTRL_LEFT, true); break;
                 case Input.Keys.SHIFT_RIGHT: MyInput.setKey(MyInput.BTN_SHIFT_RIGHT, true); break;
-                default: return false; 
+                default: return false;
             }
 			return true;
         }
