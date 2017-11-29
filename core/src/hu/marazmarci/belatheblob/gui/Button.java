@@ -34,7 +34,7 @@ public class Button extends GuiElement {
     @Override
     public void render() {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(color);
+        shapeRenderer.setColor(getColor()y);
         shapeRenderer.rect(boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height);
         shapeRenderer.end();
     }
