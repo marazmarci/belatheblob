@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Vector3;
 import hu.marazmarci.belatheblob.Prog3HF;
-import hu.marazmarci.belatheblob.Prog3HF_JavaDoc_TODO;
 import hu.marazmarci.belatheblob.gui.GuiElement;
 import hu.marazmarci.belatheblob.handlers.GameStateManager;
 import hu.marazmarci.belatheblob.handlers.input.GameInputAdapter;
@@ -12,33 +11,36 @@ import hu.marazmarci.belatheblob.handlers.input.GameInputHandler;
 
 import java.util.ArrayList;
 
+/**
+ * Absztrakt menüképernyő osztály.
+ * Kezeli a {@link GuiElement}-ek tárolását és kirajzolását.
+ */
 @Prog3HF
-@Prog3HF_JavaDoc_TODO
 public abstract class MenuScreen extends GameStateScreen {
 
-    @Prog3HF_JavaDoc_TODO
+    /** A felhasználói felület elemeit tároló lista. */
     private ArrayList<GuiElement> guiElements = new ArrayList<GuiElement>();
 
-    @Prog3HF_JavaDoc_TODO
     public MenuScreen(GameStateManager gameStateManager) {
         super(gameStateManager);
-
-        shapeRenderer.setProjectionMatrix(hudCam.combined);
-
     }
 
-    @Prog3HF_JavaDoc_TODO
-    protected ArrayList<GuiElement> getGuiElements() {
+
+    /**
+     * @return a felhasználói felület elemeinek listája
+     */
+    ArrayList<GuiElement> getGuiElements() {
         return guiElements;
     }
 
-    @Prog3HF_JavaDoc_TODO
-    protected void addGuiElement(GuiElement guiElement) {
+    /**
+     * @param guiElement a hozzáadni kívánt GUI-elem
+     */
+    void addGuiElement(GuiElement guiElement) {
         guiElements.add(guiElement);
     }
 
     @Override
-    @Prog3HF_JavaDoc_TODO
     public void render() {
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
         for (GuiElement guiElement : guiElements)
@@ -46,8 +48,8 @@ public abstract class MenuScreen extends GameStateScreen {
     }
 
     @Override
-    @Prog3HF_JavaDoc_TODO
-    public void onCreate() {
+    public void doActivate() {
+        shapeRenderer.setProjectionMatrix(hudCam.combined);
         Gdx.gl.glClearColor(0, 0, 0, 0);
     }
 
@@ -57,11 +59,18 @@ public abstract class MenuScreen extends GameStateScreen {
     }
 
 
-    @Prog3HF_JavaDoc_TODO
+    /**
+     * Egy menüképernyő bemenetét kezelő osztály.
+     */
     class MenuScreenInputHandler extends GameInputAdapter {
 
+        /**
+         * Kezeli az érintéseket/kattintásokat.
+         * A touchPoint paramétert átadja az összes GUI-eleme handleTouch függvényének.
+         *
+         * @param touchPoint az érintés/kattintás koordinátái
+         */
         @Override
-        @Prog3HF_JavaDoc_TODO
         protected void handleTouchDown(Vector3 touchPoint) {
             hudCam.unproject(touchPoint);
             //GameMain.translateTouchPoint(touchPoint);

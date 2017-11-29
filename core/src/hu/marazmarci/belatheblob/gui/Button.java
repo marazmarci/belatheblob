@@ -6,6 +6,9 @@ import com.badlogic.gdx.math.Vector3;
 import hu.marazmarci.belatheblob.Prog3HF;
 import hu.marazmarci.belatheblob.handlers.GameStateManager;
 
+/**
+ * Egy a felhasználói felületen elhelyezkedő gombot reprezentáló osztály
+ */
 @Prog3HF
 public class Button extends GuiElement {
 
@@ -36,6 +39,14 @@ public class Button extends GuiElement {
         shapeRenderer.end();
     }
 
+
+    /**
+     * Ellenőrzi, hogy egy érintési pont a gomb téglalapjába esik-e.
+     * Ha igen, lefuttatja a hozzá rendelt műveletet.
+     *
+     * @param touchPoint az érintési pont
+     * @return a pont a gomb téglalapjába esik-e
+     */
     @Override
     public boolean handleTouch(Vector3 touchPoint) {
         if (boundingBox.isPointInside(touchPoint)) {

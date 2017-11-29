@@ -1,24 +1,26 @@
 package hu.marazmarci.belatheblob.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import hu.marazmarci.belatheblob.Prog3HF;
-import hu.marazmarci.belatheblob.Prog3HF_JavaDoc_TODO;
 import hu.marazmarci.belatheblob.handlers.GameStateManager;
-import hu.marazmarci.belatheblob.handlers.input.GameInputAdapter;
 import hu.marazmarci.belatheblob.handlers.input.GameInputHandler;
 import hu.marazmarci.belatheblob.main.GameMain;
 
 
+/**
+ * A game over játékállapot képernyőjét reprezentáló osztály.
+ *
+ */
 @Prog3HF
-@Prog3HF_JavaDoc_TODO
 public class GameOverScreen extends MenuScreen {
 
 
     public GameOverScreen(GameStateManager gsm) {
         super(gsm);
-        //TODO button
+        //TODO button(s)
     }
 
     @Override
@@ -46,10 +48,16 @@ public class GameOverScreen extends MenuScreen {
     }
 
 
-    class GameOverInput extends GameInputAdapter {
+    class GameOverInput extends MenuScreenInputHandler {
 
-        //TODO implementálni
-
+        @Override
+        protected boolean handleKeyDown(int keyCode) {
+            if (keyCode == Input.Keys.SPACE) {
+                // TODO if (3 secs elapsed)
+                gsm.popState();
+            }
+            return false;
+        }
     }
 
 }
