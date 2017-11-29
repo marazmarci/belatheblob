@@ -12,6 +12,7 @@ public class DesktopLauncher {
 	
 	
 	public static void main (String[] args) {
+
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		
 		if(args.length>0) {
@@ -37,10 +38,11 @@ public class DesktopLauncher {
 		cfg.vSyncEnabled = true;
 		//cfg.resizable = false;
 		//cfg.foregroundFPS = 40;
-		
-		//int c=0;
+
+        //int c=0;
 		//for (String arg : args) System.out.println((c++) + ".arg: "+arg);
 		
 		new LwjglApplication(new GameMain(false), cfg);
 	}
+
 }

@@ -1,11 +1,11 @@
-package hu.marazmarci.belatheblob.states;
+package hu.marazmarci.belatheblob.states.levels;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.*;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -13,10 +13,15 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ArrayMap;
+import com.badlogic.gdx.utils.IntArray;
+import com.badlogic.gdx.utils.IntMap;
+import hu.marazmarci.belatheblob.Prog3HF;
+import hu.marazmarci.belatheblob.Prog3HF_TODO;
 import hu.marazmarci.belatheblob.entities.*;
 import hu.marazmarci.belatheblob.entities.collectibles.*;
 import hu.marazmarci.belatheblob.entities.enemies.BossBunny;
@@ -24,25 +29,29 @@ import hu.marazmarci.belatheblob.entities.enemies.Bunny;
 import hu.marazmarci.belatheblob.entities.enemies.Enemy;
 import hu.marazmarci.belatheblob.entities.enemies.Spikes;
 import hu.marazmarci.belatheblob.handlers.*;
+import hu.marazmarci.belatheblob.handlers.input.GameInputHandler;
+import hu.marazmarci.belatheblob.handlers.input.MyInput;
 import hu.marazmarci.belatheblob.main.GameMain;
 import hu.marazmarci.belatheblob.main.GameMain.*;
+import hu.marazmarci.belatheblob.states.GameLevelScreen;
 
 import java.util.Iterator;
 import java.util.Random;
 
 import static hu.marazmarci.belatheblob.handlers.B2DVars.*;
 import static hu.marazmarci.belatheblob.main.GameMain.*;
+import static hu.marazmarci.belatheblob.handlers.input.MyInput.*;
 
-public class Level1 extends GameLevel {
+public class Level1 extends GameLevelScreen {
 	
-	public static World world;
+	private static World world;
 	private static Box2DDebugRenderer b2dr;
-	public static BoundedCamera b2dCam;
+	private static BoundedCamera box2dCam;
+	private static BoundedCamera cam;
 	private static PolygonSpriteBatch polyBatch;
 	public static TiledMap tiledMap;
 	private static int tileMapWidth, tileMapHeight, tileSize, redCrystalsTotal = 85;
 	private static OrthogonalTiledMapRenderer tmr;
-	private static ShapeRenderer sr;
 	public static Random random = new Random();
 	public static boolean debug = false, zokniBackground, playerVisible = true, enableTurboSpeed = false, turboSpeed = false; //true: halál, false: win
 	public static BlobPlayer player;
@@ -58,6 +67,7 @@ public class Level1 extends GameLevel {
 	public static long frame, gameOverFrame = 0;
 	public static Cat theCat;
 	private static HUD hud;
+
 	
 	public Level1(GameStateManager gsm) {
 		
@@ -146,14 +156,16 @@ public class Level1 extends GameLevel {
 		
 		
 		//init gfx
-		b2dCam = new BoundedCamera();
-		b2dCam.setToOrtho(false, GameMain.WIDTH / PPM, GameMain.HEIGHT / PPM);
+		box2dCam = new BoundedCamera();
+		box2dCam.setToOrtho(false, GameMain.WIDTH / PPM, GameMain.HEIGHT / PPM);
+	    cam = new BoundedCamera();
+        cam.setToOrtho(false, WIDTH, HEIGHT);
+	    cam.setBounds(0, tileMapWidth * tileSize, 0, tileMapHeight * tileSize);
 	  ( polyBatch = new PolygonSpriteBatch()).setProjectionMatrix(cam.combined);
-	  ( sr = new ShapeRenderer()).setProjectionMatrix(cam.combined);
+	    shapeRenderer.setProjectionMatrix(cam.combined);
 	  //( sr2 = new ShapeRenderer()).setProjectionMatrix(cam.combined);
 	    sb.setProjectionMatrix(cam.combined);
-	    cam.setBounds(0, tileMapWidth * tileSize, 0, tileMapHeight * tileSize);
-		b2dCam.setBounds(0, (tileMapWidth * tileSize) / PPM, 0, (tileMapHeight * tileSize) / PPM);	
+		box2dCam.setBounds(0, (tileMapWidth * tileSize) / PPM, 0, (tileMapHeight * tileSize) / PPM);
 		//res.initBackgrounds(cam);
 		Texture bgs = res.getTexture("bgs");
 		ContentManager.mountains = new Background(new TextureRegion(bgs, 0, 240, 320, 240), cam, 0.2f);
@@ -181,9 +193,14 @@ public class Level1 extends GameLevel {
 			sprites.add(bunny);
 		}*/
 	}
-	
-	
-	public void render() {
+
+    public static void setCat(Cat cat) {
+        theCat = cat;
+        cat.setWorld(world);
+    }
+
+
+    public void render() {
 		
 		//try {Thread.sleep(20);}
 		//catch (InterruptedException e) {}
@@ -197,7 +214,7 @@ public class Level1 extends GameLevel {
 		cam.setPosition(player.getAvgPosX()*PPM /*TODO + GameMain.V_WIDTH / 4*/, player.getAvgPosY()*PPM + GameMain.HEIGHT / 4 - 50);
 		cam.update();
 		polyBatch.setProjectionMatrix(cam.combined);
-		sr.setProjectionMatrix(cam.combined);
+		shapeRenderer.setProjectionMatrix(cam.combined);
 		
 		//zokniBackground = true;
 		
@@ -244,32 +261,36 @@ public class Level1 extends GameLevel {
 		        s.render(sb); //if (frame%60 == 0 && s instanceof Bunny) System.out.println("Bunni Dystance: "+player.dstLinear(s.getPosition()));
 		sb.end();
 		
-		if (playerVisible) player.render(polyBatch, sr);
+		if (playerVisible)
+		    player.render(polyBatch, shapeRenderer);
 		
 		//draw box2d world
 		if(debug) {
-			b2dCam.setPosition(player.getAvgPosX() /*TODO + GameMain.V_WIDTH / 4 / PPM*/, player.getAvgPosY() + (GameMain.HEIGHT / 4 - 50)/PPM);
-			b2dCam.update();
-			b2dr.render(world, b2dCam.combined);
+			box2dCam.setPosition(player.getAvgPosX() /*TODO + GameMain.V_WIDTH / 4 / PPM*/, player.getAvgPosY() + (GameMain.HEIGHT / 4 - 50)/PPM);
+			box2dCam.update();
+			b2dr.render(world, box2dCam.combined);
 		}
 		
 		sb.setProjectionMatrix(hudCam.combined);
-		sr.setProjectionMatrix(hudCam.combined);
-		hud.render(sb, sr);
+		shapeRenderer.setProjectionMatrix(hudCam.combined);
+		hud.render(sb, shapeRenderer);
 	}
-	
 
-	public void handleInput(float dt) {
-		
-		if (debug) {
-			if (MyInput.isPressed(MyInput.BTN_SHIFT_LEFT))
-			    GameMain.lowPerformanceMode = !GameMain.lowPerformanceMode;
-			else if (MyInput.isPressed(MyInput.BTN_CTRL_RIGHT))
-			    playerVisible = !playerVisible;
-			else if (MyInput.isPressed(MyInput.BTN_CTRL_LEFT))
-			    enableTurboSpeed = !enableTurboSpeed;
-		}
-		
+
+
+	@Prog3HF_TODO
+    @Deprecated
+    public void handleInput() {
+
+        if (debug) {
+            if (isPressed(BTN_SHIFT_LEFT))
+                GameMain.lowPerformanceMode = !GameMain.lowPerformanceMode;
+            else if (isPressed(BTN_CTRL_RIGHT))
+                playerVisible = !playerVisible;
+            else if (isPressed(BTN_CTRL_LEFT))
+                enableTurboSpeed = !enableTurboSpeed;
+        }
+
 		/*float dtMultiply = 1;//GameMain.desiredDeltaTime/dt;
 		if (dtMultiply<1) dtMultiply = 1;
 		else if (dtMultiply>1) dtMultiply = (float) ((int)dtMultiply + Math.pow(dtMultiply-(int)dtMultiply,1/10f));
@@ -278,61 +299,64 @@ public class Level1 extends GameLevel {
 		System.out.println("desiredDeltaTime = "+GameMain.desiredDeltaTime);
 		System.out.println("dtMultiply = "+dtMultiply);
 		System.out.println("==============");*/
-		
-		if (enableTurboSpeed)
-		    turboSpeed = MyInput.isDown(MyInput.BTN_CTRL_LEFT);
-		
-		if (MyInput.isPressed(MyInput.BTN_TAB) && MyInput.isDown(MyInput.BTN_SHIFT_RIGHT))
-		    debug = !debug;
-		
-		if (!gameOver) {
-			int blobOnGround = MyContactListener.blobOnGround.size;
-			float v = player.coreBall.getLinearVelocity().y;
-			float angularImpulse = 0.0015f; /* * dtMultiply;*/ //régi érték:0.001
-			float force = 0.085f /* * dtMultiply;*/ * (turboSpeed?5:1); //régi érték:0.08
-			
-			//boolean right = false, left = false, jump = false, jumpReleased = false, slinkinessPlus = false, slinkinessMinus = false;
-			
-			
-			
-			if (MyInput.slinkinessPlus) {
-				player.changeSlinkinessBy(-0.01f /* * dtMultiply;*/);
-			} else if (MyInput.slinkinessMinus) {
-				player.changeSlinkinessBy(0.01f /* * dtMultiply;*/);
-			}
-			
-			if (MyInput.jump && !MyInput.jumpPrev && (blobOnGround > 0 || turboSpeed)) {
-				blobJump(1.25f);
-				//if (turboSpeed) blobJump(0.25f);
-			} else if (MyInput.jumpPrev && !MyInput.jump && blobOnGround == 0 && v > 1) {
-				if(!turboSpeed) blobJump(-0.5f);
-			}
-			
-			MyInput.jumpPrev = MyInput.jump;
-			
-			if (player.slinkiness > 0) {
-				//force *= 1 + BlobPlayer.pow(player.slinkiness-0.84f,4f);
-				force -= BlobPlayer.pow(player.slinkiness / 2.5f, 4); //TODO slinkiness hatása az ugrásra. eredeti értékek: player.slinkiness / 2.2f, 4f
-				for (Body b : player.surfaceBalls) {
-					if (MyContactListener.blobOnGround.contains(b, true)) continue;
-					float force2 = player.slinkiness * force * (blobOnGround + 0.2f) / 25f;
-					b.applyForceToCenter((MyInput.left ? -force2 : 0) + (MyInput.right ? force2 : 0), 0, true);
-				}
-			}
-			
-			player.coreBall.applyForceToCenter((MyInput.left ? -force : 0) + (MyInput.right ? force : 0), 0, true);
-			//blob.coreBody.applyTorque( (MyInput.isDown(MyInput.BTN_Y) ?  x : 0) + (MyInput.isDown(MyInput.BTN_X) ? -x : 0), true);
-			player.coreBall.applyAngularImpulse((MyInput.left ? angularImpulse : 0) + (MyInput.right ? -angularImpulse : 0), true);
-		} else {
-			if (frame-gameOverFrame > 75 && MyInput.jump) {
-				gameOver = false;
-				gsm.setState(new Level1(gsm)); // TODO GameOverState
-			}
-		}
-		
-	}
-	
-	void blobJump(float f) {
+
+        if (enableTurboSpeed)
+            turboSpeed = isDown(BTN_CTRL_LEFT);
+
+        if (isPressed(BTN_TAB) && isDown(BTN_SHIFT_RIGHT))
+            debug = !debug;
+
+        if (!gameOver) {
+            int blobOnGround = MyContactListener.blobOnGround.size;
+            float v = player.coreBall.getLinearVelocity().y;
+            float angularImpulse = 0.0015f; /* * dtMultiply;*/ //régi érték:0.001
+            float force = 0.085f /* * dtMultiply;*/ * (turboSpeed?5:1); //régi érték:0.08
+
+            //boolean right = false, left = false, jump = false, jumpReleased = false, slinkinessPlus = false, slinkinessMinus = false;
+
+
+
+            if (slinkinessPlus) {
+                player.changeSlinkinessBy(-0.01f /* * dtMultiply;*/);
+            } else if (slinkinessMinus) {
+                player.changeSlinkinessBy(0.01f /* * dtMultiply;*/);
+            }
+
+            if (jump && !jumpPrev && (blobOnGround > 0 || turboSpeed)) {
+                blobJump(1.25f);
+                //if (turboSpeed) blobJump(0.25f);
+            } else if (jumpPrev && !jump && blobOnGround == 0 && v > 1) {
+                if(!turboSpeed) blobJump(-0.5f);
+            }
+
+            jumpPrev = jump;
+
+            if (player.slinkiness > 0) {
+                //force *= 1 + BlobPlayer.pow(player.slinkiness-0.84f,4f);
+                force -= BlobPlayer.pow(player.slinkiness / 2.5f, 4); //TODO slinkiness hatása az ugrásra. eredeti értékek: player.slinkiness / 2.2f, 4f
+                for (Body b : player.surfaceBalls) {
+                    if (MyContactListener.blobOnGround.contains(b, true))
+                        continue;
+                    float force2 = player.slinkiness * force * (blobOnGround + 0.2f) / 25f;
+                    b.applyForceToCenter((left ? -force2 : 0) + (right ? force2 : 0), 0, true);
+                }
+            }
+
+            player.coreBall.applyForceToCenter((left ? -force : 0) + (right ? force : 0), 0, true);
+            //blob.coreBody.applyTorque( (InputStateHolder.isDown(InputStateHolder.BTN_Y) ?  x : 0) + (InputStateHolder.isDown(InputStateHolder.BTN_X) ? -x : 0), true);
+            player.coreBall.applyAngularImpulse((left ? angularImpulse : 0) + (right ? -angularImpulse : 0), true);
+        } else {
+            if (frame-gameOverFrame > 75 && MyInput.jump) {
+                gameOver = false;
+                gsm.replaceState(new Level1(gsm)); // TODO GameOverScreen
+            }
+        }
+
+    }
+
+
+
+    void blobJump(float f) {
 		f *= 1-player.slinkiness/5f; //minél kisebb számmal osztod, annál gyengébb lesz Béla leeresztve
 		int blobsize = MyContactListener.blobOnGround.size;
 		for (Body b : MyContactListener.blobOnGround)
@@ -353,14 +377,21 @@ public class Level1 extends GameLevel {
 		}
 	}
 
-	public void update(float dt) {
-		handleInput(dt);
+	public void update(float deltaTime) {
+
+		handleInput();
 		
-		if (spritesToRemove.size>0) for (SpriteRemovalEntry s : spritesToRemove) if(s.update()) spritesToRemoveFinished.add(s);
-		if (spritesToRemoveFinished.size>0) for (SpriteRemovalEntry s : spritesToRemoveFinished) spritesToRemove.removeValue(s, true);
+		if (spritesToRemove.size>0) for (SpriteRemovalEntry s : spritesToRemove)
+		    if(s.update())
+		        spritesToRemoveFinished.add(s);
+
+		if (spritesToRemoveFinished.size>0)
+		    for (SpriteRemovalEntry s : spritesToRemoveFinished)
+		        spritesToRemove.removeValue(s, true);
 		
 		if (bodiesToRemove.size>0) {
-			for (Body b : bodiesToRemove) world.destroyBody(b);
+			for (Body b : bodiesToRemove)
+			    world.destroyBody(b);
 			bodiesToRemove.clear();
 		}
 		
@@ -378,29 +409,33 @@ public class Level1 extends GameLevel {
 		
 		if (frame%1200 == 0 && finishedTasks.size>0) {
 			finishedTasks.clear();
-			for (Task<?> t : finishedTasks) tasks.removeValue(t, true);
+			for (Task<?> t : finishedTasks)
+			    tasks.removeValue(t, true);
 		}
 		
 		//TODO distance check
-		for (B2DSprite s : sprites) s.update(dt);
-		for (B2DSprite s : hiddenSprites) s.update(dt);
+		for (B2DSprite s : sprites)
+		    s.update(deltaTime);
+		for (B2DSprite s : hiddenSprites)
+		    s.update(deltaTime);
 		
 		if (gameOver && !gameOverType && frame%100==0) {
 			blobJump(1.25f);
 			player.setSlinkiness(random.nextFloat());
 			player.coreBall.applyForceToCenter(random.nextFloat()*20-10, 0, true);
 		}
+
+        world.step(deltaTime, 6,2);
+
 	}
 
 	/*
-	public void resize() {
-		b2dCam.setToOrtho(false, GameMain.V_WIDTH/PPM, GameMain.V_HEIGHT/PPM);
+	public void handleResize() {
+		box2dCam.setToOrtho(false, GameMain.V_WIDTH/PPM, GameMain.V_HEIGHT/PPM);
 	}
 	*/
 
-	public void dispose() {}
-	
-	private void createMapLayer(String layerName, int categoryBits, int maskBits) {
+    private void createMapLayer(String layerName, int categoryBits, int maskBits) {
 		
 		MapLayers ml = tiledMap.getLayers();
 		
@@ -451,7 +486,7 @@ public class Level1 extends GameLevel {
 				
 				//System.out.println("CREATE MAP: current tile id = "+cell.getTile().getId());
 				
-				// create box2d from cell
+				// onCreate box2d from cell
 				bdef.type = BodyType.StaticBody;
 				bdef.position.set((x+0.5f)*tileSize/PPM, (y+0.5f)*tileSize/PPM);
 				ChainShape cs = new ChainShape();
@@ -719,4 +754,186 @@ public class Level1 extends GameLevel {
 	
 	public static void setNight() {Gdx.gl.glClearColor(0, 0, 0, 0);}
 	public static void setDay() {Gdx.gl.glClearColor(116/255f, 200/255f, 1f, 1f);}
+
+
+
+    public void dispose() {}
+
+    @Override
+    public boolean isTransparent() {
+        return false;
+    }
+
+    @Override
+    public void handleResize(int w, int h) {
+        Level1.width = w;  Level1.height = h;
+
+        cam.setToOrtho(false, WIDTH, HEIGHT);
+        //TODO univerzális referencia kéne ide
+        box2dCam.setToOrtho(false, WIDTH / B2DVars.PPM, HEIGHT / B2DVars.PPM);
+        //hudCam.setToOrtho(false, V_WIDTH, V_HEIGHT);
+    }
+
+    @Override
+    protected GameInputHandler createGameInputHandler() {
+        return new Level1Input();
+    }
+
+    @Override
+    public void onCreate() { }
+
+
+
+
+
+    @Prog3HF
+    class Level1Input extends GameInputHandler {
+
+        @Override
+        protected boolean handleKeyDown(int keyCode) {
+            switch(keyCode) {
+                case Input.Keys.RIGHT: MyInput.setKey(MyInput.BTN_RIGHT, true); MyInput.right = true; break;
+                case Input.Keys.LEFT: MyInput.setKey(MyInput.BTN_LEFT, true); MyInput.left = true; break;
+                case Input.Keys.SPACE: MyInput.setKey(MyInput.BTN_SPACE, true); MyInput.jump = true; break;
+                case Input.Keys.ENTER: MyInput.setKey(MyInput.BTN_ENTER, true); break;
+                case Input.Keys.UP: MyInput.setKey(MyInput.BTN_UP, true); MyInput.slinkinessPlus = true; break;
+                case Input.Keys.DOWN: MyInput.setKey(MyInput.BTN_DOWN, true); MyInput.slinkinessMinus = true; break;
+                case Input.Keys.X: MyInput.setKey(MyInput.BTN_X, true); MyInput.right = true; break;
+                case Input.Keys.Y: MyInput.setKey(MyInput.BTN_Y, true); MyInput.left = true; break;
+                case Input.Keys.W: MyInput.setKey(MyInput.BTN_W, true); MyInput.slinkinessPlus = true; break;
+                case Input.Keys.A: MyInput.setKey(MyInput.BTN_A, true); MyInput.left = true; break;
+                case Input.Keys.S: MyInput.setKey(MyInput.BTN_S, true); MyInput.slinkinessMinus = true; break;
+                case Input.Keys.D: MyInput.setKey(MyInput.BTN_D, true); MyInput.right = true; break;
+                case Input.Keys.TAB: MyInput.setKey(MyInput.BTN_TAB, true); break;
+                case Input.Keys.SHIFT_LEFT: MyInput.setKey(MyInput.BTN_SHIFT_LEFT, true); break;
+                case Input.Keys.CONTROL_RIGHT: MyInput.setKey(MyInput.BTN_CTRL_RIGHT, true); break;
+                case Input.Keys.CONTROL_LEFT: MyInput.setKey(MyInput.BTN_CTRL_LEFT, true); break;
+                case Input.Keys.SHIFT_RIGHT: MyInput.setKey(MyInput.BTN_SHIFT_RIGHT, true); break;
+            }
+            return false;
+        }
+
+        @Override
+        protected void handleKeyUp(int keyCode) {
+            switch(keyCode) {
+                case Input.Keys.RIGHT: MyInput.setKey(MyInput.BTN_RIGHT, false); MyInput.right = false; break;
+                case Input.Keys.LEFT: MyInput.setKey(MyInput.BTN_LEFT, false); MyInput.left = false; break;
+                case Input.Keys.SPACE: MyInput.setKey(MyInput.BTN_SPACE, false); MyInput.jump = false; break;
+                case Input.Keys.ENTER: MyInput.setKey(MyInput.BTN_ENTER, false); break;
+                case Input.Keys.UP: MyInput.setKey(MyInput.BTN_UP, false); MyInput.slinkinessPlus = false; break;
+                case Input.Keys.DOWN: MyInput.setKey(MyInput.BTN_DOWN, false); MyInput.slinkinessMinus = false; break;
+                case Input.Keys.X: MyInput.setKey(MyInput.BTN_X, false); MyInput.right = false; break;
+                case Input.Keys.Y: MyInput.setKey(MyInput.BTN_Y, false); MyInput.left = false; break;
+                case Input.Keys.W: MyInput.setKey(MyInput.BTN_W, false); MyInput.slinkinessPlus = false; break;
+                case Input.Keys.A: MyInput.setKey(MyInput.BTN_A, false); MyInput.left = false; break;
+                case Input.Keys.S: MyInput.setKey(MyInput.BTN_S, false); MyInput.slinkinessMinus = false; break;
+                case Input.Keys.D: MyInput.setKey(MyInput.BTN_D, false); MyInput.right = false; break;
+                case Input.Keys.TAB: MyInput.setKey(MyInput.BTN_TAB, false); break;
+                case Input.Keys.SHIFT_LEFT: MyInput.setKey(MyInput.BTN_SHIFT_LEFT, false); break;
+                case Input.Keys.CONTROL_RIGHT: MyInput.setKey(MyInput.BTN_CTRL_RIGHT, false); break;
+                case Input.Keys.CONTROL_LEFT: MyInput.setKey(MyInput.BTN_CTRL_LEFT, false); break;
+                case Input.Keys.SHIFT_RIGHT: MyInput.setKey(MyInput.BTN_SHIFT_RIGHT, false); break;
+            }
+        }
+
+        @Override
+        protected void handleKeysHeld(IntArray heldKeys) {
+            //TODO gomb nyomvatartásra folyamatosan végrahajtandó dolgokat ide
+        }
+
+        @Override
+        protected void handleTouchDown(Vector3 touchPoint) {
+            /*jump = false;
+            slinkinessMinus = false;
+            slinkinessPlus = false;
+            left = false;
+            right = false;*/
+
+            int x = (int) touchPoint.x;
+            int y = (int) touchPoint.y;
+
+            if(x < width/3) {
+                if (x < width/6) {
+                    left = true;
+                    right = false;
+                } else {
+                    right = true;
+                    left = false;
+                }
+            } else if (x < 2*width/3) {
+                if (y < height/2) {
+                    slinkinessPlus = true;
+                } else {
+                    slinkinessMinus = true;
+                }
+            } else if (x > 2*width/3) {
+                jump = true;
+            }
+        }
+
+        @Override
+        protected void handleTouchUp(Vector3 touchPoint) {
+
+            int x = (int) touchPoint.x;
+            int y = (int) touchPoint.y;
+
+            if(x < width/3) {
+                if (x < width/6) {
+                    left = false;
+                } else {
+                    right = false;
+                }
+            } else if (x < 2*width/3) {
+                if (y < height/2) {
+                    slinkinessPlus = false;
+                } else {
+                    slinkinessMinus = false;
+                }
+            } else if (x > 2*width/3) {
+                jump = false;
+            }
+        }
+
+        @Override
+        protected void handleTouchHeld(IntMap<Vector3> actualTouchPoints) {
+
+        }
+
+        @Override
+        protected void handleTouchDragged(Vector3 touchPoint) {
+            /*jump = false;
+            slinkinessMinus = false;
+            slinkinessPlus = false;
+            left = false;
+            right = false;*/
+
+            //System.out.println("touch!");
+            //System.out.println(width+"x"+height);
+
+
+
+            int x = (int) touchPoint.x;
+            int y = (int) touchPoint.y;
+
+            if(x < width/3) {
+                if (x < width/6) {
+                    left = true;
+                    right = false;
+                } else {
+                    right = true;
+                    left = false;
+                }
+            } else if (x < 2*width/3) {
+                if (y < height/2) {
+                    slinkinessPlus = true;
+                } else {
+                    slinkinessMinus = true;
+                }
+            } else if (x >= 2*width/3) {
+                jump = true;
+            }
+
+        }
+    }
+
 }

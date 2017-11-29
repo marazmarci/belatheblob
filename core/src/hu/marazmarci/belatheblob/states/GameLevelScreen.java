@@ -4,11 +4,11 @@ import hu.marazmarci.belatheblob.Prog3HF;
 import hu.marazmarci.belatheblob.handlers.GameStateManager;
 
 @Prog3HF
-public abstract class GameLevel extends GameState {
+public abstract class GameLevelScreen extends GameStateScreen {
 
     // TODO level-specific attributes
 
-    GameLevel(GameStateManager gsm) {
+    public GameLevelScreen(GameStateManager gsm) {
         super(gsm);
     }
 

@@ -4,8 +4,12 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import hu.marazmarci.belatheblob.handlers.*;
-import hu.marazmarci.belatheblob.states.Level1;
+import hu.marazmarci.belatheblob.handlers.input.InputStateHolder;
+import hu.marazmarci.belatheblob.handlers.input.TouchPoint;
+import hu.marazmarci.belatheblob.states.levels.Level1;
+import hu.marazmarci.belatheblob.states.MainMenuScreen;
 
 public class GameMain implements ApplicationListener {
 	
@@ -20,7 +24,7 @@ public class GameMain implements ApplicationListener {
 	public static int HEIGHT = 320;
 	public static final int SCALE = 2;
 	public static final float STEP = 1 / 60f;
-	private float accum = 0, dt;
+	private float accum = 0, deltaTime;
 	
 	public static int FPS;
 	public static int desiredFPS = 60;
@@ -34,12 +38,13 @@ public class GameMain implements ApplicationListener {
 	//public static float smoothFPS = 0;
 	
 	public static ContentManager res;
-	private GameStateManager gsm;
+	private static GameStateManager gsm;
 	
-	private SpriteBatch spriteBatch;
-	private BoundedCamera boundedCam;
-	private OrthographicCamera hudCam;
-	
+	private static SpriteBatch spriteBatch;
+	private static ShapeRenderer shapeRenderer;
+	private static BoundedCamera boundedCam;
+	public static OrthographicCamera hudCam;
+
 	public static float time = 0;
 	
 	public static boolean lowPerformanceMode = false; // TODO remove
@@ -57,9 +62,10 @@ public class GameMain implements ApplicationListener {
 		desiredDeltaTime = 1/(float)desiredFPS;
 	}
 	
-	public void create () {
+	public void create() {
 		
 		spriteBatch = new SpriteBatch();
+		shapeRenderer = new ShapeRenderer();
 		boundedCam = new BoundedCamera();
 		boundedCam.setToOrtho(false, WIDTH, HEIGHT);
 		hudCam = new OrthographicCamera();
@@ -73,11 +79,9 @@ public class GameMain implements ApplicationListener {
 			e.printStackTrace();
 		}
 		
-		Gdx.input.setInputProcessor(new MyInputProcessor()); // TODO
-		
 		gsm = new GameStateManager(this);
 
-		gsm.pushState(new Level1(gsm));
+		gsm.pushState(new MainMenuScreen(gsm));
 
 	}
 	
@@ -97,31 +101,34 @@ public class GameMain implements ApplicationListener {
 		
 		Gdx.graphics.setTitle(TITLE + " -- FPS: " + FPS);
 		
-		dt = Gdx.graphics.getDeltaTime();
-		if (!gameOver) time += dt;
-		if (FPS > 50) {
+		deltaTime = Gdx.graphics.getDeltaTime();
+		if (!gameOver)
+		    time += deltaTime;
+        gsm.update(STEP);
+		/*if (FPS > 50) {
 			gsm.update(STEP);
 			Level1.world.step(STEP, lowPerformanceMode?4:6,2);
 		} else {
-			accum += dt;
+			accum += deltaTime;
 			
-			gsm.update(dt);
+			gsm.update(deltaTime);
 			
 			while (accum >= STEP) {
 				Level1.world.step(STEP, lowPerformanceMode?4:6,2);
 				accum-=STEP;
 			}
-		}
-		/*accum += dt;
+		}*/
+		/*accum += deltaTime;
 		
 		while (accum >= STEP) {
 			gsm.update(STEP);
 			accum-=STEP;
 		}*/
 		
-		//gsm.update(dt); //gsm.update(dt > STEP ? STEP : dt);
+		//gsm.update(deltaTime); //gsm.update(deltaTime > STEP ? STEP : deltaTime);
 		gsm.render();
-		MyInput.update();
+
+		InputStateHolder.update();
 	}
 	
 	public void dispose() {
@@ -129,22 +136,20 @@ public class GameMain implements ApplicationListener {
 	}
 	
 	public SpriteBatch getSpriteBatch() { return spriteBatch; }
-	public BoundedCamera getCamera() { return boundedCam; }
+	//public BoundedCamera getCamera() { return boundedCam; }
 	public OrthographicCamera getHUDCamera() { return hudCam; }
+	public ShapeRenderer getShapeRenderer() { return shapeRenderer; }
+	public static GameStateManager getGameStateManager() {
+	    return gsm;
+    }
 
 
 	public void resize(int w, int h) {
 		System.out.println("RESIZE: ["+w+";"+h+"]");
-		
-		WIDTH = w/SCALE; HEIGHT = h/SCALE;
-		
-		Level1.width = w;  Level1.height = h;
-		
-		boundedCam.setToOrtho(false, WIDTH, HEIGHT);
-		//TODO univerzális referencia kéne ide
-		Level1.b2dCam.setToOrtho(false, WIDTH/hu.marazmarci.belatheblob.handlers.B2DVars.PPM, HEIGHT/hu.marazmarci.belatheblob.handlers.B2DVars.PPM);
-		//hudCam.setToOrtho(false, V_WIDTH, V_HEIGHT);
-		//gsm.play.resize();
+        boundedCam.setToOrtho(false, WIDTH, HEIGHT);
+		WIDTH = w/SCALE;
+		HEIGHT = h/SCALE;
+		gsm.handleResize(w, h);
 	}
 	public void pause() {}
 	public void resume() {}
@@ -152,4 +157,11 @@ public class GameMain implements ApplicationListener {
 	public static void initTitle() {
 		TITLE = "Béla the Blob"+(gameVariant == GameVariant.ANNA?" - Anna Edition": (gameVariant == GameVariant.LIVIA? " - Lívia Edition" : (gameVariant == GameVariant.MAG? " - Mag Edition" : "")) );
 	}
+
+	@Deprecated
+    public static TouchPoint translateTouchPoint(TouchPoint touchPoint) {
+		//TODO ez elrontja a játék közbeni inputot, de a menüben átméretezés nélkül jó
+	    //return touchPoint.set(touchPoint.x / SCALE, HEIGHT - touchPoint.y / SCALE);
+		return touchPoint;
+    }
 }
