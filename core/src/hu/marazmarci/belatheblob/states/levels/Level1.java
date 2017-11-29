@@ -39,8 +39,8 @@ import java.util.Iterator;
 import java.util.Random;
 
 import static hu.marazmarci.belatheblob.handlers.B2DVars.*;
-import static hu.marazmarci.belatheblob.main.GameMain.*;
 import static hu.marazmarci.belatheblob.handlers.input.MyInput.*;
+import static hu.marazmarci.belatheblob.main.GameMain.*;
 
 public class Level1 extends GameLevelScreen {
 	
@@ -809,8 +809,9 @@ public class Level1 extends GameLevelScreen {
                 case Input.Keys.CONTROL_RIGHT: MyInput.setKey(MyInput.BTN_CTRL_RIGHT, true); break;
                 case Input.Keys.CONTROL_LEFT: MyInput.setKey(MyInput.BTN_CTRL_LEFT, true); break;
                 case Input.Keys.SHIFT_RIGHT: MyInput.setKey(MyInput.BTN_SHIFT_RIGHT, true); break;
+                default: return false; 
             }
-            return false;
+			return true;
         }
 
         @Override
