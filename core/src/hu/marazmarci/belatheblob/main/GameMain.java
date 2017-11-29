@@ -50,6 +50,9 @@ public class GameMain implements ApplicationListener {
 	public static boolean gameOver = false;
 	public static boolean gameOverType = true; // TODO enum
 	public static long gameOverFrame;
+
+	private Difficulty difficulty = Difficulty.EASY;
+
 	
 	public GameMain(boolean android_) {
 		super();
@@ -163,4 +166,13 @@ public class GameMain implements ApplicationListener {
 	    //return touchPoint.set(touchPoint.x / SCALE, HEIGHT - touchPoint.y / SCALE);
 		return touchPoint;
     }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
 }

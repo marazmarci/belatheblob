@@ -11,14 +11,11 @@ public class GameStateManager {
 
 	private GameMain gameMain;
 	private DoublePeekableStack<GameStateScreen> gameStates;
-	private Difficulty difficulty = Difficulty.EASY;
-	
-	//public static final int PLAY = 912837; // TODO enum
+
 	
 	public GameStateManager(GameMain game) {
 		this.gameMain = game;
 		gameStates = new DoublePeekableStack<GameStateScreen>();
-		//pushState(PLAY);
 	}
 	
 	public GameMain getGameMain() {
@@ -26,9 +23,7 @@ public class GameStateManager {
 	}
 	
 	public void update(float deltaTime) {
-		//if (dt>0.2) dt = 0.2f;
 		gameStates.peek().handleInputAndUpdate(deltaTime);
-		//level.update(dt);
 	}
 	
 	public void render() {
@@ -36,31 +31,12 @@ public class GameStateManager {
 	    if (top.isTransparent())
 	        gameStates.peekSecond().render();
 		top.render();
-		//level.render();
 	}
-
-	/*public GameStateScreen getState() {
-	    return gameStates.peek();
-    }*/
-	
-	/*private GameStateScreen getState(int state) {
-		if (state == PLAY) return level = new Level1(this);
-		return null;
-	}*/
-	
-	/*public void replaceState(int state) {
-		popState();
-		pushState(state);
-	}*/
 
 	public void replaceState(GameStateScreen gameState) {
 	    popState();
 	    pushState(gameState);
     }
-	
-    /*public void pushState(int state) {
-		gameStates.push(getState(state));
-	}*/
 
     public void pushState(GameStateScreen gameState) {
         gameStates.push(gameState);
@@ -91,12 +67,4 @@ public class GameStateManager {
         Gdx.input.setInputProcessor(gameState.getGameInputHandler());
     }
 
-
-    public Difficulty getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(Difficulty difficulty) {
-        this.difficulty = difficulty;
-    }
 }
