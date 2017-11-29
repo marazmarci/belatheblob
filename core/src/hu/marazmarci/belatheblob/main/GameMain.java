@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import hu.marazmarci.belatheblob.handlers.*;
-import hu.marazmarci.belatheblob.handlers.input.InputStateHolder;
 import hu.marazmarci.belatheblob.handlers.input.TouchPoint;
 import hu.marazmarci.belatheblob.states.levels.Level1;
 import hu.marazmarci.belatheblob.states.MainMenuScreen;
@@ -126,9 +125,9 @@ public class GameMain implements ApplicationListener {
 		}*/
 		
 		//gsm.update(deltaTime); //gsm.update(deltaTime > STEP ? STEP : deltaTime);
-		gsm.render();
 
-		InputStateHolder.update();
+        gsm.render();
+
 	}
 	
 	public void dispose() {
