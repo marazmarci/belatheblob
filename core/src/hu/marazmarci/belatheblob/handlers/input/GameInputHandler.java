@@ -6,11 +6,12 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.IntArray;
 import com.badlogic.gdx.utils.IntMap;
 import hu.marazmarci.belatheblob.Prog3HF;
+import hu.marazmarci.belatheblob.Prog3HF_JavaDoc_TODO;
 import hu.marazmarci.belatheblob.Prog3HF_TODO;
-import hu.marazmarci.belatheblob.handlers.GameStateManager;
 import hu.marazmarci.belatheblob.main.GameMain;
 
 @Prog3HF
+@Prog3HF_JavaDoc_TODO
 public abstract class GameInputHandler implements InputProcessor {
 
     //private static final IntMap<TouchPoint> touchPoints = new IntMap<TouchPoint>(10);

@@ -1,12 +1,15 @@
 package hu.marazmarci.belatheblob.handlers;
 
 import com.badlogic.gdx.Gdx;
-import hu.marazmarci.belatheblob.handlers.input.GameInputHandler;
+import hu.marazmarci.belatheblob.Prog3HF;
+import hu.marazmarci.belatheblob.Prog3HF_JavaDoc_TODO;
 import hu.marazmarci.belatheblob.main.GameMain;
 import hu.marazmarci.belatheblob.states.GameStateScreen;
 import hu.marazmarci.belatheblob.states.MenuScreen;
 import hu.marazmarci.belatheblob.utils.DoublePeekableStack;
 
+@Prog3HF
+@Prog3HF_JavaDoc_TODO
 public class GameStateManager {
 
 	private GameMain gameMain;

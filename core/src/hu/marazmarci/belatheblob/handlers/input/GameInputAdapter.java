@@ -3,7 +3,11 @@ package hu.marazmarci.belatheblob.handlers.input;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.IntArray;
 import com.badlogic.gdx.utils.IntMap;
+import hu.marazmarci.belatheblob.Prog3HF;
+import hu.marazmarci.belatheblob.Prog3HF_JavaDoc_TODO;
 
+@Prog3HF
+@Prog3HF_JavaDoc_TODO
 public abstract class GameInputAdapter extends GameInputHandler {
 
 
