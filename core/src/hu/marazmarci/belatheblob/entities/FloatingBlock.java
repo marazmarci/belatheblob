@@ -18,7 +18,8 @@ public class FloatingBlock extends B2DSprite {
 		tileSize = 32;
 		textureName = type;
 		try {
-			GameMain.res.loadTexture(type);
+			if (GameMain.res.getTexture(type) == null)
+				GameMain.res.loadTexture(type);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
