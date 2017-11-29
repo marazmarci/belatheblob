@@ -12,14 +12,14 @@ public class Button extends GuiElement {
     private BoundingBox boundingBox;
     private String text;
     private Color color;
-    private Runnable action;
+    private ButtonAction action;
     private ShapeRenderer shapeRenderer;
 
-    public Button(GameStateManager gsm, int x, int y, int width, int height, String text, Color color, Runnable action) {
+    public Button(GameStateManager gsm, int x, int y, int width, int height, String text, Color color, ButtonAction action) {
         this(gsm, new BoundingBox(x, y, width, height), text, color, action);
     }
 
-    public Button(GameStateManager gsm, BoundingBox boundingBox, String text, Color color, Runnable action) {
+    public Button(GameStateManager gsm, BoundingBox boundingBox, String text, Color color, ButtonAction action) {
         super(gsm);
         this.shapeRenderer = gsm.getGameMain().getShapeRenderer();
         this.boundingBox = boundingBox;
@@ -31,7 +31,7 @@ public class Button extends GuiElement {
     @Override
     public void render() {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(getColor());
+        shapeRenderer.setColor(color);
         shapeRenderer.rect(boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height);
         shapeRenderer.end();
     }
@@ -40,21 +40,17 @@ public class Button extends GuiElement {
     public boolean handleTouch(Vector3 touchPoint) {
         if (boundingBox.isPointInside(touchPoint)) {
             if (action != null)
-                action.run();
+                action.run(this);
             return true;
         }
         return false;
     }
 
-    public void setAction(Runnable action) {
-        this.action = action;
-    }
-
-    public Color getColor() {
-        return color;
-    }
-
     public String getText() {
         return text;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 }
