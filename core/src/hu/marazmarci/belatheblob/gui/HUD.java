@@ -1,4 +1,4 @@
-package hu.marazmarci.belatheblob.entities;
+package hu.marazmarci.belatheblob.gui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;

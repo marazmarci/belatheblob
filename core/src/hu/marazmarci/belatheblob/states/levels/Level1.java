@@ -28,6 +28,7 @@ import hu.marazmarci.belatheblob.entities.enemies.BossBunny;
 import hu.marazmarci.belatheblob.entities.enemies.Bunny;
 import hu.marazmarci.belatheblob.entities.enemies.Enemy;
 import hu.marazmarci.belatheblob.entities.enemies.Spikes;
+import hu.marazmarci.belatheblob.gui.HUD;
 import hu.marazmarci.belatheblob.handlers.*;
 import hu.marazmarci.belatheblob.handlers.input.GameInputHandler;
 import hu.marazmarci.belatheblob.handlers.input.MyInput;
@@ -66,7 +67,7 @@ public class Level1 extends GameLevelScreen {
 	public static int width, height, collected;
 	public static long frame, gameOverFrame = 0;
 	public static Cat theCat;
-	private static HUD hud;
+	private static hu.marazmarci.belatheblob.gui.HUD hud;
 
 	
 	public Level1(GameStateManager gsm) {
@@ -200,6 +201,7 @@ public class Level1 extends GameLevelScreen {
     }
 
 
+    @Override
     public void render() {
 		
 		//try {Thread.sleep(20);}
@@ -280,7 +282,7 @@ public class Level1 extends GameLevelScreen {
 
 	@Prog3HF_TODO
     @Deprecated
-    public void handleInput() {
+    public void handleInput_() {
 
         if (debug) {
             if (isPressed(BTN_SHIFT_LEFT))
@@ -377,9 +379,10 @@ public class Level1 extends GameLevelScreen {
 		}
 	}
 
+	@Override
 	public void update(float deltaTime) {
 
-		handleInput();
+		handleInput_();
 		
 		if (spritesToRemove.size>0) for (SpriteRemovalEntry s : spritesToRemove)
 		    if(s.update())
@@ -756,7 +759,7 @@ public class Level1 extends GameLevelScreen {
 	public static void setDay() {Gdx.gl.glClearColor(116/255f, 200/255f, 1f, 1f);}
 
 
-
+	@Override
     public void dispose() {}
 
     @Override
@@ -780,7 +783,7 @@ public class Level1 extends GameLevelScreen {
     }
 
     @Override
-    public void onCreate() {
+    public void doActivate() {
 
     }
 

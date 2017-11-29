@@ -5,11 +5,15 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import hu.marazmarci.belatheblob.handlers.*;
+import hu.marazmarci.belatheblob.handlers.BoundedCamera;
+import hu.marazmarci.belatheblob.handlers.ContentManager;
+import hu.marazmarci.belatheblob.handlers.Difficulty;
+import hu.marazmarci.belatheblob.handlers.GameStateManager;
 import hu.marazmarci.belatheblob.handlers.input.TouchPoint;
-import hu.marazmarci.belatheblob.states.levels.Level1;
 import hu.marazmarci.belatheblob.states.MainMenuScreen;
+import hu.marazmarci.belatheblob.states.levels.Level1;
 
+// needs to be singleton
 public class GameMain implements ApplicationListener {
 	
 	public enum GameVariant { DEFAULT, ANNA, LIVIA, MAG }
@@ -27,7 +31,7 @@ public class GameMain implements ApplicationListener {
 	
 	public static int FPS;
 	public static int desiredFPS = 60;
-	public static float desiredDeltaTime = 1/(float)desiredFPS;
+	public static float desiredDeltaTime = 1 / (float)desiredFPS;
 	//private static IntArray avgFPS = new IntArray(false,10);
 	static int[] avgFPSarray = new int[5];
 	static byte avgFPSarrayPos = 0;
@@ -88,6 +92,9 @@ public class GameMain implements ApplicationListener {
 	}
 	
 	public void render () {
+
+		//TODO ennek nagy részét átrakni a Level osztályba!
+
 		FPS = Gdx.graphics.getFramesPerSecond();
 		if (FPS == 61) FPS = 60;
 		
@@ -106,7 +113,12 @@ public class GameMain implements ApplicationListener {
 		deltaTime = Gdx.graphics.getDeltaTime();
 		if (!gameOver)
 		    time += deltaTime;
-        gsm.update(STEP);
+
+        // TODO accumulated step (kis lépésekkel, mondjuk 60 FPS-nél kb iterációnként 2.5 update hívással)
+
+        //gsm.update(STEP);
+        gsm.updateAndRender(STEP);
+
 		/*if (FPS > 50) {
 			gsm.update(STEP);
 			Level1.world.step(STEP, lowPerformanceMode?4:6,2);
@@ -129,7 +141,7 @@ public class GameMain implements ApplicationListener {
 		
 		//gsm.update(deltaTime); //gsm.update(deltaTime > STEP ? STEP : deltaTime);
 
-        gsm.render();
+        //gsm.render();
 
 	}
 	
