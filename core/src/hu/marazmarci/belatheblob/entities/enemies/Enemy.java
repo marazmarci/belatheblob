@@ -1,5 +1,6 @@
 package hu.marazmarci.belatheblob.entities.enemies;
 
+import hu.marazmarci.belatheblob.Prog3HF;
 import hu.marazmarci.belatheblob.entities.B2DSprite;
 import hu.marazmarci.belatheblob.states.levels.Level1;
 
@@ -32,6 +33,7 @@ public abstract class Enemy extends B2DSprite {
             super.update(dt);
             if (autoJumpEnabled) {
                 //frame++;
+                @Prog3HF // hát ez nem lett túl szép :P
                 float x;
                 if (jumpTowardsBlob) {
                     float dx = player.getPosX() - body.getPosition().x;
