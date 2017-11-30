@@ -112,7 +112,8 @@ public class MainMenuScreen extends MenuScreen {
         }
 
         public void render() {
-            if (time > 10/(60f + mouseDistance)) { // 1/(6f + mouseDistance/10f)
+                    // 1 /(6f  + mouseDistance/10f)
+            if (time > 10/(60f + mouseDistance)) {
                 time = 0;
                 animationFrameSelector = !animationFrameSelector;
             }
