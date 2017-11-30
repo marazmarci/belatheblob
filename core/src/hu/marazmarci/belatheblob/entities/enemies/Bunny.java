@@ -57,7 +57,7 @@ public class Bunny extends Enemy {
 		sb.draw(getTexture()[animation.currentFrame],//animation.getFrame(),
 				getPosition().x - 2 - width / 2,
 				getPosition().y + 2 - height / 2);
-		//sb.draw(texture, x, y, width, height, srcX, srcY, srcWidth, srcHeight, flipX, flipY);
+		//spriteBatch.draw(texture, x, y, width, height, srcX, srcY, srcWidth, srcHeight, flipX, flipY);
 		if (colored || red!=0) sb.setColor(1,1,1,1);
 	}
 

@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import hu.marazmarci.belatheblob.entities.enemies.Enemy;
 import hu.marazmarci.belatheblob.handlers.BoundedCamera;
 import hu.marazmarci.belatheblob.handlers.ContentManager;
 import hu.marazmarci.belatheblob.handlers.Difficulty;
@@ -185,6 +186,7 @@ public class GameMain implements ApplicationListener {
 
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
+        Enemy.jumpTowardsBlob = difficulty == Difficulty.HARD;
     }
 
 }

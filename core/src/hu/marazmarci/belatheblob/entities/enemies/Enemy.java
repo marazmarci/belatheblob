@@ -4,12 +4,15 @@ import hu.marazmarci.belatheblob.entities.B2DSprite;
 import hu.marazmarci.belatheblob.states.levels.Level1;
 
 import static hu.marazmarci.belatheblob.states.levels.Level1.frame;
+import static hu.marazmarci.belatheblob.states.levels.Level1.player;
 
 public abstract class Enemy extends B2DSprite {
+
+	public static boolean jumpTowardsBlob = false;
 	
-	boolean autoJumpEnabled = false;
-	public boolean autoJumpMode = true; //true: random; false: a blob felé
-	int autoJumpInterval;
+	private boolean autoJumpEnabled = false;
+	//public boolean autoJumpMode = true; //true: random; false: a blob felé
+	private int autoJumpInterval;
 	public float autoJumpForceX = -3;
 	public float autoJumpForceXrandomness = 6;
 	public float autoJumpForceY = 3.5f;
@@ -24,18 +27,30 @@ public abstract class Enemy extends B2DSprite {
 	}
 	
 	public void update(float dt) {
-		if(cooldown>0) cooldown--;
-		super.update(dt);
-		if (autoJumpEnabled) {
-			//frame++;
-			float x = autoJumpForceX+Level1.random.nextFloat()*autoJumpForceXrandomness;
-			if (x<0 && !flipped) {
-				flipped = true;
-			} else if (x>0 && flipped) {
-				flipped = false;
-			}
-			if (frame%autoJumpInterval == 0) body.applyForceToCenter(x, autoJumpForceY+Level1.random.nextFloat()*autoJumpForceYrandomness, true);
-		}
+	    try{
+            if(cooldown>0) cooldown--;
+            super.update(dt);
+            if (autoJumpEnabled) {
+                //frame++;
+                float x;
+                if (jumpTowardsBlob) {
+                    float dx = player.getPosX() - body.getPosition().x;
+                    if (dx < 0) x = autoJumpForceX;
+                    else x = -autoJumpForceX;
+                } else {
+                    x = autoJumpForceX + Level1.random.nextFloat() * autoJumpForceXrandomness;
+                }
+                if (x<0 && !flipped) {
+                    flipped = true;
+                } else if (x>0 && flipped) {
+                    flipped = false;
+                }
+                if (frame%autoJumpInterval == 0) body.applyForceToCenter(x, autoJumpForceY+Level1.random.nextFloat()*autoJumpForceYrandomness, true);
+            }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+        }
+
 	}
 	
 	public Enemy setAutoJump(boolean enabled, int interval) {
