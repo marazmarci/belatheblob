@@ -36,6 +36,10 @@ import hu.marazmarci.belatheblob.main.GameMain;
 import hu.marazmarci.belatheblob.main.GameMain.*;
 import hu.marazmarci.belatheblob.states.GameLevelScreen;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -68,6 +72,47 @@ public class Level1 extends GameLevelScreen {
 	public static long frame, gameOverFrame = 0;
 	public static Cat theCat;
 	private static hu.marazmarci.belatheblob.gui.HUD hud;
+
+
+
+	private static final String positionSaveFilePath = "savedPos.anna_a_legjobb_labvez";
+
+
+    /**
+     * Beolvas egy fájlból egy korábban elmentett pozíciót
+     *
+     * @param path a fájl elérési útvonala
+     * @return a beolvasott pozíció
+     */
+	@Prog3HF
+	private Vector2 readSavedPosition(String path) {
+        Vector2 result = null;
+        try {
+            FileInputStream fis = new FileInputStream(path);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            result = (Vector2) ois.readObject();
+        } catch (Exception ignored) { }
+        return result;
+    }
+
+
+    /**
+     * Kiírja egy fájlba a paraméterként kapott pozíciót.
+     *
+     * @param vector2 a fájlba írandó pozíciót tároló 2 dimenziós vektor
+     * @param path a fájl elérési útvonala
+     */
+    @Prog3HF
+    private void savePosition(Vector2 vector2, String path) {
+        FileOutputStream FOS;
+        try {
+            FOS = new FileOutputStream(path);
+            ObjectOutputStream ous = new ObjectOutputStream(FOS);
+            ous.writeObject(vector2);
+            ous.close();
+        } catch (Exception ignored) { }
+    }
+
 
 	
 	public Level1(GameStateManager gsm) {
@@ -154,6 +199,18 @@ public class Level1 extends GameLevelScreen {
 		MapProperties mp = tiledMap.getLayers().get("SPAWN").getObjects().get(0).getProperties();
 		spawn.x = ((Float) mp.get("x")) + ((Float) mp.get("width"))/2;
 		spawn.y = (Float) mp.get("y") + ((Float) mp.get("height"))/2;
+
+
+
+
+		// READ POSITION
+
+        @Prog3HF
+        Vector2 readPosition = readSavedPosition(positionSaveFilePath);
+        if (readPosition != null)
+            spawn = readPosition;
+
+
 		
 		
 		//init gfx
@@ -708,6 +765,7 @@ public class Level1 extends GameLevelScreen {
 
 							@Override
 							public void run() {}
+
 						});
 					}
 					
@@ -759,8 +817,15 @@ public class Level1 extends GameLevelScreen {
 	public static void setDay() {Gdx.gl.glClearColor(116/255f, 200/255f, 1f, 1f);}
 
 
+    /**
+     * A játék állapotváltásakor vagy bezáródásakor hívott függvény.
+     * Ez a felüldefiniált változat lementi béla pozícióját.
+     */
+	@Prog3HF
 	@Override
-    public void dispose() {}
+    public void dispose() {
+        savePosition(player.coreBall.getPosition().scl(PPM), positionSaveFilePath);
+    }
 
     @Override
     public boolean isTransparent() {
