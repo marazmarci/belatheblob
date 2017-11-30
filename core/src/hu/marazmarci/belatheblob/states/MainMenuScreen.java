@@ -13,21 +13,23 @@ import hu.marazmarci.belatheblob.states.levels.Level1;
 public class MainMenuScreen extends MenuScreen {
 
     /**
-     * Létrehozza a főmenüt, és elhelyezi a gombokat.
+     * Létrehozza a főmenüt, és elhelyezi a gombokat és
+     *   mindegyiknek megadja a végrahajtandó műveletét.
+     *
      * @param gameStateManager a játékállapot-kezelő
      */
     public MainMenuScreen(GameStateManager gameStateManager) {
         super(gameStateManager);
 
-        Button playButton = new Button(gsm, 100,100,400,50,"Start Game", Color.GREEN, new Runnable() {
+        Button settingsButton = new Button(gsm, 100,200,400,50,"Settings", Color.ORANGE, new Runnable() {
             public void run() {
-                gsm.pushState(new Level1(gsm));
+                gsm.pushState(new SettingsMenuScreen(gsm));
             }
         });
 
-        Button settingsButton = new Button(gsm, 100,200,400,50,"Settings", Color.RED, new Runnable() {
+        Button playButton = new Button(gsm, 100,100,400,50,"Start Game", Color.GREEN, new Runnable() {
             public void run() {
-                gsm.pushState(new SettingsMenuScreen(gsm));
+                gsm.pushState(new Level1(gsm));
             }
         });
 

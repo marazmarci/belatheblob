@@ -30,7 +30,7 @@ public class SettingsMenuScreen extends MenuScreen {
         }) {
             @Override
             public Color getColor() {
-                return game.getDifficulty() == Difficulty.EASY ? Color.GREEN : Color.PINK;
+                return game.getDifficulty() == Difficulty.EASY ? Color.GREEN : Color.BLUE;
             }
         };
 
