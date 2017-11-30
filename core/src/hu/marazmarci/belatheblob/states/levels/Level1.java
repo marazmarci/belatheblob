@@ -30,6 +30,7 @@ import hu.marazmarci.belatheblob.entities.enemies.Enemy;
 import hu.marazmarci.belatheblob.entities.enemies.Spikes;
 import hu.marazmarci.belatheblob.gui.HUD;
 import hu.marazmarci.belatheblob.handlers.*;
+import hu.marazmarci.belatheblob.handlers.input.GameInputAdapter;
 import hu.marazmarci.belatheblob.handlers.input.GameInputHandler;
 import hu.marazmarci.belatheblob.handlers.input.MyInput;
 import hu.marazmarci.belatheblob.main.GameMain;
@@ -75,7 +76,7 @@ public class Level1 extends GameLevelScreen {
 
 
 
-	private static final String positionSaveFilePath = "savedPos.anna_a_legjobb_labvez";
+	public static final String positionSaveFilePath = "savedPos.anna_a_legjobb_labvez";
 
 
     /**
@@ -109,7 +110,11 @@ public class Level1 extends GameLevelScreen {
             FOS = new FileOutputStream(path);
             ObjectOutputStream ous = new ObjectOutputStream(FOS);
             ous.writeObject(vector2);
+            ous.flush();
             ous.close();
+            FOS = null;
+            ous = null;
+            System.gc();
         } catch (Exception ignored) { }
     }
 
@@ -222,7 +227,7 @@ public class Level1 extends GameLevelScreen {
 	  ( polyBatch = new PolygonSpriteBatch()).setProjectionMatrix(cam.combined);
 	    shapeRenderer.setProjectionMatrix(cam.combined);
 	  //( sr2 = new ShapeRenderer()).setProjectionMatrix(cam.combined);
-	    sb.setProjectionMatrix(cam.combined);
+	    spriteBatch.setProjectionMatrix(cam.combined);
 		box2dCam.setBounds(0, (tileMapWidth * tileSize) / PPM, 0, (tileMapHeight * tileSize) / PPM);
 		//res.initBackgrounds(cam);
 		Texture bgs = res.getTexture("bgs");
@@ -281,44 +286,44 @@ public class Level1 extends GameLevelScreen {
 			if (!GameMain.lowPerformanceMode) {
 				hudCam.zoom = 0.5f;
 				hudCam.update();
-				sb.setProjectionMatrix(hudCam.combined);
-				//backgrounds[0].render(sb);
-				//sb.begin(); sb.setColor(116/255f, 200/255f, 1f, 1f);
-				ContentManager.clouds.render(sb);
-				ContentManager.mountains.render_(sb);
+				spriteBatch.setProjectionMatrix(hudCam.combined);
+				//backgrounds[0].render(spriteBatch);
+				//spriteBatch.begin(); spriteBatch.setColor(116/255f, 200/255f, 1f, 1f);
+				ContentManager.clouds.render(spriteBatch);
+				ContentManager.mountains.render_(spriteBatch);
 				hudCam.zoom = 1;
 				hudCam.update();
 			}
 			
-			sb.setProjectionMatrix(cam.combined);
+			spriteBatch.setProjectionMatrix(cam.combined);
 			
 		} else {
-			sb.setProjectionMatrix(hudCam.combined);
-			sb.begin();
+			spriteBatch.setProjectionMatrix(hudCam.combined);
+			spriteBatch.begin();
 			//System.out.println("GameMain.V_HEIGHT/2-500 = "+(GameMain.V_HEIGHT/2-500));
-			//sb.draw(zokni, GameMain.V_WIDTH/2-500, GameMain.V_HEIGHT/2-500, 500, 500, 1000, 1000, 0.75f + 0.2f + (float)Math.sin(frame/30f)/5f, 0.75f + 0.2f + (float)Math.sin(frame/30f)/5f, frame);
-			sb.draw(ContentManager.zokni, -180, -340, 500, 500, 1000, 1000, 0.75f + 0.2f + (float)Math.sin(frame/30f)/5f, 0.75f + 0.2f + (float)Math.sin(frame/30f)/5f, frame);
-			//sb.draw(zokni, 1000, 1000, new Affine2().rotate(frame));
-			sb.end();
-			sb.setProjectionMatrix(cam.combined);
+			//spriteBatch.draw(zokni, GameMain.V_WIDTH/2-500, GameMain.V_HEIGHT/2-500, 500, 500, 1000, 1000, 0.75f + 0.2f + (float)Math.sin(frame/30f)/5f, 0.75f + 0.2f + (float)Math.sin(frame/30f)/5f, frame);
+			spriteBatch.draw(ContentManager.zokni, -180, -340, 500, 500, 1000, 1000, 0.75f + 0.2f + (float)Math.sin(frame/30f)/5f, 0.75f + 0.2f + (float)Math.sin(frame/30f)/5f, frame);
+			//spriteBatch.draw(zokni, 1000, 1000, new Affine2().rotate(frame));
+			spriteBatch.end();
+			spriteBatch.setProjectionMatrix(cam.combined);
 		}
 		
-		sb.begin();
+		spriteBatch.begin();
 		for (B2DSprite s : hiddenSprites)
 		    if (player.dstLinear(s.getPosition()) < (GameMain.WIDTH + GameMain.HEIGHT)*0.8)
-		        s.render(sb);
-		sb.end();
+		        s.render(spriteBatch);
+		spriteBatch.end();
 		
 		//draw Tiled map
 		tmr.setView(cam);
 		tmr.render();
 		
 		//draw objects
-		sb.begin();
+		spriteBatch.begin();
 		for (B2DSprite s : sprites)
 		    if (player.dstLinear(s.getPosition()) < (GameMain.WIDTH + GameMain.HEIGHT)*0.8)
-		        s.render(sb); //if (frame%60 == 0 && s instanceof Bunny) System.out.println("Bunni Dystance: "+player.dstLinear(s.getPosition()));
-		sb.end();
+		        s.render(spriteBatch); //if (frame%60 == 0 && s instanceof Bunny) System.out.println("Bunni Dystance: "+player.dstLinear(s.getPosition()));
+		spriteBatch.end();
 		
 		if (playerVisible)
 		    player.render(polyBatch, shapeRenderer);
@@ -330,9 +335,9 @@ public class Level1 extends GameLevelScreen {
 			b2dr.render(world, box2dCam.combined);
 		}
 		
-		sb.setProjectionMatrix(hudCam.combined);
+		spriteBatch.setProjectionMatrix(hudCam.combined);
 		shapeRenderer.setProjectionMatrix(hudCam.combined);
-		hud.render(sb, shapeRenderer);
+		hud.render(spriteBatch, shapeRenderer);
 	}
 
 
@@ -698,7 +703,7 @@ public class Level1 extends GameLevelScreen {
 					e.autoJumpForceXrandomness = Float.parseFloat((String) mp.get("forceXrandomness"));
 					e.autoJumpForceY = Float.parseFloat((String) mp.get("forceY"));
 					e.autoJumpForceYrandomness = Float.parseFloat((String) mp.get("forceYrandomness"));
-					e.autoJumpMode = !((String) mp.get("mode")).equals("random"); //autoJumpMode := false: random; true: a blob felé
+					//e.autoJumpMode = !((String) mp.get("mode")).equals("random"); //autoJumpMode := false: random; true: a blob felé
 				} catch (Exception ex) {
                     //ex.printStackTrace(); hát ez most nem kell
                 }
@@ -857,7 +862,7 @@ public class Level1 extends GameLevelScreen {
 
 
     @Prog3HF
-    class Level1Input extends GameInputHandler {
+    class Level1Input extends GameInputAdapter {
 
         @Override
         protected boolean handleKeyDown(int keyCode) {
@@ -967,7 +972,7 @@ public class Level1 extends GameLevelScreen {
 
         @Override
         protected void handleTouchHeld(IntMap<Vector3> actualTouchPoints) {
-
+            //TODO
         }
 
         @Override

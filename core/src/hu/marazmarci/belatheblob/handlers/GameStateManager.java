@@ -123,7 +123,7 @@ public class GameStateManager {
     private void activateTopScreen() {
         GameStateScreen gameState = gameStates.peek();
         gameState.activate();
-        Gdx.input.setInputProcessor(gameState.getGameInputHandler());
+        Gdx.input.setInputProcessor(gameState.getGameInputHandler().repeatLastMouseMovedEvent());
     }
 
 }

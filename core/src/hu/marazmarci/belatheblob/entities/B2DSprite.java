@@ -84,7 +84,7 @@ public abstract class B2DSprite {
 		sb.draw(singleFrame?tex:getTexture()[animation.currentFrame],//animation.getFrame(),
 				getPosition().x + textureOffsetX - width / 2,
 				getPosition().y + textureOffsetY - height / 2);
-		//sb.draw(texture, x, y, width, height, srcX, srcY, srcWidth, srcHeight, flipX, flipY);
+		//spriteBatch.draw(texture, x, y, width, height, srcX, srcY, srcWidth, srcHeight, flipX, flipY);
 		if (red != 0) sb.setColor(1,1,1,1);
 	}
 	

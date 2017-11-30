@@ -19,7 +19,7 @@ public abstract class GameStateScreen implements Disposable {
     protected GameInputHandler input;
 
     // rendereléshez
-	protected SpriteBatch sb;
+	protected SpriteBatch spriteBatch;
     protected ShapeRenderer shapeRenderer;
     protected OrthographicCamera hudCam;
 
@@ -27,8 +27,8 @@ public abstract class GameStateScreen implements Disposable {
 	GameStateScreen(GameStateManager gsm) {
 		this.gsm = gsm;
         this.game = gsm.getGameMain();
-        this.sb = game.getSpriteBatch();
-        this.shapeRenderer = game.getShapeRenderer();
+        this.spriteBatch = new SpriteBatch();
+        this.shapeRenderer = new ShapeRenderer();
         this.hudCam = game.getHUDCamera();
         this.input = createGameInputHandler();
 	}
@@ -124,4 +124,18 @@ public abstract class GameStateScreen implements Disposable {
         return getClass().getSimpleName();
     }
 
+    /**
+     * @return a játékállapot-kezelő
+     */
+    public GameStateManager getGameStateManager() {
+        return gsm;
+    }
+
+    public ShapeRenderer getShapeRenderer() {
+        return shapeRenderer;
+    }
+
+    public SpriteBatch getSpriteBatch() {
+        return spriteBatch;
+    }
 }

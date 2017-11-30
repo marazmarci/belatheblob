@@ -22,8 +22,29 @@ public class BoundingBox {
         return isPointInside(touchPoint.x, touchPoint.y);
     }
 
-    private boolean isPointInside(float px, float py) {
+    public boolean isPointInside(float px, float py) {
         return this.x <= px && this.x + this.width >= px && this.y <= py && this.y + this.height >= py;
     }
 
+    public BoundingBox clone() {
+        return new BoundingBox(x,y,width,height);
+    }
+
+    public void expand(int border) {
+        x -= border;
+        y -= border;
+        height += 2 * border;
+        width  += 2 * border;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BoundingBox that = (BoundingBox) o;
+        if (x != that.x) return false;
+        if (y != that.y) return false;
+        if (width != that.width) return false;
+        return height == that.height;
+    }
 }

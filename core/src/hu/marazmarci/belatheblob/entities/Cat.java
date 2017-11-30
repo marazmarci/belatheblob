@@ -143,8 +143,8 @@ public class Cat extends B2DSprite {
 	
 	@Override
 	public void render(SpriteBatch sb) {
-		//if (red!=0) sb.setColor(1, 1-red, 1-red, 1);
-		/*sb.draw(singleFrame?tex:getTexture()[animation.currentFrame],
+		//if (red!=0) spriteBatch.setColor(1, 1-red, 1-red, 1);
+		/*spriteBatch.draw(singleFrame?tex:getTexture()[animation.currentFrame],
 				getPosition().x + textureOffsetX - width / 2,
 				getPosition().y + textureOffsetY - height / 2);*/
 		if (insideBlob) {
@@ -154,7 +154,7 @@ public class Cat extends B2DSprite {
 					getPosition().x + textureOffsetX - width / 2,
 					getPosition().y + textureOffsetY - height / 2);
 		}
-		//if (red!=0) sb.setColor(1,1,1,1);
+		//if (red!=0) spriteBatch.setColor(1,1,1,1);
 	}
 
 	@Override

@@ -49,4 +49,9 @@ public abstract class GameInputAdapter extends GameInputHandler {
     protected void handleTouchDragged(Vector3 touchPoint) {
 
     }
+
+    @Override
+    protected void handleMouseMoved(int screenX, int screenY) {
+
+    }
 }

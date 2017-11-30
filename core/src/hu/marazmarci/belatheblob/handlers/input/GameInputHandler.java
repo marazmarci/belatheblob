@@ -260,7 +260,10 @@ public abstract class GameInputHandler implements InputProcessor {
      * @return lekezelte-e az eseményt
      */
     @Override
-    public boolean mouseMoved(int screenX, int screenY) {
+    public final boolean mouseMoved(int screenX, int screenY) {
+        lastMouseX = screenX;
+        lastMouseY = screenY;
+        handleMouseMoved(screenX, screenY);
         return false;
     }
 
@@ -289,6 +292,16 @@ public abstract class GameInputHandler implements InputProcessor {
     private static boolean getKeyState(int keycode) {
         return keys[keycode];
     } */
+
+    private static int lastMouseX = -420, lastMouseY;
+
+    public final GameInputHandler repeatLastMouseMovedEvent() {
+        if (lastMouseX != -420)
+            handleMouseMoved(lastMouseX, lastMouseY);
+        return this;
+    }
+
+    protected abstract void handleMouseMoved(int screenX, int screenY);
 
 }
 

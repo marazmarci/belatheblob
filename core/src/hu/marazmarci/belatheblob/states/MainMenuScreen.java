@@ -19,7 +19,7 @@ import hu.marazmarci.belatheblob.states.levels.Level1;
 @Prog3HF_JavaDoc_TODO
 public class MainMenuScreen extends MenuScreen {
 
-    private static final float MENU_BUNNY_SPEED = 2;
+    private static final float MENU_BUNNY_SPEED = 1.5f;
 
     private MenuBunny bunny;
     private float bunnyMouseX = 300;
@@ -36,13 +36,13 @@ public class MainMenuScreen extends MenuScreen {
 
         bunny = new MenuBunny(bunnyMouseX, 30);
 
-        Button settingsButton = new Button(gsm, 100,200,400,50,"Settings", Color.ORANGE, new Runnable() {
+        Button settingsButton = new Button(this, 110,200,400,50,20,"Settings", Color.ORANGE, new Runnable() {
             public void run() {
                 gsm.pushState(new SettingsMenuScreen(gsm));
             }
         });
 
-        Button playButton = new Button(gsm, 100,100,400,50,"Start Game", Color.GREEN, new Runnable() {
+        Button playButton = new Button(this, 110,100,400,50,0,"Start Game", Color.GREEN, new Runnable() {
             public void run() {
                 gsm.pushState(new Level1(gsm));
             }
@@ -69,15 +69,15 @@ public class MainMenuScreen extends MenuScreen {
         return new MainMenuScreenInputHandler();
     }
 
+
     class MainMenuScreenInputHandler extends MenuScreenInputHandler {
 
-        // hogy ne kelljen a mouseMoved-ban az unproject hívásnál mindig újat létrehozni
-        Vector3 temp = new Vector3();
+
 
         @Override
-        public boolean mouseMoved(int screenX, int screenY) {
-            bunnyMouseX = hudCam.unproject(temp.set(screenX,0,0)).x;
-            return true;
+        public void handleMouseMoved(int screenX, int screenY) {
+            bunnyMouseX = unprojectTouch(screenX, 0).x;
+            super.handleMouseMoved(screenX, screenY);
         }
 
         @Override
@@ -85,7 +85,7 @@ public class MainMenuScreen extends MenuScreen {
             //TODO bunny jump
             Vector3 touchPoint = actualTouchPoints.get(0);
             if (touchPoint != null)
-                bunnyMouseX = touchPoint.x;
+                bunnyMouseX = unprojectTouch(touchPoint.x, 0).x;
         }
     }
 
@@ -117,9 +117,9 @@ public class MainMenuScreen extends MenuScreen {
                 time = 0;
                 animationFrameSelector = !animationFrameSelector;
             }
-            sb.begin();
-            sb.draw(Bunny.texs[animationFrameSelector ? 0 : 1], pos.x - 16, pos.y);
-            sb.end();
+            spriteBatch.begin();
+            spriteBatch.draw(Bunny.texs[animationFrameSelector ? 0 : 1], pos.x - 16, pos.y);
+            spriteBatch.end();
         }
 
     }
@@ -128,7 +128,7 @@ public class MainMenuScreen extends MenuScreen {
     @Override
     public void doActivate() {
         super.doActivate();
-        sb.setProjectionMatrix(hudCam.combined);
+        bunny.pos.x = -50;
         new Bunny().initTexture();
     }
 }

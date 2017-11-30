@@ -94,18 +94,18 @@ public class HUD {
 		sb.begin();
 		
 		// draw container
-		////sb.draw(container, 32, 200);
+		////spriteBatch.draw(container, 32, 200);
 		
 		// draw blocks
 		/*short bits = player.getBody().getFixtureList().first().getFilterData().maskBits;
 		if((bits & B2DVars.BIT_RED_BLOCK) != 0) {
-			sb.draw(blocks[0], 40, 208);
+			spriteBatch.draw(blocks[0], 40, 208);
 		}
 		else if((bits & B2DVars.BIT_GREEN_BLOCK) != 0) {
-			sb.draw(blocks[1], 40, 208);
+			spriteBatch.draw(blocks[1], 40, 208);
 		}
 		else if((bits & B2DVars.BIT_BLUE_BLOCK) != 0) {
-			sb.draw(blocks[2], 40, 208);
+			spriteBatch.draw(blocks[2], 40, 208);
 		}*/
 		
 		// draw crystal
@@ -114,12 +114,12 @@ public class HUD {
 		// draw crystal amount
 		drawString(sb, player.getScore() + " / " + player.getMaxScore() + "  -  " + (Level1.collected==0?"":Level1.collected+""), 28, 283+android);
 		
-		//if(Level1.collected != 0) drawString(sb, Level1.collected+"", 10, 266+android);
+		//if(Level1.collected != 0) drawString(spriteBatch, Level1.collected+"", 10, 266+android);
 		
 		
 		drawString(sb, ((float)(int)(time*10)/10)+"", 336, 302+android);
 		
-		//drawString(sb, "HP: " + player.HP, 0, 300);
+		//drawString(spriteBatch, "HP: " + player.HP, 0, 300);
 		
 		for (int i=0; i<player.HP; i++) {
 			sb.draw(heart, 8 + i*16, 300+android);
