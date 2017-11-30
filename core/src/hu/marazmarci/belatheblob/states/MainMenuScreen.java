@@ -5,7 +5,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.IntMap;
 import hu.marazmarci.belatheblob.Prog3HF;
-import hu.marazmarci.belatheblob.Prog3HF_JavaDoc_TODO;
 import hu.marazmarci.belatheblob.entities.enemies.Bunny;
 import hu.marazmarci.belatheblob.gui.Button;
 import hu.marazmarci.belatheblob.handlers.GameStateManager;
@@ -16,7 +15,6 @@ import hu.marazmarci.belatheblob.states.levels.Level1;
  * A főmenüt reprezentáló osztály.
  */
 @Prog3HF
-@Prog3HF_JavaDoc_TODO
 public class MainMenuScreen extends MenuScreen {
 
     private static final float MENU_BUNNY_SPEED = 1.5f;
@@ -90,9 +88,10 @@ public class MainMenuScreen extends MenuScreen {
     }
 
 
-
-
-
+    /**
+     * A menüben ugráló nyúl.
+     */
+    @Prog3HF
     class MenuBunny {
 
         private Vector2 pos;

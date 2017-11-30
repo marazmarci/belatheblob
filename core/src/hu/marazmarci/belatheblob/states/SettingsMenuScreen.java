@@ -2,7 +2,6 @@ package hu.marazmarci.belatheblob.states;
 
 import com.badlogic.gdx.graphics.Color;
 import hu.marazmarci.belatheblob.Prog3HF;
-import hu.marazmarci.belatheblob.Prog3HF_TODO;
 import hu.marazmarci.belatheblob.gui.Button;
 import hu.marazmarci.belatheblob.handlers.Difficulty;
 import hu.marazmarci.belatheblob.handlers.GameStateManager;
@@ -14,10 +13,8 @@ import java.io.File;
  * A beállítások menüjét reprezentáló osztály
  */
 @Prog3HF
-@Prog3HF_TODO
 public class SettingsMenuScreen extends MenuScreen {
 
-    @Prog3HF_TODO
     public SettingsMenuScreen(GameStateManager gameStateManager) {
         super(gameStateManager);
 

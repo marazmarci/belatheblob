@@ -12,7 +12,7 @@ import hu.marazmarci.belatheblob.main.GameMain;
 
 /**
  * A game over játékállapot képernyőjét reprezentáló osztály.
- *
+ * Egy piros félig átlátszó réteget fog rakni a képernyőre, ha majd megírom teljesen.
  */
 @Prog3HF
 public class GameOverScreen extends MenuScreen {
@@ -48,6 +48,7 @@ public class GameOverScreen extends MenuScreen {
     }
 
 
+    @Prog3HF
     class GameOverInput extends MenuScreenInputHandler {
 
         @Override

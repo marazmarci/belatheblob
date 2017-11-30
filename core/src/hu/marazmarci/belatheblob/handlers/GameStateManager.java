@@ -48,12 +48,12 @@ public class GameStateManager {
      */
     public void updateAndRender(float deltaTime) {
         GameStateScreen top = gameStates.peek(), second = null;
-        boolean topIsTransparend = top.isTransparent();
-        if (topIsTransparend)
+        boolean topIsTransparent = top.isTransparent();
+        if (topIsTransparent)
             (second = gameStates.peekSecond()).update(deltaTime);
         top.handleInput();
         top.update(deltaTime);
-        if (topIsTransparend)
+        if (topIsTransparent)
             second.render();
         top.render();
         /* sorrend:

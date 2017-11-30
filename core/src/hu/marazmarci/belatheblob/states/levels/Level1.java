@@ -829,7 +829,7 @@ public class Level1 extends GameLevelScreen {
 	@Prog3HF
 	@Override
     public void dispose() {
-        savePosition(player.coreBall.getPosition().scl(PPM), positionSaveFilePath);
+        savePosition(player.coreBall.getPosition().scl(PPM).add(0, 10), positionSaveFilePath);
     }
 
     @Override

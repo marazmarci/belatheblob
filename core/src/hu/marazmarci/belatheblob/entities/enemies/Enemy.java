@@ -34,6 +34,7 @@ public abstract class Enemy extends B2DSprite {
             if (autoJumpEnabled) {
                 //frame++;
                 @Prog3HF // hát ez nem lett túl szép :P
+                         // itt írtam meg, hogy Béla felé ugorjanak a nyulak
                 float x;
                 if (jumpTowardsBlob) {
                     float dx = player.getPosX() - body.getPosition().x;

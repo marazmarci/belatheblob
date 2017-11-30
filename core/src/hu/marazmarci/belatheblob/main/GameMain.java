@@ -5,12 +5,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import hu.marazmarci.belatheblob.Prog3HF;
 import hu.marazmarci.belatheblob.entities.enemies.Enemy;
 import hu.marazmarci.belatheblob.handlers.BoundedCamera;
 import hu.marazmarci.belatheblob.handlers.ContentManager;
 import hu.marazmarci.belatheblob.handlers.Difficulty;
 import hu.marazmarci.belatheblob.handlers.GameStateManager;
-import hu.marazmarci.belatheblob.handlers.input.TouchPoint;
 import hu.marazmarci.belatheblob.states.MainMenuScreen;
 import hu.marazmarci.belatheblob.states.levels.Level1;
 
@@ -173,17 +173,11 @@ public class GameMain implements ApplicationListener {
 		TITLE = "Béla the Blob"+(gameVariant == GameVariant.ANNA?" - Anna Edition": (gameVariant == GameVariant.LIVIA? " - Lívia Edition" : (gameVariant == GameVariant.MAG? " - Mag Edition" : "")) );
 	}
 
-	@Deprecated
-    public static TouchPoint translateTouchPoint(TouchPoint touchPoint) {
-		//TODO ez elrontja a játék közbeni inputot, de a menüben átméretezés nélkül jó
-	    //return touchPoint.set(touchPoint.x / SCALE, HEIGHT - touchPoint.y / SCALE);
-		return touchPoint;
-    }
-
     public Difficulty getDifficulty() {
         return difficulty;
     }
 
+    @Prog3HF
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
         Enemy.jumpTowardsBlob = difficulty == Difficulty.HARD;

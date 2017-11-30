@@ -110,6 +110,7 @@ public abstract class MenuScreen extends GameStateScreen {
             */
         }
 
+
         // hogy ne kelljen a mouseMoved-ban az unproject hívásnál mindig újat létrehozni
         private Vector3 temp = new Vector3();
 
