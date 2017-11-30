@@ -62,7 +62,7 @@ public abstract class MenuScreen extends GameStateScreen {
     /**
      * Egy menüképernyő bemenetét kezelő osztály.
      */
-    class MenuScreenInputHandler extends GameInputAdapter {
+    protected class MenuScreenInputHandler extends GameInputAdapter {
 
         /**
          * Kezeli az érintéseket/kattintásokat.

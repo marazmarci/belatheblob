@@ -38,7 +38,7 @@ public abstract class GameStateScreen implements Disposable {
     /**
      * Meghívja a {@link GameInputHandler} eseménykezelő függvényét.
      */
-    public void handleInput() {
+    public final void handleInput() {
         input.handleInput();
     }
 
@@ -46,7 +46,7 @@ public abstract class GameStateScreen implements Disposable {
      * A játékállapot képernyőre kerülésekor (kívülről) hívott függvény.
      * Meghívja az absztrakt doActivate() függvényt.
      */
-    public void activate() {
+    public final void activate() {
         System.out.println("[GameStateScreen activated] : " + this);
 	    doActivate();
     }
@@ -112,7 +112,7 @@ public abstract class GameStateScreen implements Disposable {
     /**
      * @return a játékállapot input-kezelője
      */
-    public GameInputHandler getGameInputHandler() {
+    public final GameInputHandler getGameInputHandler() {
         return input;
     }
 
@@ -120,7 +120,7 @@ public abstract class GameStateScreen implements Disposable {
      * @return az osztály neve (debug célokra)
      */
     @Override
-    public String toString() {
+    public final String toString() {
         return getClass().getSimpleName();
     }
 

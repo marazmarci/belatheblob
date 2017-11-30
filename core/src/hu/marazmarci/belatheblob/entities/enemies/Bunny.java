@@ -14,7 +14,7 @@ import static hu.marazmarci.belatheblob.states.levels.Level1.random;
 
 public class Bunny extends Enemy {
 	
-	private static TextureRegion[] texs;
+	public static TextureRegion[] texs;
 	Color randomColor = new Color(1f,1f,1f,1f);
 	boolean colored = false;
 	
