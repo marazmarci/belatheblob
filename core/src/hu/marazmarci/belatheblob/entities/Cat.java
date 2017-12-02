@@ -15,6 +15,8 @@ import static hu.marazmarci.belatheblob.handlers.B2DVars.*;
 import static hu.marazmarci.belatheblob.states.levels.Level1.frame;
 
 public class Cat extends B2DSprite {
+
+	// TODO fix cat bug (Prog3HF hatására jelent meg) (NPE: Cat.world)
 	
 	private static TextureRegion[] texs;
 	private World world;

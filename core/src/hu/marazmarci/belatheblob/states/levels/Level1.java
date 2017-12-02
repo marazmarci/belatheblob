@@ -71,7 +71,7 @@ public class Level1 extends GameLevelScreen {
 	private static Vector2 spawn = new Vector2(100,100);
 	public static int width, height, collected;
 	public static long frame, gameOverFrame = 0;
-	public static Cat theCat;
+	private static Cat theCat;
 	private static hu.marazmarci.belatheblob.gui.HUD hud;
 
 

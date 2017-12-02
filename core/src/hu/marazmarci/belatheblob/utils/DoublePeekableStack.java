@@ -11,7 +11,14 @@ import java.util.Stack;
  * @param <T> a tárolt típus
  */
 @Prog3HF
+@Deprecated
 public class DoublePeekableStack<T> extends Stack<T> {
+
+    // TODO DoublePeekableStack helyett egyszerűbb megoldás:
+    /* DoublePeekableStack helyett egyszerűen külön kell tárolni a top-ot,
+         és a többi alatta lévő réteg meg mehet a stack-be.
+       Így nem kell minden update-render iterációban +1 stack.peek() indirekció
+     */
 
     /**
      * Visszaadja a stack teteje alatti elemet
