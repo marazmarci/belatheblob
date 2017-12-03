@@ -1,0 +1,9 @@
+@startuml
+actor Alice as A
+actor Bob as B
+A -> B: Authentication Request
+B --> A: Authentication Response
+
+A -> B: Another authentication Request
+A <-- B: another authentication Response
+@enduml
