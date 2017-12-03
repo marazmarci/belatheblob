@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
 import hu.marazmarci.belatheblob.Prog3HF;
-import hu.marazmarci.belatheblob.states.MenuScreen;
+import hu.marazmarci.belatheblob.states.menu.MenuScreen;
 
 /**
  * Egy a felhasználói felületen elhelyezkedő gombot reprezentáló osztály

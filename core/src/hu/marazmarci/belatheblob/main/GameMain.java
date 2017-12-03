@@ -11,8 +11,8 @@ import hu.marazmarci.belatheblob.handlers.BoundedCamera;
 import hu.marazmarci.belatheblob.handlers.ContentManager;
 import hu.marazmarci.belatheblob.handlers.Difficulty;
 import hu.marazmarci.belatheblob.handlers.GameStateManager;
-import hu.marazmarci.belatheblob.states.MainMenuScreen;
 import hu.marazmarci.belatheblob.states.levels.Level1;
+import hu.marazmarci.belatheblob.states.menu.MainMenuScreen;
 
 // needs to be singleton
 public class GameMain implements ApplicationListener {

@@ -1,4 +1,4 @@
-package hu.marazmarci.belatheblob.states;
+package hu.marazmarci.belatheblob.states.menu;
 
 import com.badlogic.gdx.graphics.Color;
 import hu.marazmarci.belatheblob.Prog3HF;

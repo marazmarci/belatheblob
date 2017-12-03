@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
 import hu.marazmarci.belatheblob.Prog3HF;
 import hu.marazmarci.belatheblob.handlers.GameStateManager;
-import hu.marazmarci.belatheblob.states.MenuScreen;
+import hu.marazmarci.belatheblob.states.menu.MenuScreen;
 
 /**
  * Egy menüképernyőn megjelenő vizuális, interaktivitásra képes objektumot reprezentál

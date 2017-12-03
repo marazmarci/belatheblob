@@ -1,4 +1,4 @@
-package hu.marazmarci.belatheblob.states;
+package hu.marazmarci.belatheblob.states.menu;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -10,6 +10,7 @@ import hu.marazmarci.belatheblob.gui.GuiElement;
 import hu.marazmarci.belatheblob.handlers.GameStateManager;
 import hu.marazmarci.belatheblob.handlers.input.GameInputAdapter;
 import hu.marazmarci.belatheblob.handlers.input.GameInputHandler;
+import hu.marazmarci.belatheblob.states.GameStateScreen;
 
 import java.util.ArrayList;
 

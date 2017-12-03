@@ -1,7 +1,6 @@
-package hu.marazmarci.belatheblob.states;
+package hu.marazmarci.belatheblob.states.menu;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.IntMap;
 import hu.marazmarci.belatheblob.Prog3HF;
@@ -32,7 +31,7 @@ public class MainMenuScreen extends MenuScreen {
     public MainMenuScreen(GameStateManager gameStateManager) {
         super(gameStateManager);
 
-        bunny = new MenuBunny(bunnyMouseX, 30);
+        bunny = new MenuBunny(spriteBatch, bunnyMouseX, 30);
 
         Button settingsButton = new Button(this, 110,200,400,50,20,"Settings", Color.ORANGE, new Runnable() {
             public void run() {
@@ -88,46 +87,10 @@ public class MainMenuScreen extends MenuScreen {
     }
 
 
-    /**
-     * A menüben ugráló nyúl.
-     */
-    @Prog3HF
-    class MenuBunny {
-
-        private Vector2 pos;
-        private float time = 0;
-        private float mouseDistance = 0;
-        private boolean animationFrameSelector = false;
-
-        MenuBunny(float x, float y) {
-            pos = new Vector2(x, y);
-        }
-
-        void moveTowardsPoint(float mouseX, float deltaTime, float speed) {
-            mouseDistance = mouseX - pos.x;
-            pos.x += mouseDistance * deltaTime * speed;
-            time += deltaTime;
-            if (mouseDistance < 0) mouseDistance *= -1;
-        }
-
-        public void render() {
-                    // 1 /(6f  + mouseDistance/10f)
-            if (time > 10/(60f + mouseDistance)) {
-                time = 0;
-                animationFrameSelector = !animationFrameSelector;
-            }
-            spriteBatch.begin();
-            spriteBatch.draw(Bunny.texs[animationFrameSelector ? 0 : 1], pos.x - 16, pos.y);
-            spriteBatch.end();
-        }
-
-    }
-
-
     @Override
     public void doActivate() {
         super.doActivate();
-        bunny.pos.x = -50;
+        bunny.getPos().x = -50;
         new Bunny().initTexture();
     }
 }

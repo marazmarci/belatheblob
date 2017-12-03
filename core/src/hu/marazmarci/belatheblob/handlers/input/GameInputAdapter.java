@@ -4,12 +4,13 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.IntArray;
 import com.badlogic.gdx.utils.IntMap;
 import hu.marazmarci.belatheblob.Prog3HF;
+import hu.marazmarci.belatheblob.states.menu.MenuScreen;
 
 /**
  * Adapter osztály a {@link GameInputHandler} osztályhoz, üres implementációkkal.
  * Ha ebből származtatunk le egy input-kezelő osztályt, akkor csak a számunkra
  *   szükséges metódusokat kell felüldefiniálnunk.
- *   pl: {@link hu.marazmarci.belatheblob.states.MenuScreen.MenuScreenInputHandler}
+ *   pl: {@link MenuScreen.MenuScreenInputHandler}
  */
 @Prog3HF
 public abstract class GameInputAdapter extends GameInputHandler {

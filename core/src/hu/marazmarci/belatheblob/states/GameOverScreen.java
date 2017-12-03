@@ -8,6 +8,7 @@ import hu.marazmarci.belatheblob.Prog3HF;
 import hu.marazmarci.belatheblob.handlers.GameStateManager;
 import hu.marazmarci.belatheblob.handlers.input.GameInputHandler;
 import hu.marazmarci.belatheblob.main.GameMain;
+import hu.marazmarci.belatheblob.states.menu.MenuScreen;
 
 
 /**

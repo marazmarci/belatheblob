@@ -24,7 +24,7 @@ public abstract class GameStateScreen implements Disposable {
     protected OrthographicCamera hudCam;
 
 
-	GameStateScreen(GameStateManager gsm) {
+	protected GameStateScreen(GameStateManager gsm) {
 		this.gsm = gsm;
         this.game = gsm.getGameMain();
         this.spriteBatch = new SpriteBatch();

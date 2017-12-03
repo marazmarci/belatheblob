@@ -5,7 +5,7 @@ import hu.marazmarci.belatheblob.Prog3HF;
 import hu.marazmarci.belatheblob.main.GameMain;
 import hu.marazmarci.belatheblob.states.GameOverScreen;
 import hu.marazmarci.belatheblob.states.GameStateScreen;
-import hu.marazmarci.belatheblob.states.MenuScreen;
+import hu.marazmarci.belatheblob.states.menu.MenuScreen;
 import hu.marazmarci.belatheblob.utils.DoublePeekableStack;
 
 /**
