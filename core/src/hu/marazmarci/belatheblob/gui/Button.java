@@ -67,7 +67,7 @@ public class Button extends GuiElement {
      * @return a pont a gomb téglalapjába esik-e
      */
     @Override
-    public boolean handleTouch(Vector3 touchPoint) {
+    public boolean onTouchDown(Vector3 touchPoint) {
         if (boundingBox.isPointInside(touchPoint)) {
             if (action != null)
                 action.run();
@@ -77,7 +77,7 @@ public class Button extends GuiElement {
     }
 
     @Override
-    public boolean handleOnMouseOver(float x, float y) {
+    public boolean onMouseOver(float x, float y) {
         return showOutline = boundingBox.isPointInside(x, y);
     }
 

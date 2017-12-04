@@ -82,7 +82,7 @@ public abstract class MenuScreen extends GameStateScreen {
 
         /**
          * Kezeli az érintéseket/kattintásokat.
-         * A touchPoint paramétert átadja az összes GUI-eleme handleTouch függvényének.
+         * A touchPoint paramétert átadja az összes GUI-eleme onTouchDown függvényének.
          *
          * @param touchPoint az érintés/kattintás koordinátái
          */
@@ -91,7 +91,7 @@ public abstract class MenuScreen extends GameStateScreen {
             unprojectTouch(touchPoint);
             //GameMain.translateTouchPoint(touchPoint);
             for (GuiElement guiElement : guiElements)
-                if (guiElement.handleTouch(touchPoint))
+                if (guiElement.onTouchDown(touchPoint))
                     return;
         }
 
@@ -101,7 +101,7 @@ public abstract class MenuScreen extends GameStateScreen {
             Vector3 tempTouchPoint = unprojectTouch(screenX, screenY);
             //GameMain.translateTouchPoint(touchPoint);
             for (GuiElement guiElement : guiElements)
-                guiElement.handleOnMouseOver(tempTouchPoint.x, tempTouchPoint.y);
+                guiElement.onMouseOver(tempTouchPoint.x, tempTouchPoint.y);
             //debug output:
             /*
             Vector3 tp = new Vector3(screenX, screenY, 0);

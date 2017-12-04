@@ -29,8 +29,8 @@ public abstract class GuiElement {
 
     // both receives unprojected touch coordinates:
 
-    public abstract boolean handleTouch(Vector3 touchPoint);
-    public abstract boolean handleOnMouseOver(float x, float y);
+    public abstract boolean onTouchDown(Vector3 touchPoint);
+    public abstract boolean onMouseOver(float x, float y);
 
 
 
