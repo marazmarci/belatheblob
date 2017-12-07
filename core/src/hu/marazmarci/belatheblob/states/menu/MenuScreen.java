@@ -101,7 +101,8 @@ public abstract class MenuScreen extends GameStateScreen {
             Vector3 tempTouchPoint = unprojectTouch(screenX, screenY);
             //GameMain.translateTouchPoint(touchPoint);
             for (GuiElement guiElement : guiElements)
-                guiElement.onMouseOver(tempTouchPoint.x, tempTouchPoint.y);
+                if (guiElement.onMouseOver(tempTouchPoint.x, tempTouchPoint.y))
+                    return;
             //debug output:
             /*
             Vector3 tp = new Vector3(screenX, screenY, 0);

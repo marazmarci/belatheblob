@@ -56,7 +56,7 @@ public class GameStateManager {
         if (topIsTransparent)
             second.render();
         top.render();
-        /* sorrend:
+        /* order:
            (1. second update)
             2. top handleInput
             3. top update
